@@ -367,23 +367,45 @@
                             </div>
                             <div>
                                 <label for="business" class="block text-gray-700 mb-2">Business Type</label>
-                                <select id="business" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                    <option value="" disabled selected>Select your business type</option>
-                                    <option value="retail">Retail</option>
-                                    <option value="restaurant">Restaurant/Food Service</option>
-                                    <option value="professional">Professional Services</option>
-                                    <option value="tech">Technology</option>
-                                    <option value="ecommerce">E-commerce</option>
-                                    <option value="real_estate">Real Estate</option>
-                                    <option value="health_wellness">Health & Wellness</option>
-                                    <option value="construction">Construction/Contracting</option>
-                                    <option value="education">Education/Tutoring</option>
-                                    <option value="freelance">Freelancer/Independent Contractor</option>
-                                    <option value="nonprofit">Nonprofit Organization</option>
-                                    <option value="automotive">Automotive Services</option>
-                                    <option value="other">Other</option>
+                                <select id="business"
+                                      class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="" disabled selected>Select your business type</option>
+                                <option value="retail">Retail</option>
+                                <option value="restaurant">Restaurant/Food Service</option>
+                                <option value="professional">Professional Services</option>
+                                <option value="tech">Technology</option>
+                                <option value="ecommerce">E-commerce</option>
+                                <option value="real_estate">Real Estate</option>
+                                <option value="health_wellness">Health & Wellness</option>
+                                <option value="construction">Construction/Contracting</option>
+                                <option value="education">Education/Tutoring</option>
+                                <option value="freelance">Freelancer/Independent Contractor</option>
+                                <option value="nonprofit">Nonprofit Organization</option>
+                                <option value="automotive">Automotive Services</option>
+                                <option value="other">Other</option>
                                 </select>
-                            </div>
+                                
+                                <!-- hidden by default -->
+                                <input type="text" id="otherBusiness"
+                                     placeholder="Please describe your business"
+                                     class="w-full px-4 py-2 border rounded-md mt-3 hidden focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                
+                                <script>
+                                const selectEl = document.getElementById('business');
+                                const otherInput = document.getElementById('otherBusiness');
+                                
+                                selectEl.addEventListener('change', function () {
+                                if (this.value === 'other') {
+                                  otherInput.classList.remove('hidden');
+                                  otherInput.required = true;           // make it required only when shown
+                                } else {
+                                  otherInput.classList.add('hidden');
+                                  otherInput.value = '';
+                                  otherInput.required = false;
+                                }
+                                });
+                                </script>
                             <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition font-medium">Schedule Consultation</button>
                         </form>
                     </div>
