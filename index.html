@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blooming Financial | Professional Bookkeeping & Payroll Services in Bay Area</title>
+    <meta name="description" content="Affordable bookkeeping, payroll, and business consulting services for small businesses in Cupertino, San Francisco, and the Bay Area.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+        .nav-link:hover {
+            color: #3b82f6;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .testimonial-card {
+            border-left: 4px solid #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-blue-900">
+                        <span class="text-blue-600">Blooming</span> Financial
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 transition">Home</a>
+                    <a href="#services" class="nav-link text-gray-700 hover:text-blue-600 transition">Services</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 transition">About</a>
+                    <a href="#testimonials" class="nav-link text-gray-700 hover:text-blue-600 transition">Testimonials</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 transition">Contact</a>
+                    <a href="#consultation" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Free Consultation</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-700 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div class="md:hidden hidden bg-white w-full px-6 py-3 shadow-md" id="mobileMenu">
+        <div class="flex flex-col space-y-4">
+            <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 transition">Home</a>
+            <a href="#services" class="nav-link text-gray-700 hover:text-blue-600 transition">Services</a>
+            <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 transition">About</a>
+            <a href="#testimonials" class="nav-link text-gray-700 hover:text-blue-600 transition">Testimonials</a>
+            <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 transition">Contact</a>
+            <a href="#consultation" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition text-center">Free Consultation</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient text-white py-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Financial Services That Help Your Business Grow</h1>
+                    <p class="text-xl mb-8">Professional bookkeeping, payroll, and consulting services tailored for small businesses in the Bay Area.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#consultation" class="bg-white text-blue-600 px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition text-center">Book Free Consultation</a>
+                        <a href="#services" class="border-2 border-white text-white px-6 py-3 rounded-md font-medium hover:bg-white hover:text-blue-600 transition text-center">Our Services</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Financial documents and calculator" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="bg-gray-100 py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle text-green-500 text-2xl mr-2"></i>
+                    <span class="text-gray-700">Certified Professionals</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-map-marker-alt text-blue-500 text-2xl mr-2"></i>
+                    <span class="text-gray-700">Serving Bay Area</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-star text-yellow-400 text-2xl mr-2"></i>
+                    <span class="text-gray-700">5-Star Reviews</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-lock text-blue-700 text-2xl mr-2"></i>
+                    <span class="text-gray-700">Secure & Confidential</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Our Services</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Comprehensive financial solutions designed to meet your business needs</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Bookkeeping Card -->
+                <div class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-calculator text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">Bookkeeping</h3>
+                    <p class="text-gray-600 mb-4">Accurate financial records to keep your business compliant and informed.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Data entry & reconciliation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Financial reporting</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Tax preparation support</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Accounts payable/receivable</span>
+                        </li>
+                    </ul>
+                    <a href="#consultation" class="inline-block mt-6 text-blue-600 font-medium hover:text-blue-700 transition">Learn more →</a>
+                </div>
+                
+                <!-- Payroll Card -->
+                <div class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-money-check-alt text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">Payroll Services</h3>
+                    <p class="text-gray-600 mb-4">Reliable payroll processing so you can focus on your business.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Monthly payroll processing</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Contractor payments</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Tax filings & compliance</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Direct deposit setup</span>
+                        </li>
+                    </ul>
+                    <a href="#consultation" class="inline-block mt-6 text-blue-600 font-medium hover:text-blue-700 transition">Learn more →</a>
+                </div>
+                
+                <!-- Consulting Card -->
+                <div class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-chart-line text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">Business Consulting</h3>
+                    <p class="text-gray-600 mb-4">Strategic guidance to help your business thrive.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Budgeting & cash flow analysis</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Financial strategy development</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Systems setup & optimization</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Business growth planning</span>
+                        </li>
+                    </ul>
+                    <a href="#consultation" class="inline-block mt-6 text-blue-600 font-medium hover:text-blue-700 transition">Learn more →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Our team" class="rounded-lg shadow-xl">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">About Blooming Financial</h2>
+                    <p class="text-gray-600 mb-4">Founded in 2015, Blooming Financial is dedicated to providing personalized financial services to small businesses throughout the Bay Area.</p>
+                    <p class="text-gray-600 mb-4">Our mission is to help entrepreneurs and small business owners navigate the complexities of financial management, so they can focus on what they do best - growing their business.</p>
+                    <p class="text-gray-600 mb-6">We take pride in our local roots and commitment to serving the communities of Cupertino, San Francisco, and surrounding areas with integrity and professionalism.</p>
+                    
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                        <p class="text-blue-900 font-medium">"We don't just crunch numbers - we build relationships and help our clients understand their financial position to make informed business decisions."</p>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <div class="bg-blue-100 text-blue-800 rounded-full p-3 mr-4">
+                            <i class="fas fa-hand-holding-usd text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-blue-900">Affordable Pricing</h4>
+                            <p class="text-gray-600">Customized packages to fit your budget</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">What Our Clients Say</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Don't just take our word for it - hear from our satisfied clients</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">"Blooming Financial transformed our bookkeeping process. Their team is responsive, knowledgeable, and has saved us countless hours each month. Highly recommend their services!"</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                            <span class="text-blue-600 font-bold">JS</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-blue-900">Jennifer S.</h4>
+                            <p class="text-gray-600">Small Business Owner, Cupertino</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">"As a startup founder, I needed help setting up our financial systems. Blooming Financial provided invaluable consulting that put us on the right track from day one."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                            <span class="text-blue-600 font-bold">MR</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-blue-900">Michael R.</h4>
+                            <p class="text-gray-600">Tech Startup Founder, San Francisco</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">"Their payroll services are flawless - always accurate and on time. They handle all the tax filings so I don't have to worry about compliance issues. A true partner for my business."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                            <span class="text-blue-600 font-bold">AL</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-blue-900">Amanda L.</h4>
+                            <p class="text-gray-600">Restaurant Owner, Mountain View</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://www.yelp.com/biz/blooming-financial-cupertino" target="_blank" class="inline-flex items-center bg-yelp-red text-white px-6 py-3 rounded-md hover:bg-red-700 transition">
+                    <i class="fab fa-yelp text-xl mr-2"></i>
+                    Read More Reviews on Yelp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation CTA -->
+    <section id="consultation" class="py-20 bg-blue-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-blue-600 text-white p-10">
+                        <h2 class="text-3xl font-bold mb-6">Ready to Get Started?</h2>
+                        <p class="mb-6">Schedule your free 30-minute consultation to discuss your business needs and how we can help.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <span>No obligation, no pressure</span>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <span>Personalized recommendations</span>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <span>Clear pricing information</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-10">
+                        <h3 class="text-2xl font-bold text-blue-900 mb-6">Book Your Consultation</h3>
+                        <form id="consultationForm" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-gray-700 mb-2">Your Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 mb-2">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            </div>
+                            <div>
+                                <label for="business" class="block text-gray-700 mb-2">Business Type</label>
+                                <select id="business" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="">Select your business type</option>
+                                    <option value="retail">Retail</option>
+                                    <option value="restaurant">Restaurant/Food Service</option>
+                                    <option value="professional">Professional Services</option>
+                                    <option value="tech">Technology</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition font-medium">Schedule Consultation</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Answers to common questions about our services</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                            <span class="text-lg font-medium text-blue-900">What areas do you serve?</span>
+                            <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-gray-600">We primarily serve small businesses in the Bay Area, including Cupertino, San Francisco, Mountain View, Sunnyvale, Palo Alto, and surrounding communities. Remote services are also available for businesses outside our immediate area.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                            <span class="text-lg font-medium text-blue-900">How much do your services cost?</span>
+                            <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-gray-600">Our pricing is customized based on your specific needs and the complexity of your business. Basic bookkeeping services start at $200/month, payroll services at $150/month, and consulting engagements are typically billed hourly or as fixed-price projects. During your free consultation, we'll provide transparent pricing based on your requirements.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                            <span class="text-lg font-medium text-blue-900">What accounting software do you work with?</span>
+                            <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-gray-600">We're proficient with all major accounting platforms including QuickBooks Online, Xero, FreshBooks, and Wave. We can help you choose the right software for your business or work with your existing system. Our team stays current with all software updates and best practices.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                            <span class="text-lg font-medium text-blue-900">How often will I receive financial reports?</span>
+                            <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-gray-600">Standard clients receive monthly financial reports including profit & loss statements, balance sheets, and cash flow reports. We can customize reporting frequency based your needs - some clients prefer weekly or quarterly reports. All reports are delivered electronically with clear explanations to help you understand your financial position.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 5 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                            <span class="text-lg font-medium text-blue-900">Is my financial data secure with you?</span>
+                            <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-gray-600">Absolutely. We take data security very seriously. All client data is protected with bank-level encryption, secure cloud storage, and strict access controls. Our team is trained in data privacy best practices, and we're happy to sign confidentiality agreements. You retain full ownership of your financial data at all times.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Contact Us</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Get in touch with our team</p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/2 p-10">
+                            <h3 class="text-2xl font-bold text-blue-900 mb-6">Contact Information</h3>
+                            <div class="space-y极6">
+                                <div class="flex items-start">
+                                    <div class="text-blue-600 mr-4 mt-1">
+                                        <i class="fas fa-map-marker-alt text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-blue-900">Our Office</h4>
+                                        <p class="text-gray-600">123 Financial Way, Suite 200<br>Cupertino, CA 95014</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="text-blue-600 mr-4 mt-1">
+                                        <i class="fas fa-phone-alt text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-blue-900">Phone</h4>
+                                        <p class="text-gray-600">(408) 555-1234</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="text-blue-600 mr-4 mt-1">
+                                        <i class="fas fa-envelope text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-blue-900">Email</h极4>
+                                        <p class="text-gray-600">hello@bloomingfinancial.com</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="text-blue-600 mr-4 mt-1">
+                                        <i class="fas fa-clock text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-blue-900">Hours</h4>
+                                        <p class="text-gray-600">Monday-Friday: 9am-5pm<br>Saturday-Sunday: Closed</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8">
+                                <h4 class="font-bold text-blue-900 mb-4">Follow Us</h4>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="text-blue-600 hover:text-blue-800 text-2xl">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="#" class="text-blue-600 hover:text-blue-800 text-2xl">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                    <a href="#" class="text-blue-600 hover:text-blue-800 text-2xl">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="md:w-1/2 p-10 bg-gray-50">
+                            <h3 class="text-2xl font-bold text-blue-900 mb-6">Send Us a Message</h3>
+                            <form id="contactForm" class="space-y-4">
+                                <div>
+                                    <label for="contactName" class="block text-gray-700 mb-2">Your Name</label>
+                                    <input type="text" id="contactName" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                </div>
+                                <div>
+                                    <label for极"contactEmail" class="block text-gray-700 mb-2">Email Address</label>
+                                    <input type="email" id="contactEmail" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                </div>
+                                <div>
+                                    <label for="contactPhone" class="block text-gray-700 mb-2">Phone Number</label>
+                                    <input type="tel" id="contactPhone" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div>
+                                    <label for="contactSubject" class="block text-gray-700 mb-2">Subject</label>
+                                    <select id="contactSubject" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option value="general">General Inquiry</option>
+                                        <option value="bookkeeping">Bookkeeping Services</option>
+                                        <option value="payroll">Payroll Services</option>
+                                        <option value="consulting">Business Consulting</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="contactMessage" class="block text-gray-700 mb-2">Message</label>
+                                    <textarea id="contactMessage" rows="4" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                </div>
+                                <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition font-medium">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16">
+                <div class="rounded-xl overflow-hidden shadow-lg">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3172.3325395304418!2d-121.93536992468763!3d37.33484723581964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fcb43b92f3aab%3A0x8c5e5e5e5e5e5e5e!2sCupertino%2C%20CA!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-blue-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">Stay Updated</h2>
+                <p class="text-xl mb-8">Subscribe to our newsletter for financial tips, tax updates, and business insights delivered to your inbox monthly.</p>
+                
+                <form class="flex flex-col sm:flex-row max-w-md mx-auto sm:max-w-xl">
+                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-md sm:rounded-r-none focus:outline-none text-gray-900">
+                    <button type="submit" class="mt-3 sm:mt-0 bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-md sm:rounded-l-none font-medium transition">Subscribe</button>
+                </form>
+                
+                <p class="text-sm mt-4 text-blue-200">We respect your privacy. Unsubscribe at any time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-950 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold mb-4">
+                        <span class="text-blue-400">Blooming</span> Financial
+                    </div>
+                    <p class="text-blue-200 mb-4">Professional financial services for small businesses in the Bay Area.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-blue-300 hover:text-white text-xl">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-blue-300 hover:text-white text-xl">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-blue-300 hover:text-white text-xl">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-blue-300 hover:text-white text-xl">
+                            <i class="fab fa-yelp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-blue-200 hover:text-white transition">Bookkeeping</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition">Payroll Services</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition">Business Consulting</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition">Tax Preparation</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white transition">Financial Reporting</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-blue-200 hover:text-white transition">Home</a></li>
+                        <li><a href="#services" class="text-blue-200 hover:text-white transition">Services</a></li>
+                        <li><a href="#about" class="极text-blue-200 hover:text-white transition">About Us</a></li>
+                        <li><a href="#testimonials" class="text-blue-200 hover:text-white transition">Testimonials</a></li>
+                        <li><a href="#contact" class="text-blue-200 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Contact</h3>
+                    <ul class="space-y-2 text-blue-200">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2 text-sm"></i>
+                            <span>123 Financial Way, Suite 200<br>Cupertino, CA 95014</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-2 text-sm"></i>
+                            <span>(408) 555-1234</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-2 text-sm"></i>
+                            <span>hello@bloomingfinancial.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-blue-800 mt-12 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-blue-300 text-sm mb-4 md:mb-0">© 2023 Blooming Financial. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-blue-300 hover:text-white text-sm">Privacy Policy</a>
+                        <a href="#" class="text-blue-300 hover:text-white text-sm">Terms of Service</a>
+                        <a href="#" class="text-blue-300 hover:text-white text-sm">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Live Chat Widget -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="chatButton" class="bg-blue-600 text-white w-16 h-16 rounded-full shadow-xl hover:bg-blue-700 transition flex items-center justify-center">
+            <i class="fas fa-comment-dots text-2xl"></i>
+        </button>
+        
+        <div id="chatWidget" class="hidden absolute bottom-20 right-0 w-80 bg-white rounded-lg shadow-xl overflow-hidden">
+            <div class="bg-blue-600 text-white p-4 flex justify-between items-center">
+                <h3 class="font-bold">Chat with us</h3>
+                <button id="closeChat" class="text-white hover:text-gray-200">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-4 h-64 overflow-y-auto">
+                <div class="text-center py-8">
+                    <i class="fas fa-comment-dots text-blue-400 text-4xl mb-2"></i>
+                    <p class="text-gray-600">Hi there! How can we help you today?</p>
+                </div>
+            </div>
+            <div class="border-t p-4">
+                <div极 class="flex">
+                    <input type="text" placeholder="Type your message..." class="flex-grow px-4 py-2 border rounded-l-md focus:outline-none">
+                    <button class="bg-blue-600 text-white px极-4 py-2 rounded-r-md hover:bg-blue-700 transition">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="hidden fixed bottom-6 left-6 bg-blue-600 text-white w-12 h-12 rounded-full shadow-lg hover:bg-blue-700 transition z-50">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('nav button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-toggle').forEach(button => {
+            button.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                // Toggle content
+                content.classList.toggle('hidden');
+                
+                // Rotate icon
+                if (content.classList.contains('hidden')) {
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Chat widget toggle
+        const chatButton = document.getElementById('chatButton');
+        const chatWidget = document.getElementById('chatWidget');
+        const closeChat = document.getElementById('closeChat');
+        
+        chatButton.addEventListener('click', function() {
+            chatWidget.classList.toggle('hidden');
+        });
+        
+        closeChat.addEventListener('click', function() {
+            chatWidget.classList.add('hidden');
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Form submission handling (placeholder)
+        document.getElementById('consultationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your consultation request! We will contact you shortly.');
+            this.reset();
+        });
+        
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+
+    <!-- Google Analytics (placeholder) -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        
+        ga('create', 'UA-XXXXX-Y', 'auto');
+        ga('send', 'pageview');
+    </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=mersitzj/blooming-financial" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
+</html>
