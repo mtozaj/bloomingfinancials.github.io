@@ -58,7 +58,7 @@
     </nav>
 
     <!-- Mobile Menu (clean dropdown below navbar) -->
-    <div id="mobileMenu" class="fixed top-[64px] left-0 w-full bg-white shadow-md transform -translate-y-full transition-transform duration-300 z-40 md:hidden">
+    <div id="mobileMenu" class="fixed top-[64px] left-0 w-full bg-white transform -translate-y-full transition-transform duration-300 z-40 md:hidden shadow-none">
         <div class="flex flex-col space-y-4 p-6">
             <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 transition">Home</a>
             <a href="#services" class="nav-link text-gray-700 hover:text-blue-600 transition">Services</a>
@@ -689,11 +689,19 @@
     </button>
 
     <script>
-        const menuBtn = document.querySelector('nav button');
+        const navToggleBtn = document.querySelector('nav button');
         const mobileMenu = document.getElementById('mobileMenu');
-        
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('-translate-y-full');
+    
+        navToggleBtn.addEventListener('click', function () {
+            const isHidden = mobileMenu.classList.contains('-translate-y-full');
+    
+            if (isHidden) {
+                mobileMenu.classList.remove('-translate-y-full');
+                mobileMenu.classList.add('translate-y-0', 'shadow-md'); // Show menu + add shadow
+            } else {
+                mobileMenu.classList.remove('translate-y-0', 'shadow-md');
+                mobileMenu.classList.add('-translate-y-full'); // Hide menu
+            }
         });
 
         // FAQ toggle functionality
