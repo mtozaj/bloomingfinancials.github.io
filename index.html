@@ -33,7 +33,7 @@
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+    <nav class="bg-white border-0 shadow-none sticky top-0 z-50">
         <div class="container mx-auto px-6 py-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
@@ -59,7 +59,7 @@
     </nav>
 
     <!-- Mobile Menu (clean dropdown below navbar) -->
-    <div id="mobileMenu" class="fixed top-[64px] left-0 w-full bg-white transform -translate-y-full transition-transform duration-300 z-40 md:hidden shadow-none">
+    <div id="mobileMenu" class="fixed inset-x-0 top-0 w-full bg-white transform -translate-y-full transition-transform duration-300 ease-in-out z-40 md:hidden">
         <div class="flex flex-col space-y-4 p-6">
             <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 transition">Home</a>
             <a href="#services" class="nav-link text-gray-700 hover:text-blue-600 transition">Services</a>
@@ -690,18 +690,20 @@
     </button>
 
     <script>
-        const navToggleBtn = document.querySelector('nav button');
-        const mobileMenu = document.getElementById('mobileMenu');
-    
-        navToggleBtn.addEventListener('click', function () {
+        const navToggleBtn = document.querySelector('nav button');   // the “hamburger”
+        const mobileMenu    = document.getElementById('mobileMenu');
+        
+        navToggleBtn.addEventListener('click', () => {
             const isHidden = mobileMenu.classList.contains('-translate-y-full');
-    
+        
             if (isHidden) {
+                // Show the menu
                 mobileMenu.classList.remove('-translate-y-full');
-                mobileMenu.classList.add('translate-y-0', 'shadow-md'); // Show menu + add shadow
+                mobileMenu.classList.add('translate-y-0', 'shadow-lg');   // optional shadow
             } else {
-                mobileMenu.classList.remove('translate-y-0', 'shadow-md');
-                mobileMenu.classList.add('-translate-y-full'); // Hide menu
+                // Hide the menu
+                mobileMenu.classList.remove('translate-y-0', 'shadow-lg');
+                mobileMenu.classList.add('-translate-y-full');
             }
         });
 
