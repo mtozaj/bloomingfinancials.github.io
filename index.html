@@ -43,7 +43,6 @@
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 transition">Home</a>
-                    <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 transition">Home</a>
                     <a href="#services" class="nav-link text-gray-700 hover:text-blue-600 transition">Services</a>
                     <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 transition">About</a>
                     <a href="#testimonials" class="nav-link text-gray-700 hover:text-blue-600 transition">Testimonials</a>
@@ -60,7 +59,12 @@
     </nav>
 
     <!-- Mobile Menu (clean dropdown below navbar) -->
-    <div id="mobileMenu" class="fixed inset-x-0 top-0 w-full bg-white transform -translate-y-full transition-transform duration-300 ease-in-out z-40 md:hidden">
+    <div id="mobileMenu"
+     class="fixed inset-x-0 top-14   <!-- changed -->
+            w-full bg-white
+            transform -translate-y-full
+            transition-transform duration-300 ease-in-out
+            z-40 md:hidden">
         <div class="flex flex-col space-y-4 p-6">
             <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 transition">Home</a>
             <a href="#services" class="nav-link text-gray-700 hover:text-blue-600 transition">Services</a>
