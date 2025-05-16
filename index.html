@@ -57,14 +57,8 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu (drop below nav bar) -->
+    <!-- Mobile Menu (clean dropdown below navbar) -->
     <div id="mobileMenu" class="absolute left-0 w-full bg-white shadow-md transform -translate-y-full transition-transform duration-300 z-40 md:hidden">
-        <div class="flex justify-between items-center px-6 py-4 border-b">
-            <h2 class="text-lg font-semibold text-blue-600">Menu</h2>
-            <button id="closeMobileMenu" class="text-2xl text-gray-600 hover:text-blue-600">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
         <div class="flex flex-col px-6 py-4 space-y-4">
             <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 transition">Home</a>
             <a href="#services" class="nav-link text-gray-700 hover:text-blue-600 transition">Services</a>
@@ -74,7 +68,6 @@
             <a href="#consultation" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition text-center">Free Consultation</a>
         </div>
     </div>
-
 
     <!-- Hero Section -->
     <section id="home" class="hero-gradient text-white py-20">
@@ -696,19 +689,12 @@
     </button>
 
     <script>
-        // Slide-down mobile menu toggle
         const menuBtn = document.querySelector('nav button');
-        const closeBtn = document.getElementById('closeMobileMenu');
         const mobileMenu = document.getElementById('mobileMenu');
         
         menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('-translate-y-full');
+            mobileMenu.classList.toggle('-translate-y-full');
         });
-        
-        closeBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('-translate-y-full');
-        });
-
 
         // FAQ toggle functionality
         document.querySelectorAll('.faq-toggle').forEach(button => {
