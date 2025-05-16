@@ -712,6 +712,15 @@
             }
         });
 
+        // Hide mobile panel when a link inside it is tapped
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+              // Move panel up (same classes you use for the close action)
+              mobileMenu.classList.add('-translate-y-full');
+              mobileMenu.classList.remove('translate-y-0', 'shadow-lg');
+            });
+        });
+
         // FAQ toggle functionality
         document.querySelectorAll('.faq-toggle').forEach(button => {
             button.addEventListener('click', function() {
