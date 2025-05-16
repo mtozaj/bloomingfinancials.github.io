@@ -58,13 +58,13 @@
     </nav>
 
     <!-- Mobile Menu (hidden by default) -->
-    <div class="md:hidden hidden fixed inset-0 bg-white w-full h-full px-6 py-10 shadow-lg z-50 overflow-y-auto" id="mobileMenu">
-        <div class="flex justify-end">
-          <button id="closeMobileMenu" class="text-2xl text-gray-600 hover:text-blue-600">
-            <i class="fas fa-times"></i>
-          </button>
+    <div id="mobileMenu" class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-white shadow-lg transform translate-x-full transition-transform duration-300 z-50 md:hidden">
+        <div class="flex justify-between items-center px-6 py-4 border-b">
+            <span class="text-xl font-semibold text-blue-700">Menu</span>
+            <button id="closeMobileMenu" class="text-2xl text-gray-600 hover:text-blue-600">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-
         <div class="flex flex-col space-y-4">
             <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 transition">Home</a>
             <a href="#services" class="nav-link text-gray-700 hover:text-blue-600 transition">Services</a>
@@ -678,7 +678,7 @@
             
             <div class="border-t border-blue-800 mt-12 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center">
-                    <p class="text-blue-300 text-sm mb-4 md:mb-0">© 2023 Blooming Financial. All rights reserved.</p>
+                    <p class="text-blue-300 text-sm mb-4 md:mb-0">© 2025 Blooming Financial. All rights reserved.</p>
                     <div class="flex space-x-6">
                         <a href="#" class="text-blue-300 hover:text-white text-sm">Privacy Policy</a>
                         <a href="#" class="text-blue-300 hover:text-white text-sm">Terms of Service</a>
@@ -695,14 +695,14 @@
     </button>
 
     <script>
-        // Mobile menu open/close
-        document.querySelector('nav button').addEventListener('click', function() {
-            document.getElementById('mobileMenu').classList.toggle('hidden');
+        // Open menu
+        document.querySelector('nav button').addEventListener('click', function () {
+            document.getElementById('mobileMenu').classList.remove('translate-x-full');
         });
         
-        // Close button for mobile menu
-        document.getElementById('closeMobileMenu').addEventListener('click', function() {
-            document.getElementById('mobileMenu').classList.add('hidden');
+        // Close menu
+        document.getElementById('closeMobileMenu').addEventListener('click', function () {
+            document.getElementById('mobileMenu').classList.add('translate-x-full');
         });
 
         // FAQ toggle functionality
