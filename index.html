@@ -364,77 +364,74 @@
                         </div>
                     </div>
                     <div class="md:w-1/2 p-10">
-                        <h3 id="consultHeading" class="text-2xl font-bold text-blue-900 mb-6">Book Your Consultation</h3>
-                        <form id="consultationForm"
-                              action="https://formspree.io/f/xjkwzerg"
-                              method="POST"
-                              class="space-y-4">
-                            <div>
-                                <label for="name" class="block text-gray-700 mb-2">Your Name</label>
-                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                            </div>
-                            <div>
-                                <label for="email" class="block text-gray-700 mb-2">Email Address</label>
-                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                            </div>
-                            <div>
-                                <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                            </div>
-                            <div>
-                                <label for="business" class="block text-gray-700 mb-2">Business Type</label>
-                                <select id="business" name="business_type"
-                                      class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <option value="" disabled selected>Select your business type</option>
-                                <option value="retail">Retail</option>
-                                <option value="restaurant">Restaurant/Food Service</option>
-                                <option value="professional">Professional Services</option>
-                                <option value="tech">Technology</option>
-                                <option value="ecommerce">E-commerce</option>
-                                <option value="real_estate">Real Estate</option>
-                                <option value="health_wellness">Health & Wellness</option>
-                                <option value="construction">Construction/Contracting</option>
-                                <option value="education">Education/Tutoring</option>
-                                <option value="freelance">Freelancer/Independent Contractor</option>
-                                <option value="nonprofit">Nonprofit Organization</option>
-                                <option value="automotive">Automotive Services</option>
-                                <option value="other">Other</option>
-                                </select>
-                                
-                                <!-- hidden by default -->
-                                <input type="text" id="otherBusiness" name="other_business"
-                                     placeholder="Please describe your business"
-                                     class="w-full px-4 py-2 border rounded-md mt-3 hidden focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <!-- Form Container -->
+                        <div id="formContainer">
+                            <h3 id="consultHeading" class="text-2xl font-bold text-blue-900 mb-6">Book Your Consultation</h3>
+                            <form id="consultationForm"
+                                  action="https://formspree.io/f/xjkwzerg"
+                                  method="POST"
+                                  class="space-y-4">
+                                <div>
+                                    <label for="name" class="block text-gray-700 mb-2">Your Name</label>
+                                    <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-gray-700 mb-2">Email Address</label>
+                                    <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                </div>
+                                <div>
+                                    <label for="business" class="block text-gray-700 mb-2">Business Type</label>
+                                    <select id="business" name="business_type"
+                                          class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="" disabled selected>Select your business type</option>
+                                    <option value="retail">Retail</option>
+                                    <option value="restaurant">Restaurant/Food Service</option>
+                                    <option value="professional">Professional Services</option>
+                                    <option value="tech">Technology</option>
+                                    <option value="ecommerce">E-commerce</option>
+                                    <option value="real_estate">Real Estate</option>
+                                    <option value="health_wellness">Health & Wellness</option>
+                                    <option value="construction">Construction/Contracting</option>
+                                    <option value="education">Education/Tutoring</option>
+                                    <option value="freelance">Freelancer/Independent Contractor</option>
+                                    <option value="nonprofit">Nonprofit Organization</option>
+                                    <option value="automotive">Automotive Services</option>
+                                    <option value="other">Other</option>
+                                    </select>
+                                    
+                                    <!-- hidden by default -->
+                                    <input type="text" id="otherBusiness" name="other_business"
+                                         placeholder="Please describe your business"
+                                         class="w-full px-4 py-2 border rounded-md mt-3 hidden focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 </div>
                                 
-                                <script>
-                                const selectEl = document.getElementById('business');
-                                const otherInput = document.getElementById('otherBusiness');
+                                <input type="hidden" name="_subject"
+                                       value="New consultation request from website">
                                 
-                                selectEl.addEventListener('change', function () {
-                                if (this.value === 'other') {
-                                  otherInput.classList.remove('hidden');
-                                  otherInput.required = true;           // make it required only when shown
-                                } else {
-                                  otherInput.classList.add('hidden');
-                                  otherInput.value = '';
-                                  otherInput.required = false;
-                                }
-                                });
-                                </script>
-                            <input type="hidden" name="_subject"
-                                   value="New consultation request from website">
-                            <!-- Tell Formspree where to return the user -->
-<!--                             <input type="hidden"
-                                   name="_redirect"
-                                   value="https://www.bloomingfinancials.com/#thank-you"> -->
-
-                            <section id="thank-you" class="hidden py-20 text-center">
-                              <h2 class="text-3xl font-bold text-blue-900 mb-4">Thank you!</h2>
-                              <p class="text-gray-700">We’ve received your request and will contact you shortly.</p>
-                            </section>
-                            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition font-medium">Schedule Consultation</button>
-                        </form>
+                                <button type="submit" id="submitBtn" class="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition font-medium">
+                                    Schedule Consultation
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <!-- Thank You Message (outside of form) -->
+                        <div id="thank-you" class="hidden text-center">
+                            <div class="mb-6">
+                                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-check text-green-600 text-2xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-blue-900 mb-4">Thank You!</h3>
+                                <p class="text-gray-700 mb-4">We've received your consultation request and will contact you within 24 hours to schedule your free consultation.</p>
+                                <p class="text-sm text-gray-600">Keep an eye on your email and phone for our response!</p>
+                            </div>
+                            <button onclick="resetForm()" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
+                                Submit Another Request
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -804,39 +801,82 @@
         });
     </script>
     <script>
-      const form = document.getElementById('consultationForm');
-      form.addEventListener('submit', async function(event) {
-        event.preventDefault();  // Prevent normal form redirect
+        const form = document.getElementById('consultationForm');
+        const submitBtn = document.getElementById('submitBtn');
         
-        // Prepare form data
-        const formData = new FormData(form);
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();  // Prevent normal form redirect
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Submitting...';
+            submitBtn.disabled = true;
+            
+            // Prepare form data
+            const formData = new FormData(form);
+            
+            try {
+                // Send the form data to Formspree via AJAX
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                if (response.ok) {
+                    // Hide the form container and show thank you message
+                    document.getElementById('formContainer').classList.add('hidden');
+                    document.getElementById('thank-you').classList.remove('hidden');
+                } else {
+                    // Handle error
+                    console.error('Formspree error response', response);
+                    alert('There was an error submitting your request. Please try again or contact us directly.');
+                    
+                    // Reset button
+                    submitBtn.innerHTML = 'Schedule Consultation';
+                    submitBtn.disabled = false;
+                }
+            } catch (err) {
+                console.error('Form submission failed', err);
+                alert('There was a network error. Please check your connection and try again.');
+                
+                // Reset button
+                submitBtn.innerHTML = 'Schedule Consultation';
+                submitBtn.disabled = false;
+            }
+        });
         
-        try {
-          // Send the form data to Formspree via AJAX
-          const response = await fetch(form.action, {
-            method: form.method,
-            body: formData,
-            headers: { 'Accept': 'application/json' }  // Ask for JSON response
-          });
-          
-          if (response.ok) {
-                // 1. hide the entire form element
-                form.classList.add('hidden');
-                
-                // 2. hide the heading right above the form
-                document.getElementById('consultHeading').classList.add('hidden');
-                
-                // 3. reveal the thank-you block
-                document.getElementById('thank-you').classList.remove('hidden');
-          } else {
-            console.error('Formspree error response', response);
-            // Optionally, handle errors (e.g., display an error message to the user)
-          }
-        } catch (err) {
-          console.error('Form submission failed', err);
-          // Optionally, inform the user of a network error
+        // Function to reset form (for "Submit Another Request" button)
+        function resetForm() {
+            // Reset form fields
+            form.reset();
+            
+            // Hide other business input if it was shown
+            otherInput.classList.add('hidden');
+            otherInput.required = false;
+            
+            // Reset button state
+            submitBtn.innerHTML = 'Schedule Consultation';
+            submitBtn.disabled = false;
+            
+            // Show form container and hide thank you message
+            document.getElementById('formContainer').classList.remove('hidden');
+            document.getElementById('thank-you').classList.add('hidden');
         }
-      });
+
+        // Business type dropdown functionality
+        const selectEl = document.getElementById('business');
+        const otherInput = document.getElementById('otherBusiness');
+        
+        selectEl.addEventListener('change', function () {
+            if (this.value === 'other') {
+                otherInput.classList.remove('hidden');
+                otherInput.required = true;
+            } else {
+                otherInput.classList.add('hidden');
+                otherInput.value = '';
+                otherInput.required = false;
+            }
+        });
     </script>
 
     <!-- Google Analytics (placeholder) -->
