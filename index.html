@@ -364,7 +364,7 @@
                         </div>
                     </div>
                     <div class="md:w-1/2 p-10">
-                        <h3 class="text-2xl font-bold text-blue-900 mb-6">Book Your Consultation</h3>
+                        <h3 id="consultHeading" class="text-2xl font-bold text-blue-900 mb-6">Book Your Consultation</h3>
                         <form id="consultationForm"
                               action="https://formspree.io/f/xjkwzerg"
                               method="POST"
@@ -820,12 +820,14 @@
           });
           
           if (response.ok) {
-            // Success: show confirmation and reset form
-            document.getElementById('thank-you').classList.remove('hidden');
-            form.reset();
-            // Optionally, hide the form fields or disable the submit button now that we're showing the thank-you message:
-            form.querySelectorAll('input, select, textarea, button').forEach(el => {
-              if (el.type !== 'hidden') el.classList.add('hidden');
+                // 1. hide the entire form element
+                form.classList.add('hidden');
+                
+                // 2. hide the heading right above the form
+                document.getElementById('consultHeading').classList.add('hidden');
+                
+                // 3. reveal the thank-you block
+                document.getElementById('thank-you').classList.remove('hidden');
             });
           } else {
             console.error('Formspree error response', response);
