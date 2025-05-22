@@ -425,9 +425,9 @@
                             <input type="hidden" name="_subject"
                                    value="New consultation request from website">
                             <!-- Tell Formspree where to return the user -->
-                            <input type="hidden"
+<!--                             <input type="hidden"
                                    name="_redirect"
-                                   value="https://www.bloomingfinancials.com/#thank-you">
+                                   value="https://www.bloomingfinancials.com/#thank-you"> -->
 
                             <section id="thank-you" class="hidden py-20 text-center">
                               <h2 class="text-3xl font-bold text-blue-900 mb-4">Thank you!</h2>
@@ -714,9 +714,9 @@
     </button>
 
     <script>
-        if (location.hash === '#thank-you') {
-          document.getElementById('thank-you')?.classList.remove('hidden');
-        }
+        // if (location.hash === '#thank-you') {
+        //   document.getElementById('thank-you')?.classList.remove('hidden');
+        // }
 
         const navToggleBtn = document.querySelector('nav button');   // the “hamburger”
         const mobileMenu    = document.getElementById('mobileMenu');
@@ -802,6 +802,40 @@
             alert('Thank you for your message! We will get back to you soon.');
             this.reset();
         });
+    </script>
+    <script>
+      const form = document.getElementById('consultationForm');
+      form.addEventListener('submit', async function(event) {
+        event.preventDefault();  // Prevent normal form redirect
+        
+        // Prepare form data
+        const formData = new FormData(form);
+        
+        try {
+          // Send the form data to Formspree via AJAX
+          const response = await fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: { 'Accept': 'application/json' }  // Ask for JSON response
+          });
+          
+          if (response.ok) {
+            // Success: show confirmation and reset form
+            document.getElementById('thank-you').classList.remove('hidden');
+            form.reset();
+            // Optionally, hide the form fields or disable the submit button now that we're showing the thank-you message:
+            form.querySelectorAll('input, select, textarea, button').forEach(el => {
+              if (el.type !== 'hidden') el.classList.add('hidden');
+            });
+          } else {
+            console.error('Formspree error response', response);
+            // Optionally, handle errors (e.g., display an error message to the user)
+          }
+        } catch (err) {
+          console.error('Form submission failed', err);
+          // Optionally, inform the user of a network error
+        }
+      });
     </script>
 
     <!-- Google Analytics (placeholder) -->
