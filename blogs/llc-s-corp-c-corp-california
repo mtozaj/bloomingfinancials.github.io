@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Smart Business Owner’s Guide to LLCs, S Corps, and C Corps (California Edition) | Blooming Financial</title>
+  <meta name="description" content="Clear, California-aware guide to choosing between an LLC, S corporation, and C corporation—taxes, liability, costs, and when each structure fits best." />
+  <meta name="robots" content="index,follow" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- If your site loads Tailwind or a global stylesheet, this page will inherit it.
+       These utility classes are the same style used in your other blog post. -->
+  <style>
+    /* Minimal fallback so content looks clean even without your global CSS */
+    body{font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.65;color:#0f172a;margin:0;background:#ffffff;}
+    .container{max-width:900px;margin:auto;padding:24px;}
+    h1{font-size:2rem;margin:0 0 0.5rem 0;}
+    h2{font-size:1.5rem;margin:2rem 0 0.75rem 0;}
+    h3{font-size:1.125rem;margin:1.5rem 0 0.5rem 0;}
+    p{margin:0.75rem 0;}
+    a{color:#1d4ed8;text-decoration:none;}
+    a:hover{text-decoration:underline;}
+    .lead{font-size:1.125rem;color:#334155;}
+    .note{background:#f1f5f9;border-left:4px solid #94a3b8;padding:0.75rem 1rem;border-radius:6px;margin:1rem 0;}
+    .table-wrap{overflow-x:auto;margin:1rem 0;}
+    table{border-collapse:collapse;width:100%;min-width:720px;}
+    th,td{border:1px solid #e2e8f0;padding:10px;vertical-align:top;}
+    th{background:#f8fafc;text-align:left;}
+    .cta{display:inline-block;background:#1d4ed8;color:#fff;padding:10px 16px;border-radius:8px;font-weight:600;margin-top:10px;}
+    .cta:hover{background:#1e40af;text-decoration:none;}
+    .meta{color:#64748b;font-size:0.95rem;margin-top:0.25rem;}
+    .list-check{padding-left:1.25rem;}
+    .list-check li{margin:0.4rem 0;}
+    .divider{height:1px;background:#e2e8f0;margin:1.5rem 0;}
+    .footer{margin-top:2rem;font-size:0.95rem;color:#475569;}
+    code{background:#f8fafc;border:1px solid #e2e8f0;border-radius:4px;padding:1px 4px;}
+  </style>
+
+  <!-- Optional Article schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"The Smart Business Owner’s Guide to LLCs, S Corps, and C Corps (California Edition)",
+    "author":{"@type":"Organization","name":"Blooming Financial"},
+    "datePublished":"2025-07-21",
+    "dateModified":"2025-07-21",
+    "publisher":{"@type":"Organization","name":"Blooming Financial"},
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://www.bloomingfinancials.com/blogs/llc-vs-s-corp-vs-c-corp-california-guide.html"}
+  }
+  </script>
+</head>
+<body>
+  <article class="container">
+    <header>
+      <p class="meta"><a href="/">Blooming Financial</a> · Cupertino, CA · Updated July 21, 2025</p>
+      <h1>The Smart Business Owner’s Guide to LLCs, S Corps, and C Corps (California Edition)</h1>
+      <p class="lead">
+        Choosing a business structure isn’t just checking a box—it shapes how you’re taxed, how you pay yourself,
+        how you bring on investors, and how well your personal assets are protected. This practical guide covers the
+        three options most California owners consider: <strong>LLC</strong>, <strong>S corporation (S‑corp)</strong>, and
+        <strong>C corporation (C‑corp)</strong>.
+      </p>
+      <div class="note" role="note">
+        <strong>Disclaimer:</strong> This article is educational, not legal or tax advice. Your facts matter and rules change.
+        <a href="mailto:info@bloomingfinancials.com?subject=Entity%20choice%20question">Book a quick consult</a> and we’ll tailor it to you.
+      </div>
+    </header>
+
+    <section id="quick-comparison">
+      <h2>Quick comparison</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>LLC</th>
+              <th>S‑Corp</th>
+              <th>C‑Corp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Liability shield</strong></td>
+              <td>Yes—business debts generally stay with the business.</td>
+              <td>Yes.</td>
+              <td>Yes.</td>
+            </tr>
+            <tr>
+              <td><strong>Federal taxation (default)</strong></td>
+              <td>Pass‑through (Schedule C for 1 owner; Form 1065 for 2+).</td>
+              <td>Pass‑through (Form 1120‑S + K‑1s to owners).</td>
+              <td>Entity pays corporate income tax; dividends taxed to owners.</td>
+            </tr>
+            <tr>
+              <td><strong>How owners get paid</strong></td>
+              <td>Owner draws; active members often owe self‑employment tax on profits.</td>
+              <td><strong>W‑2 salary</strong> (must be “reasonable”) + distributions.</td>
+              <td><strong>W‑2 salary</strong> for employee‑owners; dividends possible.</td>
+            </tr>
+            <tr>
+              <td><strong>California annual taxes</strong></td>
+              <td>$800 annual tax <em>plus</em> an <strong>LLC gross‑receipts fee</strong> when CA‑sourced income ≥ $250k.</td>
+              <td>1.5% of net income; $800 minimum franchise tax.</td>
+              <td>8.84% of net income; $800 minimum franchise tax.</td>
+            </tr>
+            <tr>
+              <td><strong>Owners / investors</strong></td>
+              <td>Flexible members, classes defined by operating agreement.</td>
+              <td>Up to 100 U.S. individual shareholders; one class of stock.</td>
+              <td>Unlimited shareholders, multiple classes, foreign/institutional OK.</td>
+            </tr>
+            <tr>
+              <td><strong>Good fit when…</strong></td>
+              <td>You want simplicity and flexibility.</td>
+              <td>Profits are steady beyond a reasonable salary and you want to cut SE tax.</td>
+              <td>You plan to raise capital or retain earnings to scale.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="llc">
+      <h2>LLC (Limited Liability Company)</h2>
+      <p><strong>Why owners like it:</strong> Flexible ownership, simple maintenance, and liability protection.
+        By default, a single‑member LLC is “disregarded” for federal tax (reported on Schedule C);
+        multi‑member LLCs are partnerships (Form 1065). You can later <em>elect</em> corporate or S‑corp taxation if/when that makes sense.</p>
+      <h3>California costs to know</h3>
+      <ul class="list-check">
+        <li><strong>$800 annual LLC tax</strong> each year the LLC exists or does business in CA.</li>
+        <li><strong>LLC fee</strong> on California‑sourced gross receipts once total CA income ≥ <strong>$250,000</strong>:
+          $900, $2,500, $6,000, or $11,790 depending on the bracket (this is in addition to the $800).</li>
+      </ul>
+      <p><strong>Best for:</strong> Solo freelancers, consultants, and small teams that value flexibility and aren’t yet consistently profitable beyond owner compensation.</p>
+    </section>
+
+    <section id="s-corp">
+      <h2>S‑Corporation (an election you make)</h2>
+      <p>An <strong>S‑corp</strong> isn’t a different legal entity; it’s a <strong>tax status</strong> you elect for a qualifying
+        corporation or eligible LLC. It keeps pass‑through taxation but changes how owners are paid: you must pay yourself a
+        <strong>reasonable W‑2 salary</strong>, and remaining profit can be distributed without Social Security/Medicare tax—often lowering
+        overall employment taxes when profits are strong.</p>
+      <h3>Key requirements</h3>
+      <ul class="list-check">
+        <li>Max <strong>100 shareholders</strong>; generally U.S. individuals/residents and certain trusts.</li>
+        <li><strong>One class of stock</strong> (voting differences allowed).</li>
+        <li>File <strong>IRS Form 2553</strong> within <strong>2 months and 15 days</strong> after the start of the tax year you want the status to begin
+            (late election relief may apply).</li>
+      </ul>
+      <h3>California treatment</h3>
+      <p>California recognizes the S‑corp and taxes its income at <strong>1.5%</strong> (with an <strong>$800 minimum</strong>). You’ll file Form 100S in CA.</p>
+      <p><strong>Best for:</strong> Owners with steady profits <em>after</em> paying a reasonable wage; businesses that don’t need multiple stock classes or foreign/institutional investors.</p>
+    </section>
+
+    <section id="c-corp">
+      <h2>C‑Corporation</h2>
+      <p><strong>Why choose it:</strong> You plan to <strong>raise capital</strong>, issue <strong>multiple stock classes</strong>,
+        offer <strong>equity incentives</strong>, or <strong>retain earnings</strong> for growth. C‑corps pay tax at the entity level;
+        shareholder dividends are taxed again at the personal level (“double taxation”).</p>
+      <h3>California treatment</h3>
+      <p>State corporate rate is <strong>8.84%</strong>, with an <strong>$800 minimum franchise tax</strong>.</p>
+      <p><strong>Best for:</strong> Startups expecting outside investors or eventual M&amp;A/IPO, or mature companies reinvesting profits.</p>
+    </section>
+
+    <section id="how-to-decide">
+      <h2>“Which one should I pick?” — How we help clients decide</h2>
+      <ol class="list-check">
+        <li><strong>Profit profile:</strong> After paying a market‑rate W‑2 salary, do you still have <em>consistent</em> profit?
+            If yes, an <strong>S‑corp</strong> often wins on employment taxes. If profits are small or highly variable, an <strong>LLC</strong> may be simpler.</li>
+        <li><strong>Funding plan:</strong> Need outside investors or multiple stock classes? That’s a <strong>C‑corp</strong> signal.</li>
+        <li><strong>Admin appetite:</strong> S‑corps and C‑corps add payroll and separate tax returns. Prefer minimal admin? An <strong>LLC</strong> (default tax) stays light.</li>
+        <li><strong>California math:</strong> At $250k+ California‑sourced receipts, the <strong>LLC fee</strong> can tip the scales toward an <strong>S‑corp</strong>. We’ll model it for you.</li>
+      </ol>
+    </section>
+
+    <section id="gotchas">
+      <h2>Common gotchas (and how we avoid them)</h2>
+      <ul class="list-check">
+        <li><strong>Late S‑corp election.</strong> Missing the 2‑months‑and‑15‑days window can cost a year of savings. We calendar the deadline when you form.</li>
+        <li><strong>Unreasonable owner salary.</strong> Too low invites IRS scrutiny; too high kills the benefit. We benchmark a defensible range and run payroll correctly.</li>
+        <li><strong>Shareholder eligibility.</strong> S‑corps can’t have non‑resident aliens, corporations, or partnerships as shareholders, and only one class of stock.</li>
+        <li><strong>For LLCs at scale.</strong> Don’t forget the California <strong>$800</strong> minimum and gross‑receipts fee tiers; we forecast these so there are no surprises.</li>
+      </ul>
+    </section>
+
+    <section id="next-steps">
+      <div class="divider"></div>
+      <h2>Next steps with Blooming Financial (Cupertino &amp; Bay Area)</h2>
+      <p>Many owners start as an <strong>LLC</strong> for flexibility and elect <strong>S‑corp</strong> once profits stabilize.
+         When you’re ready, we handle timing and filings (Form 2553, payroll setup, and CA returns) so the switch is clean.</p>
+      <p>
+        <a class="cta" href="mailto:info@bloomingfinancials.com?subject=Book%20a%20consultation%20-%20Entity%20choice">
+          Book a free consultation
+        </a>
+      </p>
+      <p class="meta">Prefer reading more? See our last post:
+        <a href="/blogs/payroll-compliance-checklist-for-california-employers.html">Payroll Compliance Checklist for California Employers</a>.
+      </p>
+    </section>
+
+    <footer class="footer">
+      <p><strong>Blooming Financial</strong> · Cupertino, California · (408) 365‑4671 · <a href="mailto:info@bloomingfinancials.com">info@bloomingfinancials.com</a></p>
+      <p><a href="/blogs/index.html">&larr; Back to all blog posts</a></p>
+    </footer>
+  </article>
+</body>
+</html>
