@@ -424,25 +424,32 @@
                                     <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                                 </div>
                                 <div>
-                                    <label for="business" class="block text-gray-700 mb-2">Business Type</label>
-                                    <select id="business" name="business_type"
-                                          class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                    <option value="" disabled selected>Select your business type</option>
-                                    <option value="retail">Retail</option>
-                                    <option value="restaurant">Restaurant/Food Service</option>
-                                    <option value="professional">Professional Services</option>
-                                    <option value="tech">Technology</option>
-                                    <option value="ecommerce">E-commerce</option>
-                                    <option value="real_estate">Real Estate</option>
-                                    <option value="health_wellness">Health & Wellness</option>
-                                    <option value="construction">Construction/Contracting</option>
-                                    <option value="education">Education/Tutoring</option>
-                                    <option value="freelance">Freelancer/Independent Contractor</option>
-                                    <option value="nonprofit">Nonprofit Organization</option>
-                                    <option value="automotive">Automotive Services</option>
-                                    <option value="other">Other</option>
+                                    <label for="clientType" class="block text-gray-700 mb-2">Client Type</label>
+                                    <select id="clientType" name="client_type" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                        <option value="" disabled selected>Select client type</option>
+                                        <option value="individual">Individual / Personal</option>
+                                        <option value="business">Business</option>
                                     </select>
-                                    
+                                </div>
+                                <div id="businessTypeGroup" class="hidden">
+                                    <label for="business" class="block text-gray-700 mb-2">Business Type</label>
+                                    <select id="business" name="business_type" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option value="" disabled selected>Select your business type</option>
+                                        <option value="retail">Retail</option>
+                                        <option value="restaurant">Restaurant/Food Service</option>
+                                        <option value="professional">Professional Services</option>
+                                        <option value="tech">Technology</option>
+                                        <option value="ecommerce">E-commerce</option>
+                                        <option value="real_estate">Real Estate</option>
+                                        <option value="health_wellness">Health & Wellness</option>
+                                        <option value="construction">Construction/Contracting</option>
+                                        <option value="education">Education/Tutoring</option>
+                                        <option value="freelance">Freelancer/Independent Contractor</option>
+                                        <option value="nonprofit">Nonprofit Organization</option>
+                                        <option value="automotive">Automotive Services</option>
+                                        <option value="other">Other</option>
+                                    </select>
+
                                     <!-- hidden by default -->
                                     <input type="text" id="otherBusiness" name="other_business"
                                          placeholder="Please describe your business"
@@ -967,25 +974,43 @@
         function resetForm() {
             // Reset form fields
             form.reset();
-            
-            // Hide other business input if it was shown
+
+            // Hide business-related fields
+            businessTypeGroup.classList.add('hidden');
+            businessSelect.required = false;
             otherInput.classList.add('hidden');
             otherInput.required = false;
-            
+
             // Reset button state
             submitBtn.innerHTML = 'Schedule Consultation';
             submitBtn.disabled = false;
-            
+
             // Show form container and hide thank you message
             document.getElementById('formContainer').classList.remove('hidden');
             document.getElementById('thank-you').classList.add('hidden');
         }
 
-        // Business type dropdown functionality
-        const selectEl = document.getElementById('business');
+        // Dropdown functionality for client and business types
+        const clientTypeSelect = document.getElementById('clientType');
+        const businessTypeGroup = document.getElementById('businessTypeGroup');
+        const businessSelect = document.getElementById('business');
         const otherInput = document.getElementById('otherBusiness');
-        
-        selectEl.addEventListener('change', function () {
+
+        clientTypeSelect.addEventListener('change', function () {
+            if (this.value === 'business') {
+                businessTypeGroup.classList.remove('hidden');
+                businessSelect.required = true;
+            } else {
+                businessTypeGroup.classList.add('hidden');
+                businessSelect.value = '';
+                businessSelect.required = false;
+                otherInput.classList.add('hidden');
+                otherInput.value = '';
+                otherInput.required = false;
+            }
+        });
+
+        businessSelect.addEventListener('change', function () {
             if (this.value === 'other') {
                 otherInput.classList.remove('hidden');
                 otherInput.required = true;
