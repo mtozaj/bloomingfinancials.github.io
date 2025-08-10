@@ -22,7 +22,22 @@
     body { font-family: 'Open Sans', sans-serif; }
     .hero-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
     .nav-link:hover { color: #3b82f6; }
-    .prose h2 { color: #1e3a8a; }
+
+    /* Match privacy page look: bold section titles, clear spacing */
+    .prose h2 { color: #1e3a8a; font-weight: 800; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; }
+    .prose h3 { color: #1e3a8a; font-weight: 700; margin-top: 1.5rem; }
+    .prose p, .prose ul, .prose address { color: #374151; }
+    .prose ul { list-style: disc; padding-left: 1.25rem; }
+    .prose a { color: #2563eb; text-decoration: underline; }
+    .prose strong { color: #1e3a8a; }
+
+    /* Toggle switch (same style used on privacy page) */
+    .switch { position: relative; display: inline-block; width: 46px; height: 26px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .2s; border-radius: 9999px; }
+    .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .2s; border-radius: 9999px; }
+    input:checked + .slider { background-color: #3b82f6; }
+    input:checked + .slider:before { transform: translateX(20px); }
   </style>
 </head>
 <body class="bg-gray-50">
@@ -43,16 +58,17 @@
   <header class="hero-gradient text-white py-16">
     <div class="container mx-auto px-6">
       <h1 class="text-4xl md:text-5xl font-bold">Terms of Service</h1>
-      <p class="mt-4 text-blue-100 max-w-3xl">Effective Date: <strong>August 10, 2025</strong></p>
     </div>
   </header>
 
   <main class="container mx-auto px-6 py-12">
-    <article class="prose prose-blue max-w-none text-gray-700">
+    <article class="prose prose-blue max-w-none text-gray-700 leading-relaxed">
       <p>Welcome to Blooming Financial ("Blooming Financial," "we," "us," or "our"). These Terms of Service ("Terms") govern your access to and use of our website, content, and features (collectively, the "Site"). By using the Site, you agree to these Terms. If you do not agree, do not use the Site.</p>
 
+      <hr class="my-10" />
+
       <h2 id="who-we-are">1. Who We Are & Scope</h2>
-      <p>Blooming Financial provides bookkeeping, payroll, tax preparation, and related consulting services to individuals and small businesses. The Site is a general‑information and marketing website only. <strong>Any professional services we provide are governed by a separate written engagement letter</strong> signed by you and us (the "Engagement Agreement"). If these Terms conflict with an Engagement Agreement, the Engagement Agreement controls for the covered services.</p>
+      <p>Blooming Financial provides bookkeeping, payroll, tax preparation, and related consulting services to individuals and small businesses. The Site is a general-information and marketing website only. <strong>Any professional services we provide are governed by a separate written engagement letter</strong> signed by you and us (the "Engagement Agreement"). If these Terms conflict with an Engagement Agreement, the Engagement Agreement controls for the covered services.</p>
 
       <h2 id="not-advice">2. No Professional Advice; No Client Relationship via the Site</h2>
       <p>Information on the Site (including blogs, FAQs, resources, and emails exchanged before engagement) is for general informational purposes only and is not tax, legal, accounting, or other professional advice. <strong>Your use of the Site and contacting us through forms or email does not create a client relationship</strong>. Do not send sensitive information through basic website forms; we will provide secure channels once engaged.</p>
@@ -64,22 +80,22 @@
       <p>You agree not to (and will not allow others to): (a) violate laws or rights of others; (b) upload or transmit malware or harmful code; (c) attempt to gain unauthorized access to the Site or related systems; (d) scrape, crawl, or use automated means to access the Site without our prior written consent; (e) interfere with or disrupt the Site’s operation; (f) misrepresent your identity or affiliation; or (g) use the Site to transmit unsolicited commercial communications.</p>
 
       <h2 id="user-content">5. User Submissions & Feedback</h2>
-      <p>Content you submit through forms must be accurate and lawful. You grant us a non‑exclusive, royalty‑free license to use submissions to respond to your inquiry and provide services. If you provide ideas or feedback, you grant us a perpetual, worldwide, royalty‑free license to use them without restriction or compensation.</p>
+      <p>Content you submit through forms must be accurate and lawful. You grant us a non-exclusive, royalty-free license to use submissions to respond to your inquiry and provide services. If you provide ideas or feedback, you grant us a perpetual, worldwide, royalty-free license to use them without restriction or compensation.</p>
 
       <h2 id="ip">6. Intellectual Property; Limited License</h2>
-      <p>The Site, including text, graphics, logos, and design, is owned by Blooming Financial or our licensors and is protected by law. We grant you a limited, non‑exclusive, non‑transferable license to access and use the Site for your personal or internal business purposes. You may not copy, modify, distribute, create derivative works, publicly display, or exploit the Site except as expressly permitted by these Terms or applicable law. All trademarks are the property of their respective owners.</p>
+      <p>The Site, including text, graphics, logos, and design, is owned by Blooming Financial or our licensors and is protected by law. We grant you a limited, non-exclusive, non-transferable license to access and use the Site for your personal or internal business purposes. You may not copy, modify, distribute, create derivative works, publicly display, or exploit the Site except as expressly permitted by these Terms or applicable law. All trademarks are the property of their respective owners.</p>
 
-      <h2 id="third-parties">7. Third‑Party Links & Services</h2>
-      <p>The Site may link to or embed third‑party services (e.g., Yelp, Instagram, Google Maps). Those services are governed by their own terms and privacy policies, and we are not responsible for them.</p>
+      <h2 id="third-parties">7. Third-Party Links & Services</h2>
+      <p>The Site may link to or embed third-party services (e.g., Yelp, Instagram, Google Maps). Those services are governed by their own terms and privacy policies, and we are not responsible for them.</p>
 
       <h2 id="scheduling">8. Consultations, Quotes & Engagements</h2>
-      <p>Scheduling a consultation or receiving a quote does not obligate either party to proceed. Any services, fees, deliverables, timeframes, confidentiality obligations, and data‑handling details will be specified in an Engagement Agreement. Estimates are not guarantees. We may decline or terminate a prospective engagement at our discretion consistent with applicable ethics rules.</p>
+      <p>Scheduling a consultation or receiving a quote does not obligate either party to proceed. Any services, fees, deliverables, timeframes, confidentiality obligations, and data-handling details will be specified in an Engagement Agreement. Estimates are not guarantees. We may decline or terminate a prospective engagement at our discretion consistent with applicable ethics rules.</p>
 
       <h2 id="privacy">9. Privacy</h2>
-      <p>Your use of the Site is also subject to our <a href="/privacy.html" class="text-blue-600 underline">Privacy Policy</a>. For tax and certain financial services, laws such as the Gramm‑Leach‑Bliley Act (GLBA) and Internal Revenue Code §7216 may apply once you become a client.</p>
+      <p>Your use of the Site is also subject to our <a href="/privacy.html" class="text-blue-600 underline">Privacy Policy</a>. For tax and certain financial services, laws such as the Gramm-Leach-Bliley Act (GLBA) and Internal Revenue Code §7216 may apply once you become a client.</p>
 
       <h2 id="warranty">10. Disclaimers</h2>
-      <p>THE SITE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON‑INFRINGEMENT. WE DO NOT WARRANT THAT THE SITE WILL BE UNINTERRUPTED, SECURE, OR ERROR‑FREE, OR THAT DEFECTS WILL BE CORRECTED.</p>
+      <p>THE SITE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SITE WILL BE UNINTERRUPTED, SECURE, OR ERROR-FREE, OR THAT DEFECTS WILL BE CORRECTED.</p>
 
       <h2 id="liability">11. Limitation of Liability</h2>
       <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, BLOOMING FINANCIAL AND ITS OFFICERS, EMPLOYEES, AND AGENTS WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, REVENUE, DATA, OR GOODWILL, ARISING OUT OF OR RELATED TO YOUR USE OF THE SITE. OUR TOTAL LIABILITY FOR ANY CLAIM RELATING TO THE SITE WILL NOT EXCEED THE GREATER OF (A) ONE HUNDRED U.S. DOLLARS ($100) OR (B) THE AMOUNTS YOU PAID US FOR ACCESSING THE SITE IN THE TWELVE (12) MONTHS BEFORE THE CLAIM (IF ANY).</p>
@@ -88,13 +104,13 @@
       <p>You agree to defend, indemnify, and hold harmless Blooming Financial and our officers, employees, and agents from and against any claims, liabilities, damages, losses, and expenses (including reasonable attorneys’ fees) arising out of or related to your use of the Site or violation of these Terms.</p>
 
       <h2 id="dmca">13. Copyright/DMCA</h2>
-      <p>If you believe materials on the Site infringe your copyright, please email <a class="text-blue-600 underline" href="mailto:info@bloomingfinancials.com">info@bloomingfinancials.com</a> with: (a) a description of the copyrighted work; (b) the URL/location of the allegedly infringing material; (c) your contact information; (d) a statement of good‑faith belief; and (e) a statement under penalty of perjury that the information is accurate and that you are the copyright owner or authorized to act on the owner’s behalf.</p>
+      <p>If you believe materials on the Site infringe your copyright, please email <a class="text-blue-600 underline" href="mailto:info@bloomingfinancials.com">info@bloomingfinancials.com</a> with: (a) a description of the copyrighted work; (b) the URL/location of the allegedly infringing material; (c) your contact information; (d) a statement of good-faith belief; and (e) a statement under penalty of perjury that the information is accurate and that you are the copyright owner or authorized to act on the owner’s behalf.</p>
 
       <h2 id="governing-law">14. Governing Law; Venue</h2>
-      <p>These Terms are governed by the laws of the State of California, without regard to conflict‑of‑laws rules. You and we agree to the exclusive jurisdiction and venue of the state and federal courts located in Santa Clara County, California, for any dispute not subject to arbitration, and you waive any objection to such jurisdiction or venue.</p>
+      <p>These Terms are governed by the laws of the State of California, without regard to conflict-of-laws rules. You and we agree to the exclusive jurisdiction and venue of the state and federal courts located in Santa Clara County, California, for any dispute not subject to arbitration, and you waive any objection to such jurisdiction or venue.</p>
 
       <h2 id="arbitration">15. Arbitration & Class Action Waiver (Optional)</h2>
-      <p><strong>Optional:</strong> Either party may elect to resolve any dispute arising from or relating to these Terms or the Site by binding arbitration administered by JAMS under its applicable rules. If arbitration is elected, disputes will be heard by a single arbitrator in Santa Clara County, California. You and we agree to bring claims only in our individual capacities and not as a plaintiff or class member in any purported class or representative proceeding. Small‑claims matters may be brought in small‑claims court.</p>
+      <p><strong>Optional:</strong> Either party may elect to resolve any dispute arising from or relating to these Terms or the Site by binding arbitration administered by JAMS under its applicable rules. If arbitration is elected, disputes will be heard by a single arbitrator in Santa Clara County, California. You and we agree to bring claims only in our individual capacities and not as a plaintiff or class member in any purported class or representative proceeding. Small-claims matters may be brought in small-claims court.</p>
 
       <h2 id="termination">16. Termination</h2>
       <p>We may suspend or terminate your access to the Site at any time with or without notice if we believe you have violated these Terms or to protect the Site or other users. Upon termination, provisions that by their nature should survive (e.g., intellectual property, disclaimers, limitations of liability, and indemnity) will survive.</p>
@@ -116,7 +132,7 @@
         Blooming Financial<br/>
         Cupertino, California, USA<br/>
         Email: <a class="text-blue-600 underline" href="mailto:info@bloomingfinancials.com">info@bloomingfinancials.com</a><br/>
-        Phone: <a class="text-blue-600 underline" href="tel:+14083654671">(408) 365‑4671</a>
+        Phone: <a class="text-blue-600 underline" href="tel:+14083654671">(408) 365-4671</a>
       </address>
     </article>
   </main>
@@ -179,7 +195,7 @@
 
       <div id="do-not-sell" class="mt-6 border-t pt-4">
         <h4 class="font-semibold text-blue-900">Do Not Sell or Share My Personal Information</h4>
-        <p class="text-gray-600 text-sm">We do not sell personal information or share it for cross‑context behavioral advertising. You can still opt out of analytics cookies below. Set <em>Analytics</em> to Off and click <strong>Save Preferences</strong>.</p>
+        <p class="text-gray-600 text-sm">We do not sell personal information or share it for cross-context behavioral advertising. You can still opt out of analytics cookies below. Set <em>Analytics</em> to Off and click <strong>Save Preferences</strong>.</p>
       </div>
     </div>
   </div>
@@ -202,7 +218,7 @@
         <div>
           <h3 class="font-bold text-lg mb-3">Contact</h3>
           <ul class="space-y-2 text-blue-200">
-            <li><i class="fas fa-phone-alt mr-2 text-sm"></i>(408) 365‑4671</li>
+            <li><i class="fas fa-phone-alt mr-2 text-sm"></i>(408) 365-4671</li>
             <li><i class="fas fa-envelope mr-2 text-sm"></i>info@bloomingfinancials.com</li>
           </ul>
           <button id="openPrefsFooter" class="mt-4 inline-flex items-center px-3 py-2 bg-blue-700 rounded-md hover:bg-blue-600">Cookie Preferences</button>
@@ -244,12 +260,8 @@
     function openModal() { prefsModal.classList.remove('hidden'); }
     function closeModal() { prefsModal.classList.add('hidden'); }
 
-    function applyConsent(consent) {
-      if (consent && consent.analytics === true) { loadGA(); }
-    }
-    function setAndApply(consent) {
-      saveConsent(consent); applyConsent(consent); hideBanner(); closeModal();
-    }
+    function applyConsent(consent) { if (consent && consent.analytics === true) { loadGA(); } }
+    function setAndApply(consent) { saveConsent(consent); applyConsent(consent); hideBanner(); closeModal(); }
 
     // Load Google Analytics only after consent
     let gaLoaded = false;
