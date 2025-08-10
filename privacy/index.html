@@ -340,43 +340,34 @@
       applyConsent(initial);
     }
 
-    // Banner buttons
-    bannerAccept.addEventListener('click', () => setAndApply({ analytics: true }));
-    bannerDecline.addEventListener('click', () => setAndApply({ analytics: false }));
-    bannerManage.addEventListener('click', () => { openModal(); });
-
+    // Banner buttons (guarded so a missing element doesn't break everything)
+    bannerAccept?.addEventListener('click', () => setAndApply({ analytics: true }));
+    bannerDecline?.addEventListener('click', () => setAndApply({ analytics: false }));
+    bannerManage?.addEventListener('click', openModal);
+    
     // Open modal links/buttons
-    openPrefsTop.addEventListener('click', openModal);
-    openPrefsMid.addEventListener('click', openModal);
-    openPrefsFooter.addEventListener('click', openModal);
-    dnsTopLink.addEventListener('click', (e) => { e.preventDefault(); analyticsToggle.checked = false; openModal(); });
-    dnsFooterLink.addEventListener('click', (e) => { e.preventDefault(); analyticsToggle.checked = false; openModal(); });
+    openPrefsTop?.addEventListener('click', openModal);
+    openPrefsMid?.addEventListener('click', openModal);
+    openPrefsFooter?.addEventListener('click', openModal);
+    dnsTopLink?.addEventListener('click', (e) => { e.preventDefault(); analyticsToggle.checked = false; openModal(); });
+    dnsFooterLink?.addEventListener('click', (e) => { e.preventDefault(); analyticsToggle.checked = false; openModal(); });
     
     // Inline Do Not Sell/Share links within content
     document.querySelectorAll('a[href="#do-not-sell"]').forEach((el) => {
-      el.addEventListener('click', (e) => {
-        e.preventDefault();
-        analyticsToggle.checked = false;
-        openModal();
-      });
+      el.addEventListener('click', (e) => { e.preventDefault(); analyticsToggle.checked = false; openModal(); });
     });
     
     // Open modal automatically if URL hash requests it
-    if (location.hash === '#do-not-sell') {
-      analyticsToggle.checked = false;
-      openModal();
-    }
+    if (location.hash === '#do-not-sell') { analyticsToggle.checked = false; openModal(); }
     window.addEventListener('hashchange', () => {
-      if (location.hash === '#do-not-sell') {
-        analyticsToggle.checked = false;
-        openModal();
-      }
+      if (location.hash === '#do-not-sell') { analyticsToggle.checked = false; openModal(); }
     });
     
-    // Modal actions
-    closePrefs.addEventListener('click', closeModal);
-    prefsSave.addEventListener('click', () => setAndApply({ analytics: analyticsToggle.checked }));
-    prefsDecline.addEventListener('click', () => setAndApply({ analytics: false }));
+    // Modal actions (guarded)
+    closePrefs?.addEventListener('click', closeModal);
+    prefsSave?.addEventListener('click', () => setAndApply({ analytics: analyticsToggle.checked }));
+    prefsDecline?.addEventListener('click', () => setAndApply({ analytics: false }));
+
 
     // Reset for testing/debugging
     resetPrefs.addEventListener('click', () => { localStorage.removeItem(CONSENT_KEY); location.reload(); });
