@@ -245,7 +245,7 @@
         <div>
           <h3 class="font-bold text-lg mb-3">Legal</h3>
           <ul class="space-y-2">
-            <li><a href="/privacy.html" class="text-blue-200 hover:text-white">Privacy Policy</a></li>
+            <li><a href="/privacy" class="text-blue-200 hover:text-white">Privacy Policy</a></li>
             <li><a href="#do-not-sell" id="dnsFooterLink" class="text-blue-200 hover:text-white">Do Not Sell/Share My Personal Information</a></li>
           </ul>
         </div>
@@ -352,7 +352,28 @@
     openPrefsFooter.addEventListener('click', openModal);
     dnsTopLink.addEventListener('click', (e) => { e.preventDefault(); analyticsToggle.checked = false; openModal(); });
     dnsFooterLink.addEventListener('click', (e) => { e.preventDefault(); analyticsToggle.checked = false; openModal(); });
-
+    
+    // Inline Do Not Sell/Share links within content
+    document.querySelectorAll('a[href="#do-not-sell"]').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        analyticsToggle.checked = false;
+        openModal();
+      });
+    });
+    
+    // Open modal automatically if URL hash requests it
+    if (location.hash === '#do-not-sell') {
+      analyticsToggle.checked = false;
+      openModal();
+    }
+    window.addEventListener('hashchange', () => {
+      if (location.hash === '#do-not-sell') {
+        analyticsToggle.checked = false;
+        openModal();
+      }
+    });
+    
     // Modal actions
     closePrefs.addEventListener('click', closeModal);
     prefsSave.addEventListener('click', () => setAndApply({ analytics: analyticsToggle.checked }));
