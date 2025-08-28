@@ -117,9 +117,14 @@
         </article>
 
         <article class="bg-gray-50 rounded-lg shadow-md overflow-hidden flex flex-col">
-          <img src="images/startup-deductions.svg" 
-               alt="Startup Tax Deductions" 
-               class="w-full h-48 object-cover" />
+          <div class="relative w-full overflow-hidden aspect-[1536/1024] bg-slate-100">
+            <img
+              src="images/startup-deductions.svg"
+              alt="Startup Tax Deductions"
+              class="absolute inset-0 h-full w-full object-cover object-center"
+              width="1536" height="1024" loading="lazy" decoding="async"
+            />
+          </div>
           <div class="p-6 flex flex-col flex-grow">
             <p class="text-sm text-blue-600 font-semibold mb-2">Tax • Nov 10 2024</p>
             <h2 class="text-2xl font-bold text-blue-900 mb-3">5 Tax Deductions Every Startup Should Know</h2>
