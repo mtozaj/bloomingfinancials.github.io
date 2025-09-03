@@ -89,12 +89,23 @@
         <p id="blogSearchCount" aria-live="polite" class="text-sm text-gray-500 mt-2 text-center hidden"></p>
       </div>
 
+      <!-- Category filters -->
+      <div class="mb-6 flex items-center justify-center gap-2" id="blogFilters" role="tablist" aria-label="Filter posts">
+        <button type="button" class="filter-btn px-4 py-2 rounded-md border text-sm font-medium bg-blue-600 text-white"
+                data-cat="all" aria-selected="true" role="tab">All</button>
+        <button type="button" class="filter-btn px-4 py-2 rounded-md border text-sm font-medium hover:bg-blue-50"
+                data-cat="business" aria-selected="false" role="tab">Business</button>
+        <button type="button" class="filter-btn px-4 py-2 rounded-md border text-sm font-medium hover:bg-blue-50"
+                data-cat="individual" aria-selected="false" role="tab">Individuals</button>
+      </div>
+
+
 
       <!-- Grid of posts -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10" id="postGrid">
         <!-- ========= SAMPLE POST CARD ========= -->
         <!-- Duplicate / replace these <article> blocks with real posts or generate dynamically later -->
-        <article class="bg-gray-50 rounded-lg shadow-md overflow-hidden flex flex-col">
+        <article class="bg-gray-50 rounded-lg shadow-md overflow-hidden flex flex-col" data-cat="business">
           <div class="relative w-full overflow-hidden aspect-[1536/1024] bg-slate-100">
             <img src="images/payroll-compliance-vector.svg" alt="Payroll compliance"
                  class="absolute inset-0 h-full w-full object-cover object-center"
@@ -108,7 +119,7 @@
           </div>
         </article>
 
-        <article class="bg-gray-50 rounded-lg shadow-md overflow-hidden flex flex-col">
+        <article class="bg-gray-50 rounded-lg shadow-md overflow-hidden flex flex-col" data-cat="business">
           <div class="relative w-full overflow-hidden aspect-[1536/1024] bg-slate-100">
             <img src="images/entity-choice-vector.svg" alt="LLC vs S Corp vs C Corp in California"
                  class="absolute inset-0 h-full w-full object-cover object-center"
@@ -125,7 +136,7 @@
           </div>
         </article>
 
-        <article class="bg-gray-50 rounded-lg shadow-md overflow-hidden flex flex-col">
+        <article class="bg-gray-50 rounded-lg shadow-md overflow-hidden flex flex-col" data-cat="business">
           <div class="relative w-full overflow-hidden aspect-[1536/1024] bg-slate-100">
             <img
               src="images/startup-deductions.svg"
@@ -257,52 +268,120 @@
   </script>
 
   <script>
-  // --- Blog search (client-side filter) ---
-  const searchInput = document.getElementById('blogSearch');
-  const searchForm  = document.getElementById('blogSearchForm');
-  const postGrid    = document.getElementById('postGrid');
-  const cards       = Array.from(postGrid.querySelectorAll('article'));
-  const countEl     = document.getElementById('blogSearchCount');
-  const noResultsEl = document.getElementById('noResults');
-
-  // Prevent form submit page reload
-  searchForm.addEventListener('submit', (e) => e.preventDefault());
-
-  // Precompute searchable text for each card (title + excerpt + image alt)
-  const index = cards.map(card => {
-    const title = card.querySelector('h2')?.innerText || '';
-    const paras = Array.from(card.querySelectorAll('p')).map(p => p.innerText).join(' ');
-    const alt   = card.querySelector('img')?.alt || '';
-    const blob  = [title, paras, alt].join(' ').toLowerCase();
-    return { card, blob };
-  });
-
-  function doSearch(q) {
-    const query = q.trim().toLowerCase();
-    let matches = 0;
-
-    index.forEach(({ card, blob }) => {
-      const show = query === '' || blob.includes(query);
-      card.classList.toggle('hidden', !show);
-      card.setAttribute('aria-hidden', show ? 'false' : 'true');
-      if (show) matches++;
+    // --- Blog search (client-side filter) ---
+    const searchInput = document.getElementById('blogSearch');
+    const searchForm  = document.getElementById('blogSearchForm');
+    const postGrid    = document.getElementById('postGrid');
+    const cards       = Array.from(postGrid.querySelectorAll('article'));
+    const countEl     = document.getElementById('blogSearchCount');
+    const noResultsEl = document.getElementById('noResults');
+  
+    // Prevent form submit page reload
+    searchForm.addEventListener('submit', (e) => e.preventDefault());
+  
+    // Precompute searchable text for each card (title + excerpt + image alt)
+    const index = cards.map(card => {
+      const title = card.querySelector('h2')?.innerText || '';
+      const paras = Array.from(card.querySelectorAll('p')).map(p => p.innerText).join(' ');
+      const alt   = card.querySelector('img')?.alt || '';
+      const blob  = [title, paras, alt].join(' ').toLowerCase();
+      return { card, blob };
     });
-
-    // Result count
-    if (query) {
-      countEl.textContent = `${matches} result${matches === 1 ? '' : 's'} for “${q}”`;
-      countEl.classList.remove('hidden');
-    } else {
-      countEl.textContent = '';
-      countEl.classList.add('hidden');
+  
+    function doSearch(q) {
+      const query = q.trim().toLowerCase();
+      let matches = 0;
+  
+      index.forEach(({ card, blob }) => {
+        const show = query === '' || blob.includes(query);
+        card.classList.toggle('hidden', !show);
+        card.setAttribute('aria-hidden', show ? 'false' : 'true');
+        if (show) matches++;
+      });
+  
+      // Result count
+      if (query) {
+        countEl.textContent = `${matches} result${matches === 1 ? '' : 's'} for “${q}”`;
+        countEl.classList.remove('hidden');
+      } else {
+        countEl.textContent = '';
+        countEl.classList.add('hidden');
+      }
+  
+      // No results state
+      if (query && matches === 0) noResultsEl.classList.remove('hidden');
+      else noResultsEl.classList.add('hidden');
     }
+  
+    searchInput.addEventListener('input', (e) => doSearch(e.target.value));
+  </script>
 
-    // No results state
-    if (query && matches === 0) noResultsEl.classList.remove('hidden');
-    else noResultsEl.classList.add('hidden');
-  }
+  <script>
+    (() => {
+      const filtersEl = document.getElementById('blogFilters');
+      if (!filtersEl) return; // safe exit if filters not on this page
+    
+      const filterBtns = Array.from(filtersEl.querySelectorAll('.filter-btn'));
+      let selectedCat = 'all';
+    
+      const urlCat = new URLSearchParams(window.location.search).get('cat');
+      if (urlCat && ['business','individual','all'].includes(urlCat)) {
+        selectedCat = urlCat;
+        setActiveFilter(selectedCat);
+      }
+    
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectedCat = btn.getAttribute('data-cat');
+          setActiveFilter(selectedCat);
+          doSearch(searchInput.value); // reuse your existing function
+          const u = new URL(window.location);
+          if (selectedCat === 'all') u.searchParams.delete('cat'); else u.searchParams.set('cat', selectedCat);
+          window.history.replaceState({}, '', u);
+        });
+      });
+    
+      function setActiveFilter(cat) {
+        filterBtns.forEach(b => {
+          const on = b.getAttribute('data-cat') === cat;
+          b.classList.toggle('bg-blue-600', on);
+          b.classList.toggle('text-white', on);
+          b.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+      }
+    
+      // Override doSearch to include category
+      const _doSearchOriginal = doSearch;
+      doSearch = function(q) {
+        const query = q.trim().toLowerCase();
+        let matches = 0;
+    
+        index.forEach(({ card, blob }) => {
+          const cat = card.getAttribute('data-cat') || 'business';
+          const catMatch  = (selectedCat === 'all') || (cat === selectedCat);
+          const textMatch = query === '' || blob.includes(query);
+          const show = catMatch && textMatch;
+    
+          card.classList.toggle('hidden', !show);
+          card.setAttribute('aria-hidden', show ? 'false' : 'true');
+          if (show) matches++;
+        });
+    
+        if (query) {
+          countEl.textContent = `${matches} result${matches === 1 ? '' : 's'} for “${q}”`;
+          countEl.classList.remove('hidden');
+        } else {
+          countEl.textContent = '';
+          countEl.classList.add('hidden');
+        }
+        if ((query || selectedCat !== 'all') && matches === 0) noResultsEl.classList.remove('hidden');
+        else noResultsEl.classList.add('hidden');
+      };
+    
+      setActiveFilter(selectedCat);
+      doSearch(searchInput?.value || '');
+    })();
+  </script>
 
-  searchInput.addEventListener('input', (e) => doSearch(e.target.value));
-</script>
 </body>
 </html>
