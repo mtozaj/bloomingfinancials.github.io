@@ -81,11 +81,14 @@
     <div class="container mx-auto px-6">
       <!-- (optional) search/filter bar -->
       <div class="mb-12 max-w-xl mx-auto">
-        <form class="relative">
-          <input type="search" placeholder="Search articles…" class="w-full px-5 py-3 border rounded-md pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <form id="blogSearchForm" class="relative" role="search">
+          <input id="blogSearch" type="search" placeholder="Search articles…" autocomplete="off"
+                 class="w-full px-5 py-3 border rounded-md pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500" />
           <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
         </form>
+        <p id="blogSearchCount" aria-live="polite" class="text-sm text-gray-500 mt-2 text-center hidden"></p>
       </div>
+
 
       <!-- Grid of posts -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10" id="postGrid">
@@ -139,6 +142,10 @@
           </div>
         </article>
         <!-- ========= END SAMPLE POST CARD ========= -->
+      </div>
+      
+      <div id="noResults" class="hidden text-center text-gray-600 py-8">
+        No articles found. Try a different keyword.
       </div>
 
       <!-- Pagination placeholder -->
@@ -248,5 +255,54 @@
     });
     backToTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
   </script>
+
+  <script>
+  // --- Blog search (client-side filter) ---
+  const searchInput = document.getElementById('blogSearch');
+  const searchForm  = document.getElementById('blogSearchForm');
+  const postGrid    = document.getElementById('postGrid');
+  const cards       = Array.from(postGrid.querySelectorAll('article'));
+  const countEl     = document.getElementById('blogSearchCount');
+  const noResultsEl = document.getElementById('noResults');
+
+  // Prevent form submit page reload
+  searchForm.addEventListener('submit', (e) => e.preventDefault());
+
+  // Precompute searchable text for each card (title + excerpt + image alt)
+  const index = cards.map(card => {
+    const title = card.querySelector('h2')?.innerText || '';
+    const paras = Array.from(card.querySelectorAll('p')).map(p => p.innerText).join(' ');
+    const alt   = card.querySelector('img')?.alt || '';
+    const blob  = [title, paras, alt].join(' ').toLowerCase();
+    return { card, blob };
+  });
+
+  function doSearch(q) {
+    const query = q.trim().toLowerCase();
+    let matches = 0;
+
+    index.forEach(({ card, blob }) => {
+      const show = query === '' || blob.includes(query);
+      card.classList.toggle('hidden', !show);
+      card.setAttribute('aria-hidden', show ? 'false' : 'true');
+      if (show) matches++;
+    });
+
+    // Result count
+    if (query) {
+      countEl.textContent = `${matches} result${matches === 1 ? '' : 's'} for “${q}”`;
+      countEl.classList.remove('hidden');
+    } else {
+      countEl.textContent = '';
+      countEl.classList.add('hidden');
+    }
+
+    // No results state
+    if (query && matches === 0) noResultsEl.classList.remove('hidden');
+    else noResultsEl.classList.add('hidden');
+  }
+
+  searchInput.addEventListener('input', (e) => doSearch(e.target.value));
+</script>
 </body>
 </html>
