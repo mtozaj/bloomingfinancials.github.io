@@ -364,9 +364,19 @@
       function setActiveFilter(cat) {
         filterBtns.forEach(b => {
           const on = b.getAttribute('data-cat') === cat;
-          b.classList.toggle('bg-blue-600', on);
-          b.classList.toggle('text-white', on);
           b.setAttribute('aria-selected', on ? 'true' : 'false');
+    
+          // Reset state
+          b.classList.remove('bg-blue-600','text-white','border-blue-600');
+    
+          // Inactive buttons should lighten on hover
+          b.classList.add('hover:bg-blue-50');
+    
+          // Active button stays dark and readable
+          if (on) {
+            b.classList.add('bg-blue-600','text-white','border-blue-600');
+            b.classList.remove('hover:bg-blue-50');
+          }
         });
       }
     
