@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" aria-labelledby="title desc">
+  <title id="title">W-4 and DE-4 withholding forms illustration</title>
+  <desc id="desc">Stylized documents labeled W-4 and DE-4 with a checkmark, representing California payroll withholding forms.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e2e8f0" />
+      <stop offset="100%" stop-color="#f8fafc" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+  </defs>
+  <rect width="1536" height="1024" fill="url(#bg)" />
+  <rect x="220" y="190" width="520" height="640" rx="32" fill="#ffffff" stroke="#cbd5f5" stroke-width="8" />
+  <rect x="320" y="270" width="320" height="60" rx="12" fill="url(#accent)" />
+  <text x="480" y="312" font-size="36" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-weight="700">W-4</text>
+  <rect x="300" y="370" width="360" height="20" rx="8" fill="#e2e8f0" />
+  <rect x="300" y="420" width="320" height="20" rx="8" fill="#e2e8f0" />
+  <rect x="300" y="470" width="280" height="20" rx="8" fill="#e2e8f0" />
+  <rect x="796" y="250" width="520" height="640" rx="32" fill="#ffffff" stroke="#cbd5f5" stroke-width="8" />
+  <rect x="896" y="330" width="320" height="60" rx="12" fill="url(#accent)" />
+  <text x="1056" y="372" font-size="36" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-weight="700">DE-4</text>
+  <rect x="876" y="430" width="360" height="20" rx="8" fill="#e2e8f0" />
+  <rect x="876" y="480" width="320" height="20" rx="8" fill="#e2e8f0" />
+  <rect x="876" y="530" width="280" height="20" rx="8" fill="#e2e8f0" />
+  <circle cx="768" cy="760" r="90" fill="url(#accent)" />
+  <path d="M726 760l28 30 56-66" fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
