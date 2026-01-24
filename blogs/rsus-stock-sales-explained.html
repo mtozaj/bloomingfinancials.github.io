@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RVPQPZB973"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-RVPQPZB973');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>RSUs and Stock Sales Explained: How You're Taxed and How to Avoid Overpaying | Blooming Financial</title>
+  <meta name="description" content="A beginner-friendly guide to RSU taxes and stock sales: what happens at vesting, how withholding shows up on your paycheck, why people think they're taxed twice, and how to report 1099-B cost basis correctly." />
+  <link rel="canonical" href="https://www.bloomingfinancials.com/blogs/rsus-stock-sales-explained" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="RSUs and Stock Sales Explained: How You're Taxed and How to Avoid Overpaying" />
+  <meta property="og:description" content="Vesting vs selling, W-2 vs 1099-B, cost basis, and the mistakes that lead to overpaying. Beginner-friendly and California-aware." />
+  <meta property="og:url" content="https://www.bloomingfinancials.com/blogs/rsus-stock-sales-explained" />
+  <meta property="og:site_name" content="Blooming Financial" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <style>
+    body { font-family: 'Open Sans', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+    .hero-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
+    .nav-link:hover { color: #3b82f6; }
+    .note { background: #f8fafc; border-left: 4px solid #3b82f6; }
+    .cali { background: #f0f9ff; border-left: 4px solid #0284c7; }
+    .warning { background: #fff7ed; border-left: 4px solid #f97316; }
+    .pros { background: #f0fdf4; border-left: 4px solid #22c55e; }
+    .toc a { color: #1d4ed8; }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <!-- NAVIGATION -->
+  <nav class="bg-white border-0 shadow-none sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <a href="/" class="text-2xl font-bold text-blue-900">
+            <span class="text-blue-600">Blooming</span> Financial
+          </a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/" class="nav-link text-gray-700 hover:text-blue-600 transition">Home</a>
+          <a href="/#services" class="nav-link text-gray-700 hover:text-blue-600 transition">Services</a>
+          <a href="/#about" class="nav-link text-gray-700 hover:text-blue-600 transition">About</a>
+          <a href="/#testimonials" class="nav-link text-gray-700 hover:text-blue-600 transition">Testimonials</a>
+          <a href="/#contact" class="nav-link text-gray-700 hover:text-blue-600 transition">Contact</a>
+          <a href="/blogs" class="nav-link text-blue-600 font-semibold">Blogs</a>
+          <a href="https://portal.bloomingfinancials.com" class="nav-link text-gray-700 hover:text-blue-600 transition" target="_blank" rel="noopener noreferrer">Client Portal</a>
+          <a href="/#consultation" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Free Consultation</a>
+        </div>
+        <div class="md:hidden">
+          <button id="mobileToggle" class="text-gray-700 focus:outline-none"><i class="fas fa-bars text-2xl"></i></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-x-0 top-14 w-full bg-white transform -translate-y-full transition-transform duration-300 ease-in-out z-40 md:hidden">
+    <div class="flex flex-col space-y-4 p-6">
+      <a href="/" class="nav-link text-gray-700 hover:text-blue-600 transition">Home</a>
+      <a href="/#services" class="nav-link text-gray-700 hover:text-blue-600 transition">Services</a>
+      <a href="/#about" class="nav-link text-gray-700 hover:text-blue-600 transition">About</a>
+      <a href="/#testimonials" class="nav-link text-gray-700 hover:text-blue-600 transition">Testimonials</a>
+      <a href="/#contact" class="nav-link text-gray-700 hover:text-blue-600 transition">Contact</a>
+      <a href="/blogs" class="nav-link text-blue-600 font-semibold">Blogs</a>
+      <a href="https://portal.bloomingfinancials.com" class="nav-link text-gray-700 hover:text-blue-600 transition" target="_blank" rel="noopener noreferrer">Client Portal</a>
+      <a href="/#consultation" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition text-center">Free Consultation</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero-gradient text-white py-20">
+    <div class="container mx-auto px-6 text-center max-w-3xl">
+      <p class="text-sm text-blue-200 mb-2">Individuals • Stock Compensation • Jan 24 2026 • ~12 min read</p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">RSUs and Stock Sales Explained</h1>
+      <p class="text-xl">How vesting is taxed, how sales are taxed, why it can feel like you were taxed twice, and how to report it correctly so you do not overpay.</p>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="py-16 bg-white">
+    <div class="container mx-auto px-6 max-w-3xl">
+      <!-- Intro note -->
+      <div class="note rounded-md p-5 mb-8">
+        <p class="text-gray-800"><strong>Quick note:</strong> This guide is for education. Stock plan tax reporting can be tricky and rules can change. If you have multiple jobs, large vests, or complex brokerage reporting, a quick review can save money and stress.</p>
+      </div>
+
+      <!-- TOC -->
+      <div class="border rounded-md p-5 mb-10">
+        <h2 class="text-lg font-semibold text-blue-900 mb-3">Contents</h2>
+        <ul class="toc space-y-2 list-disc list-inside">
+          <li><a href="#one-minute">RSUs in one minute</a></li>
+          <li><a href="#timeline">The RSU timeline: grant, vest, sell</a></li>
+          <li><a href="#paycheck">How RSUs are taxed on your paycheck</a></li>
+          <li><a href="#twice">Are you taxed twice?</a></li>
+          <li><a href="#forms">Forms you will see: W-2, 1099-B, 8949</a></li>
+          <li><a href="#basis">The big mistake: cost basis and overpaying</a></li>
+          <li><a href="#scenarios">Common scenarios: sell-to-cover, same-day sale, holding</a></li>
+          <li><a href="#gains">Capital gains basics and California notes</a></li>
+          <li><a href="#wash-sales">Wash sales in plain English</a></li>
+          <li><a href="#planning">Planning tips: withholding and estimated taxes</a></li>
+          <li><a href="#checklist">What to gather at tax time</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- RSUs in one minute -->
+      <section id="one-minute" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">RSUs in one minute</h2>
+        <div class="pros rounded-md p-5">
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li><strong>At vesting:</strong> RSUs are treated like wages. The value on vest day is taxable income and typically shows up on your W-2.</li>
+            <li><strong>At selling:</strong> you are taxed only on the change in value after vesting (capital gain or loss).</li>
+            <li><strong>The most common problem:</strong> incorrect cost basis on your 1099-B can make it look like you had extra gains, which can lead to overpaying.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Timeline -->
+      <section id="timeline" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">The RSU timeline: grant, vest, sell</h2>
+        <p class="text-gray-700 mb-4">
+          RSUs usually have three stages. Only vesting and selling are tax events for most employees.
+        </p>
+
+        <div class="overflow-x-auto mb-6">
+          <table class="min-w-full border border-slate-200">
+            <thead class="bg-slate-50">
+              <tr>
+                <th class="text-left p-3 border border-slate-200">Stage</th>
+                <th class="text-left p-3 border border-slate-200">What happens</th>
+                <th class="text-left p-3 border border-slate-200">Typical tax treatment</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700">
+              <tr>
+                <td class="p-3 border border-slate-200"><strong>Grant</strong></td>
+                <td class="p-3 border border-slate-200">Your company promises shares if you meet vesting conditions.</td>
+                <td class="p-3 border border-slate-200">Usually no tax at grant for RSUs.</td>
+              </tr>
+              <tr>
+                <td class="p-3 border border-slate-200"><strong>Vesting</strong></td>
+                <td class="p-3 border border-slate-200">Shares become yours on a vest date.</td>
+                <td class="p-3 border border-slate-200"><strong>Wages</strong>. The fair market value at vest is taxable income and appears on your W-2.</td>
+              </tr>
+              <tr>
+                <td class="p-3 border border-slate-200"><strong>Sale</strong></td>
+                <td class="p-3 border border-slate-200">You sell some or all shares through your broker.</td>
+                <td class="p-3 border border-slate-200"><strong>Capital gain or loss</strong> based on sale price minus your cost basis (usually the vest value).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note rounded-md p-4">
+          <p class="font-semibold mb-1">Simple example</p>
+          <p class="text-gray-700">
+            100 RSUs vest when the stock is $50. You have $5,000 of wage income. If you later sell at $52, you have a $2 per share capital gain, or $200 total, not another $5,000.
+          </p>
+        </div>
+      </section>
+
+      <!-- Paycheck taxes -->
+      <section id="paycheck" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">How RSUs are taxed on your paycheck</h2>
+        <p class="text-gray-700 mb-4">
+          Most employers treat RSU vesting like supplemental wages (similar to a bonus). That means the withholding you see on a vest paycheck may be different from your normal paycheck.
+        </p>
+
+        <div class="warning rounded-md p-5 mb-6">
+          <p class="font-semibold mb-2">Key point</p>
+          <p class="text-gray-700">
+            Withholding is a prepayment. Your final tax is based on your total income and credits for the year, not the flat withholding rate used on vest day.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="note rounded-md p-4">
+            <p class="font-semibold mb-2">Federal withholding (common approach)</p>
+            <p class="text-gray-700">
+              Employers often withhold federal income tax on supplemental wages using a flat rate method (commonly 22% for many situations, with a higher mandatory rate once supplemental wages exceed $1 million in a year).
+              See IRS Pub. 15 for the current rules.
+            </p>
+            <a class="inline-block mt-2 text-blue-600 hover:text-blue-700 transition font-medium"
+               href="https://www.irs.gov/pub/irs-pdf/p15.pdf" target="_blank" rel="noopener noreferrer">IRS Publication 15 (PDF)</a>
+          </div>
+
+          <div class="cali rounded-md p-4">
+            <p class="font-semibold mb-2">California withholding (common approach)</p>
+            <p class="text-gray-700">
+              California also has separate supplemental wage withholding rules. Many stock plan payments fall under flat-rate withholding in California.
+              See EDD DE 231PS for details.
+            </p>
+            <a class="inline-block mt-2 text-blue-600 hover:text-blue-700 transition font-medium"
+               href="https://edd.ca.gov/siteassets/files/pdf_pub_ctr/de231ps.pdf" target="_blank" rel="noopener noreferrer">EDD DE 231PS (PDF)</a>
+          </div>
+        </div>
+
+        <div class="note rounded-md p-4 mt-6">
+          <p class="font-semibold mb-1">Why people still owe after big vests</p>
+          <p class="text-gray-700">
+            If your total income puts you in a higher bracket, a flat withholding method can be lower than your effective tax rate.
+            That can create a balance due at filing time unless you adjust withholding or make estimated payments.
+          </p>
+        </div>
+      </section>
+
+      <!-- Taxed twice -->
+      <section id="twice" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">Are you taxed twice?</h2>
+        <p class="text-gray-700 mb-4">
+          Usually, no. It can feel like it because you see taxes on your W-2 and also see a 1099-B for stock sales. But those forms are reporting two different things.
+        </p>
+
+        <div class="pros rounded-md p-5">
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li><strong>Vesting tax:</strong> ordinary income tax on the fair market value at vest. This is treated like wages and is included on your W-2.</li>
+            <li><strong>Sale tax:</strong> capital gain or loss on the change in value after vesting. This is reported through your brokerage and then on your tax return.</li>
+          </ul>
+        </div>
+
+        <div class="note rounded-md p-4 mt-6">
+          <p class="font-semibold mb-1">Mini example</p>
+          <p class="text-gray-700">
+            Vest at $50 and sell at $50.50. You already paid wage tax on $50. You report a capital gain on $0.50 per share, not another round of wage tax.
+          </p>
+        </div>
+      </section>
+
+      <!-- Forms -->
+      <section id="forms" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">Forms you will see: W-2, 1099-B, 8949</h2>
+        <div class="border rounded-md p-5 mb-6">
+          <h3 class="text-xl font-semibold text-blue-900 mb-2">W-2 (from your employer)</h3>
+          <p class="text-gray-700">
+            Your RSU vest income is typically included in wages and the taxes withheld show up in the federal and state withholding boxes.
+            The W-2 is the proof that the vest value was already treated as compensation.
+          </p>
+        </div>
+
+        <div class="border rounded-md p-5 mb-6">
+          <h3 class="text-xl font-semibold text-blue-900 mb-2">1099-B (from your broker)</h3>
+          <p class="text-gray-700 mb-2">
+            Your broker reports stock sales on Form 1099-B. It includes proceeds and may include cost basis and wash sale information.
+          </p>
+          <a class="inline-block text-blue-600 hover:text-blue-700 transition font-medium"
+             href="https://www.irs.gov/instructions/i1099b" target="_blank" rel="noopener noreferrer">IRS Instructions for Form 1099-B</a>
+        </div>
+
+        <div class="border rounded-md p-5">
+          <h3 class="text-xl font-semibold text-blue-900 mb-2">Form 8949 and Schedule D (on your tax return)</h3>
+          <p class="text-gray-700 mb-2">
+            Form 8949 is used to report the details of sales and to reconcile what the broker reported with what you report, including basis adjustments.
+            Totals flow to Schedule D.
+          </p>
+          <div class="flex flex-wrap gap-3 mt-3">
+            <a class="inline-block text-blue-600 hover:text-blue-700 transition font-medium"
+               href="https://www.irs.gov/forms-pubs/about-form-8949" target="_blank" rel="noopener noreferrer">About Form 8949</a>
+            <span class="text-gray-400">|</span>
+            <a class="inline-block text-blue-600 hover:text-blue-700 transition font-medium"
+               href="https://www.irs.gov/pub/irs-pdf/i8949.pdf" target="_blank" rel="noopener noreferrer">Form 8949 Instructions (PDF)</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Basis -->
+      <section id="basis" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">The big mistake: cost basis and overpaying</h2>
+        <p class="text-gray-700 mb-4">
+          This is where many people accidentally overpay: the broker 1099-B may show a cost basis that is incomplete for stock plan shares.
+          If you enter the sale as-is without adjusting, it can look like you had a much larger gain than you actually did.
+        </p>
+
+        <div class="warning rounded-md p-5 mb-6">
+          <p class="font-semibold mb-2">What to watch for</p>
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>1099-B shows <strong>basis $0</strong> or a basis that does not match the vest value.</li>
+            <li>Your tax software shows a big gain even though you sold right after vesting.</li>
+            <li>You see vest income on your W-2 and it feels like you are paying tax again.</li>
+          </ul>
+        </div>
+
+        <h3 class="text-xl font-semibold text-blue-900 mb-3">What your basis usually should be</h3>
+        <p class="text-gray-700 mb-4">
+          For many RSU sales, your cost basis is generally the fair market value on the vest date (the amount already included as wages), plus any amount you paid for the shares (often $0 for RSUs).
+          Your broker might not show that full basis automatically.
+        </p>
+
+        <div class="note rounded-md p-5 mb-6">
+          <p class="font-semibold mb-2">How to fix it (high level)</p>
+          <ol class="list-decimal list-inside text-gray-700 space-y-2">
+            <li>Start with the proceeds and the basis reported on your 1099-B.</li>
+            <li>Compare the basis to your vest statement or your stock plan release detail.</li>
+            <li>If the basis is incomplete, report the sale on Form 8949 and make a basis adjustment so the gain reflects only the post-vest change.</li>
+          </ol>
+          <p class="text-gray-700 mt-3">
+            Tip: IRS guidance includes common Form 8949 adjustment codes when basis is incorrect.
+            If you are doing this in software, it may ask for an adjustment code and amount.
+          </p>
+          <a class="inline-block mt-2 text-blue-600 hover:text-blue-700 transition font-medium"
+             href="https://apps.irs.gov/app/vita/content/36/36_03_062pop.jsp" target="_blank" rel="noopener noreferrer">IRS Form 8949 adjustment codes</a>
+        </div>
+
+        <div class="pros rounded-md p-4">
+          <p class="font-semibold mb-1">Sanity check</p>
+          <p class="text-gray-700">
+            If you sold the shares the same day they vested, your capital gain or loss is often small.
+            A very large gain on a same-day sale can be a sign the basis was not captured correctly.
+          </p>
+        </div>
+      </section>
+
+      <!-- Scenarios -->
+      <section id="scenarios" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">Common scenarios: sell-to-cover, same-day sale, holding</h2>
+
+        <div class="space-y-6">
+          <div class="border rounded-md p-5">
+            <h3 class="text-xl font-semibold text-blue-900 mb-2">Sell-to-cover at vesting</h3>
+            <p class="text-gray-700 mb-2">
+              Many plans automatically sell some shares at vest to cover withholding taxes. You receive the remaining shares.
+            </p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+              <li>The vest value is wage income and appears on your W-2.</li>
+              <li>The shares sold to cover are still a stock sale and usually appear on your 1099-B.</li>
+              <li>There may be a small gain or loss between vest price and sale price.</li>
+            </ul>
+          </div>
+
+          <div class="border rounded-md p-5">
+            <h3 class="text-xl font-semibold text-blue-900 mb-2">Same-day sale</h3>
+            <p class="text-gray-700 mb-2">
+              If you sell right away, you are converting your stock compensation into cash and limiting market risk.
+            </p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+              <li>You still report the sale on Form 8949 and Schedule D.</li>
+              <li>If the basis is correct, the gain or loss is usually small.</li>
+            </ul>
+          </div>
+
+          <div class="border rounded-md p-5">
+            <h3 class="text-xl font-semibold text-blue-900 mb-2">Holding shares after vest</h3>
+            <p class="text-gray-700 mb-2">
+              If you hold, future price movement creates capital gains or losses when you sell.
+            </p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1">
+              <li>Holding period generally determines whether gains are short-term or long-term for federal purposes.</li>
+              <li>California does not have a lower rate for long-term capital gains.</li>
+            </ul>
+            <a class="inline-block mt-2 text-blue-600 hover:text-blue-700 transition font-medium"
+               href="https://www.ftb.ca.gov/file/personal/income-types/capital-gains-and-losses.html" target="_blank" rel="noopener noreferrer">CA FTB: capital gains and losses</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gains -->
+      <section id="gains" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">Capital gains basics and California notes</h2>
+        <p class="text-gray-700 mb-4">
+          Capital gains are taxed when you sell an asset for more than your cost basis.
+          Capital losses occur when you sell for less than your basis. Losses can offset gains and may offset a limited amount of other income each year depending on your situation.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="note rounded-md p-4">
+            <p class="font-semibold mb-2">Federal: short-term vs long-term</p>
+            <p class="text-gray-700">
+              In general, holding more than one year may qualify for long-term capital gain treatment at preferential rates.
+              Holding one year or less is generally short-term and is taxed like ordinary income.
+            </p>
+            <a class="inline-block mt-2 text-blue-600 hover:text-blue-700 transition font-medium"
+               href="https://www.irs.gov/taxtopics/tc409" target="_blank" rel="noopener noreferrer">IRS Topic: capital gains and losses</a>
+          </div>
+
+          <div class="cali rounded-md p-4">
+            <p class="font-semibold mb-2">California: no preferential capital gains rates</p>
+            <p class="text-gray-700">
+              California does not have a lower rate for capital gains, so gains are taxed as ordinary income for CA purposes.
+            </p>
+            <a class="inline-block mt-2 text-blue-600 hover:text-blue-700 transition font-medium"
+               href="https://www.ftb.ca.gov/file/personal/income-types/capital-gains-and-losses.html" target="_blank" rel="noopener noreferrer">CA FTB reference</a>
+          </div>
+        </div>
+
+        <div class="warning rounded-md p-4">
+          <p class="font-semibold mb-1">High income note</p>
+          <p class="text-gray-700">
+            Some higher-income taxpayers may also owe the 3.8% Net Investment Income Tax (NIIT) on certain investment income.
+            If you have large capital gains, it is worth planning ahead.
+          </p>
+          <a class="inline-block mt-2 text-blue-600 hover:text-blue-700 transition font-medium"
+             href="https://www.irs.gov/individuals/net-investment-income-tax" target="_blank" rel="noopener noreferrer">IRS NIIT overview</a>
+        </div>
+      </section>
+
+      <!-- Wash sales -->
+      <section id="wash-sales" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">Wash sales in plain English</h2>
+        <p class="text-gray-700 mb-4">
+          A wash sale can happen when you sell stock at a loss and buy the same or substantially identical stock within a 30-day window around the sale.
+          The loss may be disallowed and carried into the basis of the replacement shares.
+        </p>
+
+        <div class="note rounded-md p-5 mb-6">
+          <p class="font-semibold mb-2">Why this matters for RSUs</p>
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>If you sell shares at a loss but you also receive new shares from vesting within the wash sale window, you may trigger wash sale treatment.</li>
+            <li>Wash sale reporting can show up on your 1099-B for covered securities, but you still need to review it for accuracy.</li>
+          </ul>
+          <div class="flex flex-wrap gap-3 mt-3">
+            <a class="inline-block text-blue-600 hover:text-blue-700 transition font-medium"
+               href="https://www.investor.gov/introduction-investing/investing-basics/glossary/wash-sales" target="_blank" rel="noopener noreferrer">Investor.gov wash sale definition</a>
+            <span class="text-gray-400">|</span>
+            <a class="inline-block text-blue-600 hover:text-blue-700 transition font-medium"
+               href="https://www.irs.gov/pub/irs-pdf/p550.pdf" target="_blank" rel="noopener noreferrer">IRS Publication 550 (PDF)</a>
+          </div>
+        </div>
+
+        <div class="warning rounded-md p-4">
+          <p class="font-semibold mb-1">Practical tip</p>
+          <p class="text-gray-700">
+            If you plan to harvest losses, check your vest schedule and any automatic reinvestment or purchase plans.
+            Timing matters.
+          </p>
+        </div>
+      </section>
+
+      <!-- Planning -->
+      <section id="planning" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">Planning tips: withholding and estimated taxes</h2>
+        <p class="text-gray-700 mb-4">
+          If you have meaningful RSU income, your best strategy is to avoid surprises by adjusting early.
+          Withholding on vest day may not line up with your household tax bracket for the year.
+        </p>
+
+        <div class="pros rounded-md p-5 mb-6">
+          <p class="font-semibold mb-2">Simple planning checklist</p>
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>After your first big vest (or after a raise), do a quick withholding check.</li>
+            <li>If you tend to owe, consider increasing federal withholding (W-4) and California withholding (DE 4).</li>
+            <li>If your vests are concentrated and withholding is not enough, estimated payments may be appropriate.</li>
+          </ul>
+          <p class="text-gray-700 mt-3">
+            If you want a walkthrough for withholding, see our guide:
+            <a class="text-blue-600 hover:text-blue-700 transition font-medium" href="/blogs/w4-de4-withholding-guide-california">W-4 and California DE 4 withholding guide</a>.
+          </p>
+        </div>
+
+        <div class="cali rounded-md p-4">
+          <p class="font-semibold mb-1">California reminder</p>
+          <p class="text-gray-700">
+            California withholding is controlled by DE 4, separate from the federal W-4. If you update one, review the other.
+          </p>
+        </div>
+      </section>
+
+      <!-- Checklist -->
+      <section id="checklist" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">What to gather at tax time</h2>
+        <div class="note rounded-md p-5">
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>Your W-2 (and spouse W-2 if filing jointly).</li>
+            <li>Your brokerage 1099 package, including the detailed gain/loss statement.</li>
+            <li>Your stock plan release statements showing vest dates, share counts, and fair market value at vest.</li>
+            <li>Any notes about sales that were sell-to-cover or same-day sales.</li>
+            <li>If you have multiple brokers or transferred shares, keep transfer statements and cost basis details.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="rounded-lg border p-6 mb-12">
+        <h3 class="text-xl font-semibold text-blue-900 mb-2">Want us to review your RSUs and stock sales?</h3>
+        <p class="text-gray-700 mb-4">
+          We can reconcile your vest statements with your 1099-B, confirm your cost basis reporting, and help you plan withholding so you do not get surprised at filing time.
+        </p>
+        <a href="/#consultation" class="inline-block bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700 transition">Book a free consultation</a>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">FAQ</h2>
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-semibold text-blue-900">Why did my paycheck drop on vest day?</h3>
+            <p class="text-gray-700">
+              Vesting creates wage income, so payroll withholds federal and state income tax (and other payroll taxes).
+              Many plans also sell shares to cover withholding, which changes what you receive.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-blue-900">If I sell right away, do I still need to report the sale?</h3>
+            <p class="text-gray-700">
+              Yes. The sale is still a brokerage transaction and typically appears on your 1099-B.
+              Reporting it correctly helps ensure you are taxed only on any small post-vest change in price.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-blue-900">My 1099-B shows cost basis as $0. What should I do?</h3>
+            <p class="text-gray-700">
+              Do not ignore it. Compare the 1099-B to your vest statements.
+              If the basis is incomplete, you generally need to report the sale on Form 8949 and adjust basis so the gain is accurate.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-blue-900">Do I pay tax again when I sell shares that already appeared on my W-2?</h3>
+            <p class="text-gray-700">
+              You pay wage tax on the vest value, then capital gains tax only on any price change after vesting.
+              If reporting is done incorrectly, it can look like you were taxed twice, which is why the cost basis check is important.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-blue-900">Does California treat long-term capital gains differently?</h3>
+            <p class="text-gray-700">
+              California does not have a lower rate for capital gains. Gains are taxed as ordinary income for CA purposes.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <a href="/blogs" class="text-blue-600 font-medium hover:text-blue-700 transition">← Back to all posts</a>
+    </div>
+  </main>
+
+  <!-- RELATED POSTS -->
+  <aside class="bg-gray-50 py-12">
+    <div class="container mx-auto px-6 max-w-5xl">
+      <h2 class="text-2xl font-bold text-blue-900 mb-6">You might also like</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <a href="/blogs/w4-de4-withholding-guide-california" class="block border rounded-lg p-5 hover:shadow-md transition bg-white">
+          <div class="text-sm text-blue-700 mb-1">Individuals • California</div>
+          <div class="font-semibold text-gray-900 mb-2">How to Adjust Your W-4 in 2026 (Plus California DE 4)</div>
+          <p class="text-gray-600 text-sm">A practical guide to fixing withholding so you avoid surprises.</p>
+        </a>
+        <a href="/blogs/top-tax-credits-california-families" class="block border rounded-lg p-5 hover:shadow-md transition bg-white">
+          <div class="text-sm text-blue-700 mb-1">Individuals • California</div>
+          <div class="font-semibold text-gray-900 mb-2">Top Tax Credits California Families Shouldn't Miss</div>
+          <p class="text-gray-600 text-sm">Credits to review before filing.</p>
+        </a>
+        <a href="/blogs/llc-s-corp-c-corp-california" class="block border rounded-lg p-5 hover:shadow-md transition bg-white">
+          <div class="text-sm text-blue-700 mb-1">Entity Choice • California</div>
+          <div class="font-semibold text-gray-900 mb-2">LLC vs S Corp vs C Corp in California</div>
+          <p class="text-gray-600 text-sm">A clear guide to taxes, fees, and when each structure fits.</p>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-950 text-white py-12">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <div class="text-2xl font-bold mb-4"><span class="text-blue-400">Blooming</span> Financial</div>
+          <p class="text-blue-200 mb-4">Professional financial services for small businesses and individuals in California.</p>
+          <div class="flex space-x-4">
+            <a href="https://www.instagram.com/blooming.financial/" class="text-blue-300 hover:text-white text-xl" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.yelp.com/biz/blooming-financial-cupertino" class="text-blue-300 hover:text-white text-xl"><i class="fab fa-yelp"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-bold text-lg mb-4">Services</h3>
+          <ul class="space-y-2">
+            <li><a href="/#service-bookkeeping" class="text-blue-200 hover:text-white transition">Bookkeeping</a></li>
+            <li><a href="/#service-tax" class="text-blue-200 hover:text-white transition">Tax Preparation</a></li>
+            <li><a href="/#service-payroll" class="text-blue-200 hover:text-white transition">Payroll Services</a></li>
+            <li><a href="/#service-consulting" class="text-blue-200 hover:text-white transition">Business Consulting</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold text-lg mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="/" class="text-blue-200 hover:text-white transition">Home</a></li>
+            <li><a href="/#services" class="text-blue-200 hover:text-white transition">Services</a></li>
+            <li><a href="/#about" class="text-blue-200 hover:text-white transition">About Us</a></li>
+            <li><a href="/#testimonials" class="text-blue-200 hover:text-white transition">Testimonials</a></li>
+            <li><a href="/#contact" class="text-blue-200 hover:text-white transition">Contact</a></li>
+            <li><a href="/blogs" class="text-blue-200 hover:text-white transition">Blogs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold text-lg mb-4">Contact</h3>
+          <ul class="space-y-2 text-blue-200">
+            <li class="flex items-start"><i class="fas fa-phone-alt mt-1 mr-2 text-sm"></i><span>(408) 365-4671</span></li>
+            <li class="flex items-start"><i class="fas fa-envelope mt-1 mr-2 text-sm"></i><span>info@bloomingfinancials.com</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-blue-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-blue-300 text-sm mb-4 md:mb-0">© 2025 Blooming Financial. All rights reserved.</p>
+        <div class="flex space-x-6 text-sm">
+          <a href="/privacy" class="text-blue-300 hover:text-white">Privacy Policy</a>
+          <a href="/terms" class="text-blue-300 hover:text-white">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="hidden fixed bottom-6 left-6 bg-blue-600 text-white w-12 h-12 rounded-full shadow-lg hover:bg-blue-700 transition z-50"><i class="fas fa-arrow-up"></i></button>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "RSUs and Stock Sales Explained: How You're Taxed and How to Avoid Overpaying",
+    "description": "A beginner-friendly guide to RSU taxes and stock sales: vesting vs selling, withholding, cost basis, and common mistakes that lead to overpaying.",
+    "author": { "@type": "Organization", "name": "Blooming Financial" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Blooming Financial",
+      "logo": { "@type": "ImageObject", "url": "https://www.bloomingfinancials.com/favicon-32x32.png" }
+    },
+    "datePublished": "2026-01-24",
+    "dateModified": "2026-01-24",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.bloomingfinancials.com/blogs/rsus-stock-sales-explained"
+    }
+  }
+  </script>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Mobile nav toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu   = document.getElementById('mobileMenu');
+    if (mobileToggle) {
+      mobileToggle.addEventListener('click', () => {
+        const hidden = mobileMenu.classList.contains('-translate-y-full');
+        if (hidden) {
+          mobileMenu.classList.remove('-translate-y-full');
+          mobileMenu.classList.add('translate-y-0','shadow-lg');
+        } else {
+          mobileMenu.classList.add('-translate-y-full');
+          mobileMenu.classList.remove('translate-y-0','shadow-lg');
+        }
+      });
+      document.querySelectorAll('#mobileMenu a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('-translate-y-full');
+          mobileMenu.classList.remove('translate-y-0','shadow-lg');
+        });
+      });
+    }
+
+    // Back to top
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) backToTop.classList.remove('hidden');
+      else backToTop.classList.add('hidden');
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+  </script>
+</body>
+</html>
