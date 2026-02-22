@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RVPQPZB973"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-RVPQPZB973');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Navigating Your 2025 Taxes: Key Changes You Need to Know | Blooming Financial</title>
+  <meta name="description" content="An easy guide to major 2025 federal tax changes from the One, Big, Beautiful Bill Act: higher standard deduction, bigger SALT cap, child tax credit update, tip and overtime deductions, car loan interest, seniors deduction, and Trump Accounts (with California notes)." />
+  <link rel="canonical" href="https://www.bloomingfinancials.com/blogs/2025-tax-law-changes.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Navigating Your 2025 Taxes: Key Changes You Need to Know" />
+  <meta property="og:description" content="A beginner-friendly overview of major 2025 tax law changes, including new standard deductions, no tax on tips, overtime deductions, and Trump Accounts." />
+  <meta property="og:url" content="https://www.bloomingfinancials.com/blogs/2025-tax-law-changes.html" />
+  <meta property="og:site_name" content="Blooming Financial" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <style>
+    body { font-family: 'Open Sans', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+    .hero-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
+    .nav-link:hover { color: #3b82f6; }
+    .note { background: #f8fafc; border-left: 4px solid #3b82f6; }
+    .cali { background: #f0f9ff; border-left: 4px solid #0284c7; }
+    .warning { background: #fff7ed; border-left: 4px solid #f97316; }
+    .pros { background: #f0fdf4; border-left: 4px solid #22c55e; }
+    .toc a { color: #1d4ed8; }
+    code.inline { background: #f1f5f9; padding: 0.15rem 0.3rem; border-radius: 0.25rem; }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <!-- NAVIGATION -->
+  <nav class="bg-white border-0 shadow-none sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <a href="/" class="text-2xl font-bold text-blue-900">
+            <span class="text-blue-600">Blooming</span> Financial
+          </a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/" class="nav-link text-gray-700 hover:text-blue-600 transition">Home</a>
+          <a href="/#services" class="nav-link text-gray-700 hover:text-blue-600 transition">Services</a>
+          <a href="/#about" class="nav-link text-gray-700 hover:text-blue-600 transition">About</a>
+          <a href="/#testimonials" class="nav-link text-gray-700 hover:text-blue-600 transition">Testimonials</a>
+          <a href="/#contact" class="nav-link text-gray-700 hover:text-blue-600 transition">Contact</a>
+          <a href="/blogs" class="nav-link text-blue-600 font-semibold">Blogs</a>
+          <a href="https://portal.bloomingfinancials.com" class="nav-link text-gray-700 hover:text-blue-600 transition" target="_blank" rel="noopener noreferrer">Client Portal</a>
+          <a href="/#consultation" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Free Consultation</a>
+        </div>
+        <div class="md:hidden">
+          <button id="mobileToggle" class="text-gray-700 focus:outline-none"><i class="fas fa-bars text-2xl"></i></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-x-0 top-14 w-full bg-white transform -translate-y-full transition-transform duration-300 ease-in-out z-40 md:hidden">
+    <div class="flex flex-col space-y-4 p-6">
+      <a href="/" class="nav-link text-gray-700 hover:text-blue-600 transition">Home</a>
+      <a href="/#services" class="nav-link text-gray-700 hover:text-blue-600 transition">Services</a>
+      <a href="/#about" class="nav-link text-gray-700 hover:text-blue-600 transition">About</a>
+      <a href="/#testimonials" class="nav-link text-gray-700 hover:text-blue-600 transition">Testimonials</a>
+      <a href="/#contact" class="nav-link text-gray-700 hover:text-blue-600 transition">Contact</a>
+      <a href="/blogs" class="nav-link text-blue-600 font-semibold">Blogs</a>
+      <a href="https://portal.bloomingfinancials.com" class="nav-link text-gray-700 hover:text-blue-600 transition" target="_blank" rel="noopener noreferrer">Client Portal</a>
+      <a href="/#consultation" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition text-center">Free Consultation</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero-gradient text-white py-20">
+    <div class="container mx-auto px-6 text-center max-w-3xl">
+      <p class="text-sm text-blue-200 mb-2">Individuals • Federal Tax • Feb 22 2026 • ~12 min read</p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Navigating Your 2025 Taxes: Key Changes You Need to Know</h1>
+      <p class="text-xl">A beginner-friendly overview of major 2025 federal tax changes, including a higher standard deduction, bigger SALT cap, tip and overtime deductions, car loan interest, and Trump Accounts.</p>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="py-16 bg-white">
+    <div class="container mx-auto px-6 max-w-3xl">
+
+      <div class="note rounded-md p-5 mb-8">
+        <p class="text-gray-800">
+          <strong>Quick note:</strong> This post covers federal changes for your <strong>2025 tax return</strong> (filed in 2026). Rules can be complex and your situation matters.
+          If you are a California taxpayer, pay special attention to the California section below because California does not fully follow these federal changes.
+        </p>
+      </div>
+
+      <div class="pros rounded-md p-5 mb-10">
+        <h2 class="text-lg font-semibold text-blue-900 mb-3">What changed for 2025 (high level)</h2>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>Bigger standard deduction</strong> for 2025.</li>
+          <li><strong>Bigger SALT cap</strong> for people who itemize.</li>
+          <li><strong>Child Tax Credit</strong> increased to $2,200 per qualifying child (with SSN rules).</li>
+          <li><strong>New Schedule 1-A deductions</strong> for qualified tips, qualified overtime, qualified car loan interest, and an enhanced deduction for seniors.</li>
+          <li><strong>Trump Accounts</strong> guidance published, with contributions generally starting July 4, 2026.</li>
+        </ul>
+      </div>
+
+      <!-- TOC -->
+      <div class="border rounded-md p-5 mb-10">
+        <h2 class="text-lg font-semibold text-blue-900 mb-3">Contents</h2>
+        <ul class="toc space-y-2 list-disc list-inside">
+          <li><a href="#why-2025">Why 2025 looks different</a></li>
+          <li><a href="#standard-deduction">New standard deduction amounts</a></li>
+          <li><a href="#salt">Bigger SALT cap for itemizers</a></li>
+          <li><a href="#ctc">Child Tax Credit update</a></li>
+          <li><a href="#schedule-1a">New Schedule 1-A deductions (tips, overtime, car loan interest, seniors)</a></li>
+          <li><a href="#trump-accounts">Trump Accounts: what they are and what is next</a></li>
+          <li><a href="#california">California notes (important)</a></li>
+          <li><a href="#checklist">What to do now</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#sources">Sources</a></li>
+        </ul>
+      </div>
+
+      <section id="why-2025" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">Why 2025 looks different</h2>
+        <p class="text-gray-700 mb-4">
+          The One, Big, Beautiful Bill Act (Public Law 119-21) was signed into law on July 4, 2025 and introduced several new deductions and updated thresholds that apply to tax year 2025 and beyond.
+          Many of the headline items are temporary and apply for tax years 2025 through 2028. Some changes also create new reporting and new forms.
+        </p>
+        <div class="warning rounded-md p-4">
+          <p class="text-gray-700">
+            A common source of confusion: several items are called “no tax on” in the news, but in practice they are implemented as <strong>deductions</strong> claimed on your tax return.
+            Withholding on your paycheck may not automatically match your final tax result.
+          </p>
+        </div>
+      </section>
+
+      <section id="standard-deduction" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">New standard deduction amounts</h2>
+        <p class="text-gray-700 mb-4">
+          For many households, the standard deduction is the biggest driver of taxable income. For 2025, the standard deduction increased to:
+        </p>
+
+        <div class="overflow-x-auto mb-6">
+          <table class="min-w-full border border-slate-200">
+            <thead class="bg-slate-50">
+              <tr>
+                <th class="text-left p-3 border border-slate-200">Filing status</th>
+                <th class="text-left p-3 border border-slate-200">2025 standard deduction</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700">
+              <tr>
+                <td class="p-3 border border-slate-200"><strong>Single</strong> (and Married Filing Separately)</td>
+                <td class="p-3 border border-slate-200">$15,750</td>
+              </tr>
+              <tr>
+                <td class="p-3 border border-slate-200"><strong>Head of Household</strong></td>
+                <td class="p-3 border border-slate-200">$23,625</td>
+              </tr>
+              <tr>
+                <td class="p-3 border border-slate-200"><strong>Married Filing Jointly</strong> (and Qualifying Surviving Spouse)</td>
+                <td class="p-3 border border-slate-200">$31,500</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note rounded-md p-4">
+          <p class="text-gray-700">
+            Practical tip: If you do not itemize, the bigger standard deduction usually means less taxable income and a smaller tax bill, all else equal.
+            If you do itemize, keep reading for the SALT cap change.
+          </p>
+        </div>
+      </section>
+
+      <section id="salt" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">Bigger SALT cap for itemizers</h2>
+        <p class="text-gray-700 mb-4">
+          If you itemize deductions, the limit (cap) on the federal deduction for state and local taxes (SALT) increased.
+          For 2025, itemizers can claim up to <strong>$40,000</strong> of state and local taxes paid (or <strong>$20,000</strong> if Married Filing Separately).
+          The maximum is reduced for taxpayers with modified adjusted gross income above <strong>$500,000</strong> (or <strong>$250,000</strong> if Married Filing Separately).
+        </p>
+
+        <div class="warning rounded-md p-4">
+          <p class="text-gray-700">
+            SALT only helps if you itemize. With the higher standard deduction, some households still will not benefit from itemizing, even with the higher cap.
+          </p>
+        </div>
+      </section>
+
+      <section id="ctc" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">Child Tax Credit update</h2>
+        <p class="text-gray-700 mb-4">
+          For 2025, the maximum Child Tax Credit increased to <strong>$2,200</strong> per eligible child (up from $2,000). Up to <strong>$1,700</strong> per qualifying child may be refundable as the Additional Child Tax Credit, depending on eligibility.
+        </p>
+
+        <div class="note rounded-md p-5 mb-4">
+          <p class="font-semibold mb-2">SSN rules to know</p>
+          <ul class="list-disc list-inside text-gray-700 space-y-1">
+            <li>The qualifying child must have a Social Security number valid for employment.</li>
+            <li>If filing Married Filing Jointly, at least one spouse must have a Social Security number valid for employment.</li>
+          </ul>
+        </div>
+
+        <p class="text-gray-700">
+          If you usually owe at tax time or your household changes (new baby, custody changes, spouse starts working), it is a good time to revisit withholding.
+          Our W-4 and California DE 4 guide can help: <a class="text-blue-600 hover:text-blue-700 transition font-medium" href="/blogs/w4-de4-withholding-guide-california.html">How to Adjust Your W-4 in 2026 (Plus California DE 4)</a>.
+        </p>
+      </section>
+
+      <section id="schedule-1a" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">New Schedule 1-A deductions (tips, overtime, car loan interest, seniors)</h2>
+        <p class="text-gray-700 mb-4">
+          A new form, <strong>Schedule 1-A (Form 1040)</strong>, was created for 2025 to claim several new deductions. These deductions can be claimed whether you take the standard deduction or itemize.
+          In general, if you are married, you must file jointly to claim these Schedule 1-A deductions.
+        </p>
+
+        <div class="border rounded-md p-4 mb-6">
+          <p class="text-gray-700">
+            Official form: <a class="text-blue-600 hover:text-blue-700 transition font-medium" href="https://www.irs.gov/pub/irs-pdf/f1040s1a.pdf" target="_blank" rel="noopener noreferrer">Schedule 1-A (Form 1040) for 2025 (PDF)</a>
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          <div class="pros rounded-md p-5">
+            <h3 class="text-xl font-semibold text-blue-900 mb-2">1) No tax on tips (implemented as a deduction)</h3>
+            <p class="text-gray-700 mb-3">
+              For 2025 through 2028, employees and self-employed individuals may be able to deduct <strong>qualified tips</strong> up to <strong>$25,000</strong> per year.
+              The deduction phases out for taxpayers with modified adjusted gross income over <strong>$150,000</strong> (or <strong>$300,000</strong> if filing jointly).
+            </p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+              <li><strong>Only certain occupations qualify.</strong> Tips must be earned in an occupation listed by the IRS as customarily and regularly receiving tips on or before Dec 31, 2024. See the IRS list here: <a class="text-blue-600 hover:text-blue-700 transition font-medium" href="https://www.irs.gov/forms-pubs/occupations-that-customarily-and-regularly-received-tips-on-or-before-december-31-2024" target="_blank" rel="noopener noreferrer">IRS list of tipped occupations</a>.</li>
+              <li><strong>Qualified tips are voluntary.</strong> Mandatory service charges generally do not qualify.</li>
+              <li><strong>Where tips show up.</strong> Tips can be included on Form W-2 and certain 1099s, or reported by the taxpayer, and then used to compute the deduction on Schedule 1-A.</li>
+              <li><strong>This does not erase payroll taxes.</strong> Tips are still income and may still be subject to Social Security and Medicare rules.</li>
+            </ul>
+          </div>
+
+          <div class="pros rounded-md p-5">
+            <h3 class="text-xl font-semibold text-blue-900 mb-2">2) No tax on overtime (implemented as a deduction)</h3>
+            <p class="text-gray-700 mb-3">
+              For 2025 through 2028, individuals who receive <strong>qualified overtime compensation</strong> may deduct the portion of overtime pay that exceeds the regular rate of pay.
+              This is generally the “half” portion of “time-and-a-half” required by the Fair Labor Standards Act.
+            </p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+              <li><strong>Max deduction:</strong> $12,500 (or $25,000 if filing jointly).</li>
+              <li><strong>Phaseout:</strong> starts above $150,000 modified adjusted gross income (or $300,000 joint).</li>
+              <li><strong>It is a deduction on the tax return.</strong> You may still see withholding on paychecks, and the final result is handled on the return.</li>
+            </ul>
+          </div>
+
+          <div class="pros rounded-md p-5">
+            <h3 class="text-xl font-semibold text-blue-900 mb-2">3) No tax on car loan interest (implemented as a deduction)</h3>
+            <p class="text-gray-700 mb-3">
+              For 2025 through 2028, individuals may be able to deduct interest paid on a loan used to purchase a <strong>qualified vehicle</strong> for personal use.
+              The maximum annual deduction is <strong>$10,000</strong>, and it phases out above <strong>$100,000</strong> modified adjusted gross income (or <strong>$200,000</strong> joint).
+            </p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+              <li><strong>Loan timing:</strong> generally must be originated after Dec 31, 2024.</li>
+              <li><strong>New vehicle requirement:</strong> the original use must begin with the taxpayer (used vehicles do not qualify).</li>
+              <li><strong>Personal use:</strong> not for business or commercial use, and the loan must be secured by a lien on the vehicle.</li>
+              <li><strong>Final assembly in the U.S.:</strong> the vehicle must have undergone final assembly in the United States.</li>
+              <li><strong>VIN required:</strong> you must include the vehicle identification number (VIN) on the return for any year you claim the deduction.</li>
+              <li><strong>No leases:</strong> lease payments do not qualify.</li>
+            </ul>
+            <p class="text-gray-700 mt-3">
+              IRS guidance: <a class="text-blue-600 hover:text-blue-700 transition font-medium" href="https://www.irs.gov/newsroom/one-big-beautiful-bill-act-tax-deductions-for-working-americans-and-seniors" target="_blank" rel="noopener noreferrer">IRS fact sheet with car loan rules</a>
+              and <a class="text-blue-600 hover:text-blue-700 transition font-medium" href="https://www.irs.gov/newsroom/treasury-irs-provide-guidance-on-the-new-deduction-for-car-loan-interest-under-the-one-big-beautiful-bill" target="_blank" rel="noopener noreferrer">Treasury/IRS car loan interest guidance</a>.
+            </p>
+          </div>
+
+          <div class="pros rounded-md p-5">
+            <h3 class="text-xl font-semibold text-blue-900 mb-2">4) Enhanced deduction for seniors (age 65+)</h3>
+            <p class="text-gray-700 mb-3">
+              For 2025 through 2028, individuals age 65 and older may qualify for an additional <strong>$6,000</strong> deduction (per eligible person), on top of the existing additional standard deduction for seniors.
+              The deduction phases out above <strong>$75,000</strong> modified adjusted gross income (or <strong>$150,000</strong> joint).
+            </p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+              <li>If both spouses qualify on a joint return, that can be up to <strong>$12,000</strong> total.</li>
+              <li>In general, if married, you must file jointly to claim this deduction.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="warning rounded-md p-4 mt-6">
+          <p class="text-gray-700">
+            Tip: Schedule 1-A totals flow to your Form 1040 or 1040-SR. If you qualify, these deductions can reduce taxable income even if you do not itemize.
+          </p>
+        </div>
+      </section>
+
+      <section id="trump-accounts" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">Trump Accounts: what they are and what is next</h2>
+        <p class="text-gray-700 mb-4">
+          Trump Accounts are a new type of account created for eligible children. Treasury and the IRS issued guidance in late 2025 describing how these accounts work, including eligibility, contribution limits, and investment rules.
+        </p>
+
+        <div class="note rounded-md p-5 mb-6">
+          <h3 class="text-xl font-semibold text-blue-900 mb-2">Key points in plain English</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li><strong>When contributions can start:</strong> generally not before <strong>July 4, 2026</strong>.</li>
+            <li><strong>Pilot program:</strong> a one-time <strong>$1,000</strong> federal contribution for eligible U.S. citizen children born from <strong>Jan 1, 2025</strong> through <strong>Dec 31, 2028</strong>, when an election is made.</li>
+            <li><strong>Contribution limits:</strong> generally up to <strong>$5,000 per year</strong> in total contributions.</li>
+            <li><strong>Employer contributions:</strong> employers may contribute up to <strong>$2,500 per year</strong> (counts toward the $5,000 total) and the contribution does not count toward the employee’s taxable income under the program rules described by the IRS.</li>
+            <li><strong>Investments:</strong> funds must be invested in certain index-tracking mutual funds or ETFs focused on primarily U.S. equities.</li>
+            <li><strong>Withdrawals:</strong> amounts generally cannot be withdrawn before the year the child turns 18. After that, the account is generally treated like a traditional IRA for many purposes.</li>
+          </ul>
+        </div>
+
+        <p class="text-gray-700">
+          Guidance link: <a class="text-blue-600 hover:text-blue-700 transition font-medium" href="https://www.irs.gov/newsroom/treasury-irs-issue-guidance-on-trump-accounts-established-under-the-working-families-tax-cuts-notice-announces-upcoming-regulations" target="_blank" rel="noopener noreferrer">Treasury/IRS guidance on Trump Accounts</a>.
+        </p>
+      </section>
+
+      <section id="california" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">California notes (important)</h2>
+
+        <div class="cali rounded-md p-5 mb-6">
+          <p class="text-gray-700">
+            California generally does <strong>not</strong> conform to the One, Big, Beautiful Bill Act. This can create differences between your federal return and your California return, even when you qualify for federal deductions or updated limits.
+          </p>
+          <p class="text-gray-700 mt-3">
+            For official California guidance, see the FTB instructions for Schedule CA (540):
+            <a class="text-blue-600 hover:text-blue-700 transition font-medium" href="https://www.ftb.ca.gov/forms/2025/2025-540-ca-instructions.html" target="_blank" rel="noopener noreferrer">FTB Schedule CA (540) instructions</a>.
+          </p>
+        </div>
+
+        <p class="text-gray-700">
+          Practical takeaway: If you qualify for federal deductions like tips or overtime, do not assume California will treat them the same way.
+          California adjustments often happen on Schedule CA, and the end result can be a different CA tax balance than you expected.
+        </p>
+      </section>
+
+      <section id="checklist" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">What to do now</h2>
+
+        <div class="pros rounded-md p-5 mb-6">
+          <h3 class="text-xl font-semibold text-blue-900 mb-2">1) Gather the right documents</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>W-2s and 1099s (especially if they include tips or overtime reporting).</li>
+            <li>If you received tips: your tip records and the occupation information provided by your employer or payor.</li>
+            <li>If you received overtime: paystubs or year-end summaries showing overtime premium amounts.</li>
+            <li>If you plan to claim car loan interest: your year-end loan interest statement and your VIN.</li>
+            <li>If you may qualify as a senior: confirm age and whether income is in the phaseout range.</li>
+            <li>If you itemize: property tax bills, state income tax payments, and other SALT details.</li>
+          </ul>
+        </div>
+
+        <div class="note rounded-md p-5 mb-6">
+          <h3 class="text-xl font-semibold text-blue-900 mb-2">2) Recheck your withholding</h3>
+          <p class="text-gray-700 mb-3">
+            These changes can shift your refund or balance due. If you had big changes in income, dependents, tips, or overtime, rechecking withholding can prevent surprises.
+          </p>
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>Start with the IRS guidance on adjusting withholding for 2025 changes.</li>
+            <li>If you are in California, also update the state DE 4 as needed.</li>
+          </ul>
+          <p class="text-gray-700 mt-3">
+            Helpful links:
+            <a class="text-blue-600 hover:text-blue-700 transition font-medium" href="https://www.irs.gov/forms-pubs/how-to-update-withholding-to-account-for-tax-law-changes-for-2025" target="_blank" rel="noopener noreferrer">IRS withholding update guidance</a>
+            and our internal guide
+            <a class="text-blue-600 hover:text-blue-700 transition font-medium" href="/blogs/w4-de4-withholding-guide-california.html">W-4 and CA DE 4 withholding guide</a>.
+          </p>
+        </div>
+
+        <div class="warning rounded-md p-5">
+          <h3 class="text-xl font-semibold text-blue-900 mb-2">3) If you are unsure, ask before filing</h3>
+          <p class="text-gray-700">
+            The most common issues we see: misunderstanding what counts as “qualified” for tips or overtime, missing the phaseout rules, and California not matching federal.
+            A quick review can prevent missed deductions or an unexpected balance due.
+          </p>
+        </div>
+      </section>
+
+      <section class="rounded-lg border p-6 mb-12">
+        <h3 class="text-xl font-semibold text-blue-900 mb-2">Want help applying these changes to your return?</h3>
+        <p class="text-gray-700 mb-4">
+          We can review your W-2s, tip and overtime details, and any potential Schedule 1-A deductions, then help you plan for federal and California differences.
+        </p>
+        <a href="/#consultation" class="inline-block bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700 transition">Book a free consultation</a>
+      </section>
+
+      <section id="faq" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">FAQ</h2>
+
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-semibold text-blue-900">Does “no tax on tips” mean tips are tax-free?</h3>
+            <p class="text-gray-700">
+              It is implemented as a federal income tax deduction on Schedule 1-A for qualified tips and only for eligible occupations, with caps and phaseouts.
+              It does not mean all taxes disappear, and California may not follow the same rule.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-blue-900">Does “no tax on overtime” mean all overtime is tax-free?</h3>
+            <p class="text-gray-700">
+              Not exactly. The deduction is generally for the premium portion of qualified overtime (the amount above the regular rate), subject to caps and phaseouts.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-blue-900">Do I need to itemize to get these new deductions?</h3>
+            <p class="text-gray-700">
+              No. The new Schedule 1-A deductions can generally be claimed whether you take the standard deduction or itemize.
+              The SALT cap only matters if you itemize.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-blue-900">Why did my refund change compared to last year?</h3>
+            <p class="text-gray-700">
+              Refunds change when income, credits, deductions, or withholding change. 2025 has several moving pieces, especially if you had tips, overtime, dependents, or big itemized deductions.
+              If you want more predictable results, adjust withholding using the W-4 (and DE 4 in California).
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-blue-900">What if I qualify federally but California does not match?</h3>
+            <p class="text-gray-700">
+              That is common. California adjustments are handled on Schedule CA (540). It is a good idea to plan for a different California result even if your federal tax drops.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="sources" class="mb-12">
+        <h2 class="text-2xl font-bold text-blue-900 mb-4">Sources</h2>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li><a class="text-blue-600 hover:text-blue-700 transition font-medium" href="https://www.irs.gov/newsroom/one-big-beautiful-bill-provisions" target="_blank" rel="noopener noreferrer">IRS: One, Big, Beautiful Bill provisions</a></li>
+          <li><a class="text-blue-600 hover:text-blue-700 transition font-medium" href="https://www.irs.gov/newsroom/one-big-beautiful-bill-act-tax-deductions-for-working-americans-and-seniors" target="_blank" rel="noopener noreferrer">IRS Fact Sheet FS-2025-03: Deductions for tips, overtime, car loan interest, seniors</a></li>
+          <li><a class="text-blue-600 hover:text-blue-700 transition font-medium" href="https://www.irs.gov/forms-pubs/how-to-update-withholding-to-account-for-tax-law-changes-for-2025" target="_blank" rel="noopener noreferrer">IRS: How to update withholding for 2025 tax law changes (includes SALT and CTC notes)</a></li>
+          <li><a class="text-blue-600 hover:text-blue-700 transition font-medium" href="https://www.irs.gov/pub/irs-pdf/f1040s1a.pdf" target="_blank" rel="noopener noreferrer">Schedule 1-A (Form 1040) 2025 (PDF)</a></li>
+          <li><a class="text-blue-600 hover:text-blue-700 transition font-medium" href="https://www.irs.gov/forms-pubs/occupations-that-customarily-and-regularly-received-tips-on-or-before-december-31-2024" target="_blank" rel="noopener noreferrer">IRS: List of tipped occupations (qualified tips)</a></li>
+          <li><a class="text-blue-600 hover:text-blue-700 transition font-medium" href="https://www.irs.gov/newsroom/treasury-irs-issue-guidance-on-trump-accounts-established-under-the-working-families-tax-cuts-notice-announces-upcoming-regulations" target="_blank" rel="noopener noreferrer">Treasury/IRS: Trump Accounts guidance</a></li>
+          <li><a class="text-blue-600 hover:text-blue-700 transition font-medium" href="https://www.ftb.ca.gov/forms/2025/2025-540-ca-instructions.html" target="_blank" rel="noopener noreferrer">California FTB: Schedule CA (540) instructions and federal conformity notes</a></li>
+        </ul>
+      </section>
+
+      <a href="/blogs/" class="text-blue-600 font-medium hover:text-blue-700 transition">← Back to all posts</a>
+    </div>
+  </main>
+
+  <!-- RELATED POSTS -->
+  <aside class="bg-gray-50 py-12">
+    <div class="container mx-auto px-6 max-w-5xl">
+      <h2 class="text-2xl font-bold text-blue-900 mb-6">You might also like</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <a href="/blogs/w4-de4-withholding-guide-california.html" class="block border rounded-lg p-5 hover:shadow-md transition bg-white">
+          <div class="text-sm text-blue-700 mb-1">Individuals • California</div>
+          <div class="font-semibold text-gray-900 mb-2">How to Adjust Your W-4 in 2026 (Plus California DE 4)</div>
+          <p class="text-gray-600 text-sm">Fix withholding and avoid surprises.</p>
+        </a>
+        <a href="/blogs/rsus-stock-sales-explained.html" class="block border rounded-lg p-5 hover:shadow-md transition bg-white">
+          <div class="text-sm text-blue-700 mb-1">Individuals • Stock Comp</div>
+          <div class="font-semibold text-gray-900 mb-2">RSUs and Stock Sales Explained</div>
+          <p class="text-gray-600 text-sm">Vesting vs selling, withholding, and cost basis.</p>
+        </a>
+        <a href="/blogs/top-tax-credits-california-families.html" class="block border rounded-lg p-5 hover:shadow-md transition bg-white">
+          <div class="text-sm text-blue-700 mb-1">Individuals • California</div>
+          <div class="font-semibold text-gray-900 mb-2">Top Tax Credits California Families Shouldn't Miss</div>
+          <p class="text-gray-600 text-sm">Credits to review before filing.</p>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-950 text-white py-12">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <div class="text-2xl font-bold mb-4"><span class="text-blue-400">Blooming</span> Financial</div>
+          <p class="text-blue-200 mb-4">Professional financial services for small businesses and individuals in California.</p>
+          <div class="flex space-x-4">
+            <a href="https://www.instagram.com/blooming.financial/" class="text-blue-300 hover:text-white text-xl" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.yelp.com/biz/blooming-financial-cupertino" class="text-blue-300 hover:text-white text-xl"><i class="fab fa-yelp"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-bold text-lg mb-4">Services</h3>
+          <ul class="space-y-2">
+            <li><a href="/#service-bookkeeping" class="text-blue-200 hover:text-white transition">Bookkeeping</a></li>
+            <li><a href="/#service-tax" class="text-blue-200 hover:text-white transition">Tax Preparation</a></li>
+            <li><a href="/#service-payroll" class="text-blue-200 hover:text-white transition">Payroll Services</a></li>
+            <li><a href="/#service-consulting" class="text-blue-200 hover:text-white transition">Business Consulting</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold text-lg mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="/" class="text-blue-200 hover:text-white transition">Home</a></li>
+            <li><a href="/#services" class="text-blue-200 hover:text-white transition">Services</a></li>
+            <li><a href="/#about" class="text-blue-200 hover:text-white transition">About Us</a></li>
+            <li><a href="/#testimonials" class="text-blue-200 hover:text-white transition">Testimonials</a></li>
+            <li><a href="/#contact" class="text-blue-200 hover:text-white transition">Contact</a></li>
+            <li><a href="/blogs" class="text-blue-200 hover:text-white transition">Blogs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold text-lg mb-4">Contact</h3>
+          <ul class="space-y-2 text-blue-200">
+            <li class="flex items-start"><i class="fas fa-phone-alt mt-1 mr-2 text-sm"></i><span>(408) 365-4671</span></li>
+            <li class="flex items-start"><i class="fas fa-envelope mt-1 mr-2 text-sm"></i><span>info@bloomingfinancials.com</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-blue-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-blue-300 text-sm mb-4 md:mb-0">© 2026 Blooming Financial. All rights reserved.</p>
+        <div class="flex space-x-6 text-sm">
+          <a href="/privacy/" class="text-blue-300 hover:text-white">Privacy Policy</a>
+          <a href="/terms/" class="text-blue-300 hover:text-white">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="hidden fixed bottom-6 left-6 bg-blue-600 text-white w-12 h-12 rounded-full shadow-lg hover:bg-blue-700 transition z-50"><i class="fas fa-arrow-up"></i></button>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Navigating Your 2025 Taxes: Key Changes You Need to Know",
+    "description": "An easy guide to major 2025 federal tax changes: higher standard deduction, bigger SALT cap, child tax credit update, and new Schedule 1-A deductions for tips, overtime, car loan interest, seniors, plus Trump Accounts and California notes.",
+    "author": { "@type": "Organization", "name": "Blooming Financial" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Blooming Financial",
+      "logo": { "@type": "ImageObject", "url": "https://www.bloomingfinancials.com/favicon-32x32.png" }
+    },
+    "datePublished": "2026-02-22",
+    "dateModified": "2026-02-22",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.bloomingfinancials.com/blogs/2025-tax-law-changes.html"
+    }
+  }
+  </script>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Mobile nav toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu   = document.getElementById('mobileMenu');
+    if (mobileToggle) {
+      mobileToggle.addEventListener('click', () => {
+        const hidden = mobileMenu.classList.contains('-translate-y-full');
+        if (hidden) {
+          mobileMenu.classList.remove('-translate-y-full');
+          mobileMenu.classList.add('translate-y-0','shadow-lg');
+        } else {
+          mobileMenu.classList.add('-translate-y-full');
+          mobileMenu.classList.remove('translate-y-0','shadow-lg');
+        }
+      });
+      document.querySelectorAll('#mobileMenu a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('-translate-y-full');
+          mobileMenu.classList.remove('translate-y-0','shadow-lg');
+        });
+      });
+    }
+
+    // Back to top
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) backToTop.classList.remove('hidden');
+      else backToTop.classList.add('hidden');
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+  </script>
+</body>
+</html>
