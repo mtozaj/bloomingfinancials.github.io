@@ -40,6 +40,8 @@
     .warning { background: #fff7ed; border-left: 4px solid #f97316; }
     .pros { background: #f0fdf4; border-left: 4px solid #22c55e; }
     .toc a { color: #1d4ed8; }
+    #mobileMenu { transition: transform 300ms ease-in-out, opacity 300ms ease-in-out, visibility 0s linear 300ms; }
+    #mobileMenu:not(.invisible) { transition-delay: 0s; }
   </style>
 </head>
 
@@ -71,7 +73,7 @@
   </nav>
 
   <!-- Mobile Menu -->
-  <div id="mobileMenu" class="fixed inset-x-0 top-14 w-full bg-white transform -translate-y-full transition-transform duration-300 ease-in-out z-40 md:hidden">
+  <div id="mobileMenu" class="fixed inset-x-0 top-14 w-full bg-white transform -translate-y-full opacity-0 invisible pointer-events-none transition-all duration-300 ease-in-out z-40 md:hidden" aria-hidden="true">
     <div class="flex flex-col space-y-4 p-6">
       <a href="/" class="nav-link text-gray-700 hover:text-blue-600 transition">Home</a>
       <a href="/services/" class="nav-link text-gray-700 hover:text-blue-600 transition">Services</a>
@@ -452,17 +454,20 @@
       mobileToggle.addEventListener('click', () => {
         const hidden = mobileMenu.classList.contains('-translate-y-full');
         if (hidden) {
-          mobileMenu.classList.remove('-translate-y-full');
-          mobileMenu.classList.add('translate-y-0','shadow-lg');
+          mobileMenu.classList.remove('-translate-y-full','opacity-0','invisible','pointer-events-none');
+          mobileMenu.classList.add('translate-y-0','opacity-100','visible','pointer-events-auto','shadow-lg');
+          mobileMenu.setAttribute('aria-hidden','false');
         } else {
-          mobileMenu.classList.add('-translate-y-full');
-          mobileMenu.classList.remove('translate-y-0','shadow-lg');
+          mobileMenu.classList.add('-translate-y-full','opacity-0','invisible','pointer-events-none');
+          mobileMenu.classList.remove('translate-y-0','opacity-100','visible','pointer-events-auto','shadow-lg');
+          mobileMenu.setAttribute('aria-hidden','true');
         }
       });
       document.querySelectorAll('#mobileMenu a').forEach(link => {
         link.addEventListener('click', () => {
-          mobileMenu.classList.add('-translate-y-full');
-          mobileMenu.classList.remove('translate-y-0','shadow-lg');
+          mobileMenu.classList.add('-translate-y-full','opacity-0','invisible','pointer-events-none');
+          mobileMenu.classList.remove('translate-y-0','opacity-100','visible','pointer-events-auto','shadow-lg');
+          mobileMenu.setAttribute('aria-hidden','true');
         });
       });
     }
