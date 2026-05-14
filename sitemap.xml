@@ -2,45 +2,108 @@
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.bloomingfinancials.com/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bloomingfinancials.com/services/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.bloomingfinancials.com/services/individual-tax-preparation/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bloomingfinancials.com/services/business-tax-preparation/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bloomingfinancials.com/services/tax-planning/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bloomingfinancials.com/services/bookkeeping/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bloomingfinancials.com/services/payroll/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bloomingfinancials.com/services/irs-ftb-notice-support/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bloomingfinancials.com/services/business-consulting/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.bloomingfinancials.com/blogs/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.bloomingfinancials.com/blogs/startup-tax-deductions.html</loc>
+    <lastmod>2024-11-10</lastmod>
+    <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.bloomingfinancials.com/blogs/payroll-compliance-checklist-california.html</loc>
+    <lastmod>2025-01-15</lastmod>
+    <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.bloomingfinancials.com/blogs/top-tax-credits-california-families.html</loc>
+    <lastmod>2025-02-04</lastmod>
+    <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.bloomingfinancials.com/blogs/llc-s-corp-c-corp-california.html</loc>
+    <lastmod>2025-07-27</lastmod>
+    <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.bloomingfinancials.com/blogs/w4-de4-withholding-guide-california.html</loc>
+    <lastmod>2026-01-23</lastmod>
+    <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.bloomingfinancials.com/blogs/rsus-stock-sales-explained.html</loc>
+    <lastmod>2026-01-24</lastmod>
+    <priority>0.6</priority>
   </url>
-  
+
   <url>
     <loc>https://www.bloomingfinancials.com/blogs/2025-tax-law-changes.html</loc>
+    <lastmod>2026-02-22</lastmod>
+    <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.bloomingfinancials.com/privacy/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://www.bloomingfinancials.com/terms/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <priority>0.3</priority>
   </url>
 </urlset>
