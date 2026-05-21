@@ -101,7 +101,22 @@
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 transition">Home</a>
-                    <a href="/services/" class="nav-link text-gray-700 hover:text-blue-600 transition">Services</a>
+                    <div class="relative" data-services-menu>
+                        <a href="/services/" class="nav-link text-gray-700 hover:text-blue-600 transition inline-flex items-center" aria-haspopup="true" aria-expanded="false">
+                            Services
+                            <i class="fas fa-chevron-down ml-1 text-xs" aria-hidden="true"></i>
+                        </a>
+                        <div data-services-panel class="absolute left-0 top-full mt-2 w-72 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 hidden z-50">
+                            <a href="/services/" class="block px-4 py-2 text-sm font-semibold text-blue-900 hover:bg-blue-50 border-b border-gray-100">All Services</a>
+                            <a href="/services/individual-tax-preparation/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">Individual Tax Preparation</a>
+                            <a href="/services/business-tax-preparation/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">Business Tax Preparation</a>
+                            <a href="/services/tax-planning/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">Tax Planning</a>
+                            <a href="/services/bookkeeping/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">Bookkeeping</a>
+                            <a href="/services/payroll/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">Payroll</a>
+                            <a href="/services/irs-ftb-notice-support/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">IRS &amp; FTB Notice Support</a>
+                            <a href="/services/business-consulting/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">Business Consulting</a>
+                        </div>
+                    </div>
                     <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 transition">About</a>
                     <a href="#testimonials" class="nav-link text-gray-700 hover:text-blue-600 transition">Testimonials</a>
                     <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 transition">Contact</a>
@@ -128,7 +143,23 @@
      aria-hidden="true">
         <div class="flex flex-col space-y-4 p-6">
             <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 transition">Home</a>
-            <a href="/services/" class="nav-link text-gray-700 hover:text-blue-600 transition">Services</a>
+            <div data-mobile-services>
+                <div class="flex items-center justify-between">
+                    <a href="/services/" class="nav-link text-gray-700 hover:text-blue-600 transition">Services</a>
+                    <button type="button" data-mobile-services-toggle aria-expanded="false" aria-label="Toggle services menu" class="p-2 text-gray-500 hover:text-blue-600">
+                        <i class="fas fa-chevron-down text-sm transition-transform" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div data-mobile-services-panel class="hidden flex-col space-y-2 pl-4 mt-2">
+                    <a href="/services/individual-tax-preparation/" class="text-gray-600 hover:text-blue-600 transition py-1 block">Individual Tax Preparation</a>
+                    <a href="/services/business-tax-preparation/" class="text-gray-600 hover:text-blue-600 transition py-1 block">Business Tax Preparation</a>
+                    <a href="/services/tax-planning/" class="text-gray-600 hover:text-blue-600 transition py-1 block">Tax Planning</a>
+                    <a href="/services/bookkeeping/" class="text-gray-600 hover:text-blue-600 transition py-1 block">Bookkeeping</a>
+                    <a href="/services/payroll/" class="text-gray-600 hover:text-blue-600 transition py-1 block">Payroll</a>
+                    <a href="/services/irs-ftb-notice-support/" class="text-gray-600 hover:text-blue-600 transition py-1 block">IRS &amp; FTB Notice Support</a>
+                    <a href="/services/business-consulting/" class="text-gray-600 hover:text-blue-600 transition py-1 block">Business Consulting</a>
+                </div>
+            </div>
             <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 transition">About</a>
             <a href="#testimonials" class="nav-link text-gray-700 hover:text-blue-600 transition">Testimonials</a>
             <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 transition">Contact</a>
@@ -193,9 +224,65 @@
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">Comprehensive financial solutions designed to meet your business and personal financial needs</p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Individual Tax Preparation Card -->
+                <div class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-user text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">Individual Tax Preparation</h3>
+                    <p class="text-gray-600 mb-4">Federal and California returns for W-2 employees, self-employed, RSU and stock sales, rentals, multi-state, prior-year, and amended returns.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Federal &amp; California filings</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>RSU &amp; stock sale reporting</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Multi-state &amp; part-year</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Prior-year &amp; amended returns</span>
+                        </li>
+                    </ul>
+                    <a href="/services/individual-tax-preparation/" class="inline-block mt-6 text-blue-600 font-medium hover:text-blue-700 transition">Learn more →</a>
+                </div>
+
+                <!-- Business Tax Preparation Card -->
+                <div class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-briefcase text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">Business Tax Preparation</h3>
+                    <p class="text-gray-600 mb-4">Schedule C, LLCs, partnerships, S corporations, and California small-business filings, coordinated with your individual return.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Schedule C, LLC, S-Corp</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Partnership returns</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>California LLC tax &amp; fee guidance</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Coordinated with individual return</span>
+                        </li>
+                    </ul>
+                    <a href="/services/business-tax-preparation/" class="inline-block mt-6 text-blue-600 font-medium hover:text-blue-700 transition">Learn more →</a>
+                </div>
+
                 <!-- Bookkeeping Card -->
-                <div id="service-bookkeeping" class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300">
+                <div class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300">
                     <div class="text-blue-600 mb-4">
                         <i class="fas fa-calculator text-4xl"></i>
                     </div>
@@ -204,7 +291,7 @@
                     <ul class="space-y-2 text-gray-600">
                         <li class="flex items-start">
                             <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
-                            <span>Data entry & reconciliation</span>
+                            <span>Data entry &amp; reconciliation</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
@@ -222,36 +309,8 @@
                     <a href="/services/bookkeeping/" class="inline-block mt-6 text-blue-600 font-medium hover:text-blue-700 transition">Learn more →</a>
                 </div>
 
-                <!-- Tax Preparation Card -->
-                <div id="service-tax" class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fas fa-file-invoice-dollar text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-blue-900 mb-3">Tax Preparation</h3>
-                    <p class="text-gray-600 mb-4">Comprehensive tax services for individuals and small businesses &mdash; federal, California, and multi-state filings.</p>
-                    <ul class="space-y-2 text-gray-600">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
-                            <span>Federal & state filings</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
-                            <span>Quarterly estimated taxes</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
-                            <span>Strategic tax planning</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
-                            <span>Electronic filing & compliance</span>
-                        </li>
-                    </ul>
-                    <a href="/services/" class="inline-block mt-6 text-blue-600 font-medium hover:text-blue-700 transition">Learn more →</a>
-                </div>
-
                 <!-- Payroll Card -->
-                <div id="service-payroll" class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300">
+                <div class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300">
                     <div class="text-blue-600 mb-4">
                         <i class="fas fa-money-check-alt text-4xl"></i>
                     </div>
@@ -268,7 +327,7 @@
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
-                            <span>Tax filings & compliance</span>
+                            <span>Tax filings &amp; compliance</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
@@ -279,7 +338,7 @@
                 </div>
 
                 <!-- Consulting Card -->
-                <div id="service-consulting" class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300">
+                <div class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300">
                     <div class="text-blue-600 mb-4">
                         <i class="fas fa-chart-line text-4xl"></i>
                     </div>
@@ -288,7 +347,7 @@
                     <ul class="space-y-2 text-gray-600">
                         <li class="flex items-start">
                             <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
-                            <span>Budgeting & cash flow analysis</span>
+                            <span>Budgeting &amp; cash flow analysis</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
@@ -296,7 +355,7 @@
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
-                            <span>Systems setup & optimization</span>
+                            <span>Systems setup &amp; optimization</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
@@ -893,6 +952,31 @@
               mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'visible', 'pointer-events-auto', 'shadow-lg');
               mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'invisible', 'pointer-events-none');
               mobileMenu.setAttribute('aria-hidden', 'true');
+            });
+        });
+
+        // Desktop services dropdown
+        document.querySelectorAll('[data-services-menu]').forEach(menu => {
+            const link  = menu.querySelector('a[aria-haspopup]');
+            const panel = menu.querySelector('[data-services-panel]');
+            const open  = () => { panel.classList.remove('hidden'); link.setAttribute('aria-expanded', 'true'); };
+            const close = () => { panel.classList.add('hidden');    link.setAttribute('aria-expanded', 'false'); };
+            menu.addEventListener('mouseenter', open);
+            menu.addEventListener('mouseleave', close);
+            link.addEventListener('focus', open);
+            menu.addEventListener('focusout', e => { if (!menu.contains(e.relatedTarget)) close(); });
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+        });
+
+        // Mobile services accordion
+        document.querySelectorAll('[data-mobile-services]').forEach(group => {
+            const toggle = group.querySelector('[data-mobile-services-toggle]');
+            const panel  = group.querySelector('[data-mobile-services-panel]');
+            toggle.addEventListener('click', () => {
+                const willOpen = panel.classList.contains('hidden');
+                panel.classList.toggle('hidden');
+                toggle.setAttribute('aria-expanded', String(willOpen));
+                toggle.querySelector('i').classList.toggle('rotate-180');
             });
         });
 
