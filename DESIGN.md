@@ -6,7 +6,7 @@ Blooming Financial is a static marketing website for a tax preparation, bookkeep
 
 The repository is the source of truth. Do not invent product names, slogans, services, locations, testimonials, claims, credentials, prices, or features that are not present in the site files.
 
-The repository currently does not contain a README, package.json, framework configuration, design token file, CLI help text, schemas outside page-level JSON-LD, or a centralized design system. The website is built from plain HTML files with Tailwind CSS via CDN, Open Sans from Google Fonts, Font Awesome icons, inline CSS, inline JavaScript, static SVG blog images, Formspree forms, and Google Analytics.
+The repository currently does not contain a package.json, framework configuration, design token file, CLI help text, schemas outside page-level JSON-LD, or a centralized design system. A high-level `README.md` does exist. The website is built from plain HTML files with Tailwind CSS via CDN, Open Sans from Google Fonts, Font Awesome icons, inline CSS, inline JavaScript, static SVG blog images, Formspree forms, and Google Analytics.
 
 ## Current site identity
 
@@ -19,24 +19,8 @@ Blooming Financial | Bookkeeping, Tax & Payroll Services in California – Bay A
 Current homepage meta description:
 Professional bookkeeping, tax preparation, payroll, and consulting services for individuals and small businesses across California. Serving Cupertino, San Jose, San Francisco, Los Angeles, San Diego, Sacramento, and statewide with personalized financial care.
 
-Current homepage hero headline:
-Financial Services That Help Your Business Grow and Your Finances Flourish
-
-Current homepage hero subtext:
-Professional bookkeeping, tax preparation, payroll, and consulting services tailored for individuals and small businesses in California.
-
-Primary CTA text:
-Book Free Consultation
-
-Secondary CTA text:
-Our Services
-
-Trust indicators:
-- CTEC Registered Tax Preparer
-- IRS Authorized E-File Provider
-- Serving California
-- 5-Star Reviews
-- Secure & Confidential
+Hero pattern:
+The homepage hero pairs a service-led headline with a single descriptive subline and two CTAs — a primary booking CTA and a secondary link to the services hub — followed by a strip of trust indicators (credentials, area served, review proof, security note). Use the homepage HTML as the source of truth for exact wording. Do not invent additional CTAs, credentials, or claims. See the Tone section for preferred CTA language.
 
 Contact information:
 - Phone: (408) 365-4671
@@ -101,88 +85,22 @@ Use these exact service names unless the page source uses a longer page title:
 - IRS & FTB Notice Support
 - Business Consulting
 
-Homepage service card content currently includes:
+Homepage service card pattern:
+The homepage surfaces a subset of the seven services as cards, each with an icon, the canonical service name as the H3, a one-sentence description, three to four short bullets, and a "Learn more →" link to the matching `/services/<slug>/` detail page. The homepage HTML is the source of truth for which cards currently appear, their order, and their copy.
 
-Individual Tax Preparation:
-Federal and California returns for W-2 employees, self-employed, RSU and stock sales, rentals, multi-state, prior-year, and amended returns.
-- Federal & California filings
-- RSU & stock sale reporting
-- Multi-state & part-year
-- Prior-year & amended returns
-
-Business Tax Preparation:
-Schedule C, LLCs, partnerships, S corporations, and California small-business filings, coordinated with your individual return.
-- Schedule C, LLC, S-Corp
-- Partnership returns
-- California LLC tax & fee guidance
-- Coordinated with individual return
-
-Bookkeeping:
-Accurate financial records to keep your business or personal finances compliant and informed.
-- Data entry & reconciliation
-- Financial reporting
-- Tax preparation support
-- Accounts payable/receivable
-
-Payroll Services:
-Reliable payroll processing so you can focus on your business.
-- Monthly payroll processing
-- Contractor payments
-- Tax filings & compliance
-- Direct deposit setup
-
-Business Consulting:
-Strategic guidance to help your business thrive.
-- Budgeting & cash flow analysis
-- Financial strategy development
-- Systems setup & optimization
-- Business growth planning
-
-The full navigation and sitemap also include Tax Planning and IRS & FTB Notice Support. If designing a service overview, show all seven services, not only the five homepage cards.
+The full navigation and sitemap include all seven services. If designing a service overview, show all seven services, not only the homepage cards. Tax Planning and IRS & FTB Notice Support remain accessible through the Services nav dropdown, the footer, and `/services/`.
 
 ## About content
 
-Use the real homepage about content as the source of truth.
-
-Blooming Financial was founded in 2024. It provides personalized financial services to individuals and small businesses across California. The firm serves clients throughout California, with roots in local communities including Cupertino, the Bay Area, Los Angeles, San Diego, Sacramento, and beyond.
-
-Existing quote:
-“We don't just crunch numbers - we build relationships and help our clients understand their financial position to make informed financial decisions.”
-
-Existing supporting value:
-Affordable Pricing
-Customized packages to fit your budget
+The About section establishes founding context, the firm's California service area with roots in local communities, an owner quote about the firm's approach to client relationships, and a supporting value statement. Use the homepage HTML as the source of truth for the exact copy. Do not invent founding dates, team member names, offices beyond what is already referenced on the site, or values that are not already present.
 
 ## Testimonials
 
-Use only these testimonials unless new approved testimonials are added to the repo.
-
-준혁:
-“Great customer services, nice people who are working there, fast and accurate works. People were very thoughtful and smart.”
-Individual Client, Santa Clara
-
-Sahara T.:
-“I LOVE THIS BOOKEEPER! So grateful I found them. It was on a whim as my last bookkeeper retired. I was very worried I wouldn't find the same quality... but not only did I find quality, they are exceptional. They're not just great at what they do....they're genuinely kind, patient, and very easy to work with. I felt supported, never judged, and they make something stressful (bookkeeping!) feel simple and manageable.”
-Business Owner, San Diego
-
-John B.:
-“Moving my business across California was overwhelming, but Blooming Financial made it so much easier! They were super helpful, always quick to respond, and walked me through everything. I'm really grateful for their support! 10/10 would recommend!”
-Restaurant Owner, La Mesa
+The homepage carries real reviews from Yelp and Google with verbatim quotes, name, role or location, and source attribution shown inline next to the reviewer (with the Yelp or Google brand icon). Treat the homepage HTML as the source of truth for which testimonials currently appear, their order, and their attribution. Do not invent client names, quotes, locations, or attributions — see the "Do not invent" section. When adding new approved reviews, include source attribution so visitors can tell which platform the review came from.
 
 ## Consultation content
 
-Current consultation section headline:
-Ready to Get Started?
-
-Current consultation text:
-Schedule your free 30-minute consultation to discuss your financial needs and how we can help.
-
-Current consultation value points:
-- No obligation, no pressure
-- Personalized recommendations
-- Clear pricing information
-
-Use the existing consultation form fields and client-type logic if showing forms. Do not invent extra form fields unless explicitly requested.
+The consultation section pairs a short "ready to get started" headline with one explanatory line about the free 30-minute consultation, a small set of value points (no obligation, personalized recommendations, clear pricing), and the consultation form. Use the homepage HTML as the source of truth for exact copy. Use the existing consultation form fields and client-type logic if showing forms. Do not invent extra form fields unless explicitly requested.
 
 ## Blog/resource themes
 
