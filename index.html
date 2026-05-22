@@ -425,7 +425,7 @@
                     <i class="fas fa-chevron-right"></i>
                 </button>
 
-                <div data-testimonial-track class="testimonial-track flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 cursor-grab select-none">
+                <div data-testimonial-track class="testimonial-track flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4">
                     <!-- 1. Mahmoud T. -->
                     <div class="testimonial-card flex flex-col flex-shrink-0 snap-start w-[88%] md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] bg-gray-50 p-8 rounded-lg">
                         <div class="flex items-center mb-4">
@@ -1056,81 +1056,48 @@
             });
         });
 
-        // Testimonial carousel: clone for infinite loop, arrow buttons, mouse drag-to-scroll.
+        // Testimonial carousel: native scroll/swipe with arrow buttons.
         document.querySelectorAll('[data-testimonial-carousel]').forEach(carousel => {
             const track = carousel.querySelector('[data-testimonial-track]');
             const prev  = carousel.querySelector('[data-testimonial-prev]');
             const next  = carousel.querySelector('[data-testimonial-next]');
             if (!track) return;
 
-            // Snapshot originals before cloning so clones don't beget clones.
-            const originals = Array.from(track.children);
+            const cards = Array.from(track.children);
             const gapPx = () => parseInt(getComputedStyle(track).columnGap) || 24;
-            const setWidth = () => originals.reduce((sum, c) => sum + c.offsetWidth + gapPx(), 0);
-
-            // Clone the original set once before and once after for seamless looping.
-            const buildClones = () => {
-                const frag = document.createDocumentFragment();
-                originals.forEach(card => {
-                    const c = card.cloneNode(true);
-                    c.setAttribute('aria-hidden', 'true');
-                    c.setAttribute('data-clone', 'true');
-                    frag.appendChild(c);
-                });
-                return frag;
-            };
-            track.insertBefore(buildClones(), track.firstChild);
-            track.appendChild(buildClones());
-
-            // Position user at the start of the originals (after the prepended clones).
-            requestAnimationFrame(() => { track.scrollLeft = setWidth(); });
-
-            // Teleport across clone boundaries to fake infinite scroll.
-            let ticking = false;
-            track.addEventListener('scroll', () => {
-                if (ticking) return;
-                ticking = true;
-                requestAnimationFrame(() => {
-                    ticking = false;
-                    const w = setWidth();
-                    const sl = track.scrollLeft;
-                    if (sl < w) { track.scrollLeft = sl + w; }
-                    else if (sl >= w * 2) { track.scrollLeft = sl - w; }
-                });
-            });
 
             // Arrow buttons advance by one card width.
             const scrollByOne = (dir) => {
-                const card = originals[0];
+                const card = cards[0];
                 if (!card) return;
                 track.scrollBy({ left: (card.offsetWidth + gapPx()) * dir, behavior: 'smooth' });
             };
             prev?.addEventListener('click', () => scrollByOne(-1));
             next?.addEventListener('click', () => scrollByOne(1));
 
-            // Mouse drag-to-scroll. 5px threshold so simple clicks still select text inside cards.
-            let isDown = false, startX = 0, startScroll = 0, dragged = false;
-            const DRAG_THRESHOLD = 5;
-            track.addEventListener('mousedown', e => {
-                isDown = true; dragged = false;
-                startX = e.pageX; startScroll = track.scrollLeft;
+            const updateArrowVisibility = () => {
+                const maxScrollLeft = track.scrollWidth - track.clientWidth;
+                const atStart = track.scrollLeft <= 1;
+                const atEnd = track.scrollLeft >= maxScrollLeft - 1;
+
+                if (prev) {
+                    prev.classList.toggle('hidden', atStart || maxScrollLeft <= 1);
+                }
+                if (next) {
+                    next.classList.toggle('hidden', atEnd || maxScrollLeft <= 1);
+                }
+            };
+
+            let rafId = null;
+            track.addEventListener('scroll', () => {
+                if (rafId) return;
+                rafId = requestAnimationFrame(() => {
+                    rafId = null;
+                    updateArrowVisibility();
+                });
             });
-            track.addEventListener('mousemove', e => {
-                if (!isDown) return;
-                const delta = e.pageX - startX;
-                if (!dragged && Math.abs(delta) < DRAG_THRESHOLD) return;
-                dragged = true;
-                track.classList.add('cursor-grabbing');
-                e.preventDefault();
-                track.scrollLeft = startScroll - delta * 1.5;
-            });
-            const endDrag = () => { isDown = false; track.classList.remove('cursor-grabbing'); };
-            track.addEventListener('mouseup', endDrag);
-            track.addEventListener('mouseleave', endDrag);
-            // Suppress click events that follow a drag (capture phase) so card text doesn't get accidentally selected/clicked.
-            track.addEventListener('click', e => {
-                if (dragged) { e.preventDefault(); e.stopPropagation(); dragged = false; }
-            }, true);
+            window.addEventListener('resize', updateArrowVisibility);
+            requestAnimationFrame(updateArrowVisibility);
         });
 
         // FAQ toggle functionality
