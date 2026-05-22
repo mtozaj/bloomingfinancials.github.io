@@ -58,19 +58,28 @@
         <div class="hidden md:flex items-center space-x-8">
           <a href="/" class="nav-link text-gray-700 hover:text-blue-600 transition">Home</a>
           <div class="relative" data-services-menu>
-            <a href="/services/" class="nav-link text-gray-700 hover:text-blue-600 transition inline-flex items-center" aria-haspopup="true" aria-expanded="false">
+            <a href="/services/" class="nav-link text-gray-700 hover:text-blue-600 transition inline-flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
               Services
-              <i class="fas fa-chevron-down ml-1 text-xs" aria-hidden="true"></i>
+              <i class="fas fa-chevron-down text-xs" aria-hidden="true"></i>
             </a>
-            <div data-services-panel class="absolute left-0 top-full w-72 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 hidden z-50">
-              <a href="/services/" class="block px-4 py-2 text-sm font-semibold text-blue-900 hover:bg-blue-50 border-b border-gray-100">All Services</a>
-              <a href="/services/individual-tax-preparation/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">Individual Tax Preparation</a>
-              <a href="/services/business-tax-preparation/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">Business Tax Preparation</a>
-              <a href="/services/tax-planning/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">Tax Planning</a>
-              <a href="/services/bookkeeping/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">Bookkeeping</a>
-              <a href="/services/payroll/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">Payroll</a>
-              <a href="/services/irs-ftb-notice-support/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">IRS &amp; FTB Notice Support</a>
-              <a href="/services/business-consulting/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">Business Consulting</a>
+            <div data-services-panel class="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-[34rem] hidden z-50">
+                <div class="bg-white rounded-xl border border-gray-100 shadow-xl shadow-blue-900/10 ring-1 ring-black/5 p-5">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <p class="px-3 pb-2 text-xs font-semibold uppercase tracking-wide text-blue-800">Tax</p>
+                            <a href="/services/individual-tax-preparation/" class="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">Individual Tax Preparation</a>
+                            <a href="/services/business-tax-preparation/" class="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">Business Tax Preparation</a>
+                            <a href="/services/tax-planning/" class="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">Tax Planning</a>
+                            <a href="/services/irs-ftb-notice-support/" class="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">IRS &amp; FTB Notice Support</a>
+                        </div>
+                        <div>
+                            <p class="px-3 pb-2 text-xs font-semibold uppercase tracking-wide text-blue-800">Business</p>
+                            <a href="/services/bookkeeping/" class="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">Bookkeeping</a>
+                            <a href="/services/payroll/" class="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">Payroll</a>
+                            <a href="/services/business-consulting/" class="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700">Business Consulting</a>
+                        </div>
+                    </div>
+                </div>
             </div>
           </div>
           <a href="/#about" class="nav-link text-gray-700 hover:text-blue-600 transition">About</a>
