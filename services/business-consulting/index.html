@@ -35,6 +35,7 @@
     .nav-link:hover { color: #3b82f6; }
     #mobileMenu { transition: transform 300ms ease-in-out, opacity 300ms ease-in-out, visibility 0s linear 300ms; }
     #mobileMenu:not(.invisible) { transition-delay: 0s; }
+    body.mobile-menu-open { overflow: hidden; }
   </style>
 
   <script type="application/ld+json">
@@ -161,10 +162,48 @@
   <script>
     const mobileToggle = document.getElementById('mobileToggle');
     const mobileMenu = document.getElementById('mobileMenu');
-    mobileToggle.addEventListener('click', () => { const h = mobileMenu.classList.contains('-translate-y-full'); if (h) { mobileMenu.classList.remove('-translate-y-full','opacity-0','invisible','pointer-events-none'); mobileMenu.classList.add('translate-y-0','opacity-100','visible','pointer-events-auto','shadow-lg'); mobileMenu.setAttribute('aria-hidden','false'); } else { mobileMenu.classList.add('-translate-y-full','opacity-0','invisible','pointer-events-none'); mobileMenu.classList.remove('translate-y-0','opacity-100','visible','pointer-events-auto','shadow-lg'); mobileMenu.setAttribute('aria-hidden','true'); } });
-    document.querySelectorAll('#mobileMenu a').forEach(l => l.addEventListener('click', () => { mobileMenu.classList.add('-translate-y-full','opacity-0','invisible','pointer-events-none'); mobileMenu.classList.remove('translate-y-0','opacity-100','visible','pointer-events-auto','shadow-lg'); mobileMenu.setAttribute('aria-hidden','true'); }));
+    mobileToggle.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('-translate-y-full');
+            if (isHidden) {
+                openMobileMenu();
+            } else {
+                closeMobileMenu();
+            }
+        });
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        closeMobileMenu();
+      });
 
-    // Desktop services dropdown
+
+    const resetMobileServicesMenus = () => {
+            document.querySelectorAll('[data-mobile-services]').forEach(group => {
+                const toggle = group.querySelector('[data-mobile-services-toggle]');
+                const panel = group.querySelector('[data-mobile-services-panel]');
+                const icon = toggle?.querySelector('i');
+                panel?.classList.add('hidden');
+                panel?.classList.remove('flex');
+                toggle?.setAttribute('aria-expanded', 'false');
+                icon?.classList.remove('rotate-180');
+            });
+        };
+
+        const openMobileMenu = () => {
+            mobileMenu.classList.remove('-translate-y-full', 'opacity-0', 'invisible', 'pointer-events-none');
+            mobileMenu.classList.add('translate-y-0', 'opacity-100', 'visible', 'pointer-events-auto', 'shadow-lg');
+            mobileMenu.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('mobile-menu-open');
+        };
+
+        const closeMobileMenu = () => {
+            mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'visible', 'pointer-events-auto', 'shadow-lg');
+            mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'invisible', 'pointer-events-none');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('mobile-menu-open');
+            resetMobileServicesMenus();
+        };
+
+// Desktop services dropdown
     document.querySelectorAll('[data-services-menu]').forEach(menu => {
       const link  = menu.querySelector('a[aria-haspopup]');
       const panel = menu.querySelector('[data-services-panel]');
