@@ -84,6 +84,8 @@
         .testimonial-card {
             border-left: 4px solid #3b82f6;
         }
+        .testimonial-track::-webkit-scrollbar { display: none; }
+        .testimonial-track { scrollbar-width: none; }
         #mobileMenu { transition: transform 300ms ease-in-out, opacity 300ms ease-in-out, visibility 0s linear 300ms; }
         #mobileMenu:not(.invisible) { transition-delay: 0s; }
     body.mobile-menu-open { overflow: hidden; }
@@ -410,86 +412,142 @@
     <!-- Testimonials Section -->
     <section id="testimonials" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">What Our Clients Say</h2>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">Don't just take our word for it - hear from our satisfied clients</p>
             </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card bg-gray-50 p-8 rounded-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 mr-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+
+            <div class="relative" data-testimonial-carousel>
+                <button type="button" data-testimonial-prev aria-label="Previous testimonials" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 lg:-translate-x-4 z-10 w-12 h-12 items-center justify-center bg-white shadow-lg rounded-full text-blue-600 hover:bg-blue-50 transition">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button type="button" data-testimonial-next aria-label="Next testimonials" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 lg:translate-x-4 z-10 w-12 h-12 items-center justify-center bg-white shadow-lg rounded-full text-blue-600 hover:bg-blue-50 transition">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <div data-testimonial-track class="testimonial-track flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 scroll-smooth">
+                    <!-- 1. Mahmoud T. -->
+                    <div class="testimonial-card flex flex-col flex-shrink-0 snap-start w-full md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] bg-gray-50 p-8 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
                         </div>
-                    </div>
-                    <p class="text-gray-700 mb-6">"Great customer services, nice people who are working there, fast and accurate works. People were very thoughtful and smart."</p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
-                            <span class="text-blue-600 font-bold">준혁</span>
-                        </div>
+                        <p class="text-gray-700 mb-6 flex-grow">"Working with Ajlin and Blooming Financial was a great experience. They made what could have been a complicated tax situation feel manageable and straightforward. My return included bonus depreciation and multiple business entities, yet they guided me through every step and were always available to answer questions."</p>
                         <div>
-                            <h4 class="font-bold text-blue-900">준혁</h4>
-                            <p class="text-gray-600">Individual Client, Santa Clara</p>
+                            <h4 class="font-bold text-blue-900">Mahmoud T.</h4>
+                            <p class="text-gray-600 text-sm flex items-center flex-wrap"><span>Business Tax Client</span><span class="mx-2 text-gray-400">|</span><i class="fab fa-yelp text-red-600 mr-1" aria-hidden="true"></i><span>Yelp Review</span></p>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card bg-gray-50 p-8 rounded-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 mr-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+
+                    <!-- 2. Sahara T. -->
+                    <div class="testimonial-card flex flex-col flex-shrink-0 snap-start w-full md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] bg-gray-50 p-8 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
                         </div>
-                    </div>
-                    <p class="text-gray-700 mb-6">"I LOVE THIS BOOKEEPER! So grateful I found them. It was on a whim as my last bookkeeper retired. I was very worried I wouldn't find the same quality... but not only did I find quality, they are exceptional. They're not just great at what they do....they're genuinely kind, patient, and very easy to work with. I felt supported, never judged, and they make something stressful (bookkeeping!) feel simple and manageable."</p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
-                            <span class="text-blue-600 font-bold">ST</span>
-                        </div>
+                        <p class="text-gray-700 mb-6 flex-grow">"I'm so grateful I found Blooming Financial. They are exceptional, genuinely kind, patient, and very easy to work with. I felt supported, never judged, and they made something stressful like bookkeeping feel simple and manageable."</p>
                         <div>
                             <h4 class="font-bold text-blue-900">Sahara T.</h4>
-                            <p class="text-gray-600">Business Owner, San Diego</p>
+                            <p class="text-gray-600 text-sm flex items-center flex-wrap"><span>Business Owner, San Diego</span><span class="mx-2 text-gray-400">|</span><i class="fab fa-yelp text-red-600 mr-1" aria-hidden="true"></i><span>Yelp Review</span></p>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card bg-gray-50 p-8 rounded-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 mr-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+
+                    <!-- 3. Crystal M. -->
+                    <div class="testimonial-card flex flex-col flex-shrink-0 snap-start w-full md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] bg-gray-50 p-8 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
                         </div>
-                    </div>
-                    <p class="text-gray-700 mb-6">"Moving my business across California was overwhelming, but Blooming Financial made it so much easier! They were super helpful, always quick to respond, and walked me through everything. I'm really grateful for their support! 10/10 would recommend!"</p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
-                            <span class="text-blue-600 font-bold">JB</span>
-                        </div>
+                        <p class="text-gray-700 mb-6 flex-grow">"Blooming Financial was very responsive and thorough. This was the only company that listened to my somewhat difficult case and reassured me they could take care of my financial obligations. I appreciated the upfront costs and attentive support."</p>
                         <div>
-                            <h4 class="font-bold text-blue-900">John B.</h4>
-                            <p class="text-gray-600">Restaurant Owner, La Mesa</p>
+                            <h4 class="font-bold text-blue-900">Crystal M.</h4>
+                            <p class="text-gray-600 text-sm flex items-center flex-wrap"><span>Client, Oakland</span><span class="mx-2 text-gray-400">|</span><i class="fab fa-yelp text-red-600 mr-1" aria-hidden="true"></i><span>Yelp Review</span></p>
+                        </div>
+                    </div>
+
+                    <!-- 4. Evan Sandrasagara -->
+                    <div class="testimonial-card flex flex-col flex-shrink-0 snap-start w-full md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] bg-gray-50 p-8 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-6 flex-grow">"Working with Ajlin was a great experience. She was highly responsive, engaged throughout the process, and incredibly easy to work with. They handled my return with diligence and speed without sacrificing attention to detail."</p>
+                        <div>
+                            <h4 class="font-bold text-blue-900">Evan Sandrasagara</h4>
+                            <p class="text-gray-600 text-sm flex items-center flex-wrap"><span>Individual Tax Client</span><span class="mx-2 text-gray-400">|</span><i class="fab fa-google text-blue-600 mr-1" aria-hidden="true"></i><span>Google Review</span></p>
+                        </div>
+                    </div>
+
+                    <!-- 5. Silas Salis -->
+                    <div class="testimonial-card flex flex-col flex-shrink-0 snap-start w-full md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] bg-gray-50 p-8 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-6 flex-grow">"Ajlin was very helpful during this stressful time. She took the time to explain everything to me and thoroughly answer any questions that I had during the process. I will be going back to Ajlin for next year's tax season."</p>
+                        <div>
+                            <h4 class="font-bold text-blue-900">Silas Salis</h4>
+                            <p class="text-gray-600 text-sm flex items-center flex-wrap"><span>Individual Tax Client</span><span class="mx-2 text-gray-400">|</span><i class="fab fa-google text-blue-600 mr-1" aria-hidden="true"></i><span>Google Review</span></p>
+                        </div>
+                    </div>
+
+                    <!-- 6. Victor L. -->
+                    <div class="testimonial-card flex flex-col flex-shrink-0 snap-start w-full md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] bg-gray-50 p-8 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-6 flex-grow">"Gabriela helped me file my 2025 taxes and it was the best, simplest and quickest way. The value is perfect for the speed, accuracy and professionalism. I will be seeing them again for next year."</p>
+                        <div>
+                            <h4 class="font-bold text-blue-900">Victor L.</h4>
+                            <p class="text-gray-600 text-sm flex items-center flex-wrap"><span>Individual Tax Client</span><span class="mx-2 text-gray-400">|</span><i class="fab fa-yelp text-red-600 mr-1" aria-hidden="true"></i><span>Yelp Review</span></p>
+                        </div>
+                    </div>
+
+                    <!-- 7. Sally T. -->
+                    <div class="testimonial-card flex flex-col flex-shrink-0 snap-start w-full md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] bg-gray-50 p-8 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-6 flex-grow">"Meiling is the best. She is very organized and knowledgeable. She explains everything and helps me in every way. She is also professional and, best of all, kind. I am referring her to friends."</p>
+                        <div>
+                            <h4 class="font-bold text-blue-900">Sally T.</h4>
+                            <p class="text-gray-600 text-sm flex items-center flex-wrap"><span>Individual Tax Client</span><span class="mx-2 text-gray-400">|</span><i class="fab fa-yelp text-red-600 mr-1" aria-hidden="true"></i><span>Yelp Review</span></p>
+                        </div>
+                    </div>
+
+                    <!-- 8. S L -->
+                    <div class="testimonial-card flex flex-col flex-shrink-0 snap-start w-full md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] bg-gray-50 p-8 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-6 flex-grow">"I found Blooming Financial recently and decided to give them a shot. I was looking for a bookkeeper as a new business owner, and I'm really glad I did. They've been easy to work with, organized, patient, and genuinely care about getting things right."</p>
+                        <div>
+                            <h4 class="font-bold text-blue-900">S L</h4>
+                            <p class="text-gray-600 text-sm flex items-center flex-wrap"><span>Business Owner</span><span class="mx-2 text-gray-400">|</span><i class="fab fa-google text-blue-600 mr-1" aria-hidden="true"></i><span>Google Review</span></p>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="text-center mt-12">
-                <a href="https://www.yelp.com/biz/blooming-financial-cupertino" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-red-600 text-white px-6 py-3 rounded-md hover:bg-red-700 transition">
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-12">
+                <a href="https://www.yelp.com/biz/blooming-financial-cupertino" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-red-600 text-white px-6 py-3 rounded-md hover:bg-red-700 transition">
                     <i class="fab fa-yelp text-xl mr-2"></i>
-                    Read More Reviews on Yelp
+                    Read More on Yelp
+                </a>
+                <a href="https://maps.app.goo.gl/M9mnPVoVzsPRMNb89" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-gray-900 text-white px-6 py-3 rounded-md hover:bg-gray-800 transition">
+                    <i class="fab fa-google text-xl mr-2"></i>
+                    Read More on Google
                 </a>
             </div>
         </div>
@@ -996,6 +1054,22 @@
                 toggle.setAttribute('aria-expanded', String(willOpen));
                 toggle.querySelector('i').classList.toggle('rotate-180');
             });
+        });
+
+        // Testimonial carousel
+        document.querySelectorAll('[data-testimonial-carousel]').forEach(carousel => {
+            const track = carousel.querySelector('[data-testimonial-track]');
+            const prev  = carousel.querySelector('[data-testimonial-prev]');
+            const next  = carousel.querySelector('[data-testimonial-next]');
+            if (!track) return;
+            const scrollByOne = (dir) => {
+                const card = track.firstElementChild;
+                if (!card) return;
+                const gap = parseInt(getComputedStyle(track).columnGap) || 24;
+                track.scrollBy({ left: (card.offsetWidth + gap) * dir, behavior: 'smooth' });
+            };
+            prev?.addEventListener('click', () => scrollByOne(-1));
+            next?.addEventListener('click', () => scrollByOne(1));
         });
 
         // FAQ toggle functionality
