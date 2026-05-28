@@ -1,0 +1,98 @@
+name: Submit URLs to IndexNow
+
+# Notify Bing / Yandex / Seznam / Naver about URL changes via the IndexNow
+# protocol (https://www.indexnow.org/). Push-trigger submits just the changed
+# pages; workflow_dispatch with submit_all=true seeds Bing from sitemap.xml.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'sitemap.xml'
+  workflow_dispatch:
+    inputs:
+      submit_all:
+        description: 'Submit every URL listed in sitemap.xml (use for initial seeding)'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Build URL list and submit to IndexNow
+        env:
+          SUBMIT_ALL: ${{ github.event_name == 'workflow_dispatch' && inputs.submit_all || 'false' }}
+          BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          python3 <<'PY'
+          import json, os, re, subprocess, sys, urllib.request, urllib.error
+
+          HOST = "www.bloomingfinancials.com"
+          KEY = "40cdcd4ea22243648258220d2ad3372c"
+          KEY_LOCATION = f"https://{HOST}/{KEY}.txt"
+
+          def path_to_url(path: str) -> str:
+              if path == "index.html":
+                  return f"https://{HOST}/"
+              if path.endswith("/index.html"):
+                  return f"https://{HOST}/{path[:-len('index.html')]}"
+              return f"https://{HOST}/{path}"
+
+          submit_all = os.environ.get("SUBMIT_ALL", "false") == "true"
+          before = os.environ.get("BEFORE_SHA", "")
+          urls: list[str] = []
+
+          if submit_all:
+              with open("sitemap.xml", encoding="utf-8") as f:
+                  urls = re.findall(r"<loc>([^<]+)</loc>", f.read())
+              print(f"Mode: submit_all — {len(urls)} URLs from sitemap.xml")
+          else:
+              base = before if before and not re.fullmatch(r"0+", before) else "HEAD~1"
+              try:
+                  diff = subprocess.run(
+                      ["git", "diff", "--name-only", base, "HEAD"],
+                      capture_output=True, text=True, check=True,
+                  ).stdout.splitlines()
+              except subprocess.CalledProcessError as exc:
+                  print(f"git diff failed: {exc.stderr}")
+                  sys.exit(0)
+              urls = [path_to_url(p) for p in diff if p.endswith(".html")]
+              print(f"Mode: push — {len(urls)} changed HTML files since {base}")
+
+          if not urls:
+              print("Nothing to submit; exiting cleanly.")
+              sys.exit(0)
+
+          # IndexNow accepts up to 10,000 URLs per request; we'll be well under.
+          payload = {
+              "host": HOST,
+              "key": KEY,
+              "keyLocation": KEY_LOCATION,
+              "urlList": urls,
+          }
+          print(json.dumps(payload, indent=2))
+
+          req = urllib.request.Request(
+              "https://api.indexnow.org/IndexNow",
+              data=json.dumps(payload).encode("utf-8"),
+              headers={"Content-Type": "application/json; charset=utf-8"},
+              method="POST",
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=30) as resp:
+                  print(f"HTTP {resp.status} {resp.reason}")
+                  print(resp.read().decode("utf-8", errors="replace") or "(empty body)")
+          except urllib.error.HTTPError as e:
+              print(f"HTTP {e.code} {e.reason}")
+              print(e.read().decode("utf-8", errors="replace"))
+              sys.exit(1)
+          PY
