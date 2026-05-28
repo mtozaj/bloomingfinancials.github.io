@@ -30,6 +30,11 @@
     .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .2s; border-radius: 9999px; }
     input:checked + .slider { background-color: #3b82f6; }
     input:checked + .slider:before { transform: translateX(20px); }
+    /* Container override: make .container fill the viewport up to 1536px
+       instead of stepping at Tailwind's lg/xl breakpoints. Doubled class
+       selector boosts specificity above Tailwind CDN's injected rules. */
+    .container.container { max-width: 100%; width: 100%; }
+    @media (min-width: 1536px) { .container.container { max-width: 1536px; } }
   </style>
 </head>
 <body class="bg-gray-50">
