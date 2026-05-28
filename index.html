@@ -105,11 +105,6 @@
             background-color: #f8f9fa;
             border-color: #c6c6c6;
         }
-    /* Container override: make .container fill the viewport up to 1536px
-       instead of stepping at Tailwind's lg/xl breakpoints. Doubled class
-       selector boosts specificity above Tailwind CDN's injected rules. */
-    .container.container { max-width: 100%; width: 100%; }
-    @media (min-width: 1536px) { .container.container { max-width: 1536px; } }
     </style>
 </head>
     
