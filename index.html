@@ -10,6 +10,11 @@
     
       gtag('config', 'G-RVPQPZB973');
     </script>
+    <!-- OpenAI Ads (ChatGPT) pixel -->
+    <script>
+    !function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");
+    oaiq("init",{pixelId:"2Hz8qV4vcyHVdviX5VJhAH",debug:false});
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#1e3a8a">
@@ -1189,6 +1194,15 @@
                     // Hide form container and show thank you message
                     document.getElementById('contactFormContainer').classList.add('hidden');
                     document.getElementById('contact-thank-you').classList.remove('hidden');
+
+                    // OpenAI Ads (ChatGPT) conversion: contact form submitted
+                    if (window.oaiq) {
+                        oaiq("measure", "registration_completed", {
+                            type: "customer_action",
+                            amount: 0,
+                            currency: "USD"
+                        });
+                    }
                 } else {
                     console.error('Formspree error response', response);
                     alert('There was an error sending your message. Please try again or call us directly.');
@@ -1250,6 +1264,15 @@
                     // Hide the form container and show thank you message
                     document.getElementById('formContainer').classList.add('hidden');
                     document.getElementById('thank-you').classList.remove('hidden');
+
+                    // OpenAI Ads (ChatGPT) conversion: consultation form submitted
+                    if (window.oaiq) {
+                        oaiq("measure", "registration_completed", {
+                            type: "customer_action",
+                            amount: 0,
+                            currency: "USD"
+                        });
+                    }
                 } else {
                     // Handle error
                     console.error('Formspree error response', response);
