@@ -6,9 +6,14 @@ Live site: https://www.bloomingfinancials.com/
 
 ## Stack
 
-This is a static GitHub Pages website built with plain HTML, Tailwind CSS from CDN, Open Sans, Font Awesome, static image assets, and small inline JavaScript.
+This is a static GitHub Pages website built with plain HTML, Tailwind CSS (compiled to a static stylesheet), Open Sans, Font Awesome, static image assets, and small inline JavaScript.
 
-There is currently no React, Next.js, Jekyll, package.json, or custom build process. Pages are edited directly as HTML files.
+There is no React, Next.js, or Jekyll. Pages are edited directly as HTML files, with two small build/maintenance steps:
+
+- **Tailwind CSS**: pages link `/assets/tailwind.css`, a committed static build. After adding or changing Tailwind classes, rebuild it with `npx tailwindcss -c tailwind.config.js -i tailwind.input.css -o assets/tailwind.css --minify` (run `npm install` once first).
+- **Shared partials**: the nav, mobile menu, and footer on the 17 full-nav pages are stamped from `_partials/*.html` between `<!-- bf:* -->` sentinel comments. Edit the partial, then run `python3 tools/build.py` to restamp every page. Do not hand-edit inside the sentinels. Privacy and Terms keep their own lightweight header/footer and are not stamped.
+
+CI (`.github/workflows/checks.yml`) fails a PR if the partials are out of sync, the Tailwind build is stale, any inline script has a syntax error, or a nav block has unbalanced divs.
 
 ## Important Files and Folders
 
@@ -69,7 +74,7 @@ The most important design source files are `index.html`, `services/index.html`, 
 
 ## Editing Notes
 
-This site is currently manual HTML. Navigation, footer, styles, scripts, and schema patterns are repeated across multiple files. When making global changes, update every affected page and verify consistency.
+This site is manual HTML with light tooling. The nav, mobile menu, and footer are single-sourced in `_partials/` (see Stack above) — change them there and restamp. Other repeated patterns (head metadata, inline scripts, schema) are still per-page: when changing those globally, update every affected page and verify consistency.
 
 Before publishing SEO-sensitive edits, check:
 

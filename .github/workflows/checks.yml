@@ -1,0 +1,41 @@
+name: Site checks
+
+# Guards against the failure modes this repo has actually hit:
+# inline-JS syntax errors, broken nav nesting, pages drifting from the
+# shared partials, and a stale committed Tailwind build.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Partials in sync
+        run: python3 tools/build.py --check
+
+      - name: Inline JS syntax + nav nesting
+        run: python3 tools/check.py
+
+      - name: Tailwind build is current
+        run: |
+          npm ci
+          npx tailwindcss -c tailwind.config.js -i tailwind.input.css -o /tmp/tailwind.css --minify
+          if ! diff -q /tmp/tailwind.css assets/tailwind.css; then
+            echo "assets/tailwind.css is stale. Rebuild with:"
+            echo "  npx tailwindcss -c tailwind.config.js -i tailwind.input.css -o assets/tailwind.css --minify"
+            exit 1
+          fi
+          echo "tailwind build current"
