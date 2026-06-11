@@ -6,7 +6,7 @@ Blooming Financial is a static marketing website for a tax preparation, bookkeep
 
 The repository is the source of truth. Do not invent product names, slogans, services, locations, testimonials, claims, credentials, prices, or features that are not present in the site files.
 
-The repository currently does not contain a package.json, framework configuration, design token file, CLI help text, schemas outside page-level JSON-LD, or a centralized design system. A high-level `README.md` does exist. The website is built from plain HTML files with Tailwind CSS via CDN, Open Sans from Google Fonts, Font Awesome icons, inline CSS, inline JavaScript, static SVG blog images, Formspree forms, and Google Analytics.
+The repository does not contain a frontend framework, design token file, CLI help text, schemas outside page-level JSON-LD, or a centralized design system. A high-level `README.md` documents the light tooling that does exist (a static Tailwind build and shared nav/footer partials). The website is built from plain HTML files with Tailwind CSS compiled to a static stylesheet, Open Sans from Google Fonts, Font Awesome icons, inline CSS, inline JavaScript, static SVG blog images, Formspree forms, and Google Analytics.
 
 ## Current site identity
 
@@ -279,5 +279,7 @@ Keep designs readable and practical.
 ## Implementation notes
 
 The current site is static HTML. A design should be implementable without React, Next, or a large frontend framework. Prefer HTML, Tailwind utility classes, small inline or external JavaScript, and reusable patterns that match the current files.
+
+Tailwind is compiled to a committed static stylesheet (`assets/tailwind.css`); rebuild it after class changes (see README). The nav, mobile menu, and footer on full-nav pages are stamped from `_partials/` by `tools/build.py` — edit the partial, not the page copies.
 
 If the site later migrates to Jekyll or another static-site generator, preserve the same visual identity, URLs, metadata, schema patterns, and service hierarchy.
