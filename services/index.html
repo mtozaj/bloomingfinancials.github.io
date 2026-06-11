@@ -48,6 +48,17 @@
     #mobileMenu { transition: transform 300ms ease-in-out, opacity 300ms ease-in-out, visibility 0s linear 300ms; }
     #mobileMenu:not(.invisible) { transition-delay: 0s; }
     body.mobile-menu-open { overflow: hidden; }
+    /* Scroll-reveal (gated on .js-reveal so content stays visible without JS;
+       disabled entirely under prefers-reduced-motion) */
+    @media (prefers-reduced-motion: no-preference) {
+        .js-reveal .reveal { opacity: 0; transform: translateY(18px); transition: opacity .55s ease-out, transform .55s ease-out; }
+        .js-reveal .reveal.revealed { opacity: 1; transform: none; }
+        .js-reveal .reveal-group > .reveal:nth-child(2) { transition-delay: .08s; }
+        .js-reveal .reveal-group > .reveal:nth-child(3) { transition-delay: .16s; }
+        .js-reveal .reveal-group > .reveal:nth-child(4) { transition-delay: .24s; }
+        .js-reveal .reveal-group > .reveal:nth-child(5) { transition-delay: .32s; }
+        .js-reveal .reveal-group > .reveal:nth-child(n+6) { transition-delay: .4s; }
+    }
   </style>
 
   <script type="application/ld+json">
@@ -102,6 +113,7 @@
 </head>
 
 <body class="bg-gray-50">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-white focus:text-blue-700 focus:px-4 focus:py-2 focus:rounded-md focus:shadow-lg">Skip to main content</a>
   <!-- NAV -->
   <nav class="bg-white border-0 shadow-none sticky top-0 z-50">
     <div class="container mx-auto px-6 py-3">
@@ -174,7 +186,7 @@
   </div>
 
   <!-- HERO -->
-  <header class="hero-gradient text-white py-20">
+  <header id="main-content" tabindex="-1" class="hero-gradient text-white py-20">
     <div class="container mx-auto px-6 text-center max-w-4xl">
       <h1 class="text-4xl md:text-5xl font-bold mb-6">Tax Preparation, Bookkeeping, Payroll &amp; Business Services in California</h1>
       <p class="text-xl mb-8">Blooming Financial helps individuals and small business owners stay organized, compliant, and prepared throughout the year. We provide tax preparation, bookkeeping, payroll, tax planning, and business consulting services for clients across California, including Cupertino, the Bay Area, Los Angeles, San Diego, Sacramento, and surrounding communities.</p>
@@ -206,55 +218,55 @@
   <!-- SERVICES GRID -->
   <section id="services-grid" class="py-20 bg-white scroll-mt-24">
     <div class="container mx-auto px-6">
-      <div class="text-center mb-12">
+      <div class="text-center mb-12 reveal">
         <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Our Services</h2>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto">Seven focused services for individuals, families, and California small businesses.</p>
       </div>
   
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <a id="individual-tax-preparation" href="/services/individual-tax-preparation/" class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300 block scroll-mt-24">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 reveal-group">
+        <a id="individual-tax-preparation" href="/services/individual-tax-preparation/" class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300 block scroll-mt-24 reveal">
           <div class="text-blue-600 mb-4"><i class="fas fa-user text-4xl"></i></div>
           <h3 class="text-xl font-bold text-blue-900 mb-3">Individual Tax Preparation</h3>
           <p class="text-gray-600 mb-4">W-2s, 1099s, RSUs, stock sales, rentals, multi-state, prior-year, and amended returns.</p>
           <span class="text-blue-600 font-medium">Learn more →</span>
         </a>
   
-        <a id="business-tax-preparation" href="/services/business-tax-preparation/" class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300 block scroll-mt-24">
+        <a id="business-tax-preparation" href="/services/business-tax-preparation/" class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300 block scroll-mt-24 reveal">
           <div class="text-blue-600 mb-4"><i class="fas fa-briefcase text-4xl"></i></div>
           <h3 class="text-xl font-bold text-blue-900 mb-3">Business Tax Preparation</h3>
           <p class="text-gray-600 mb-4">Schedule C, LLCs, partnerships, S corporations, business deductions, California filings, and year-end tax support.</p>
           <span class="text-blue-600 font-medium">Learn more →</span>
         </a>
   
-        <a id="tax-planning" href="/services/tax-planning/" class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300 block scroll-mt-24">
+        <a id="tax-planning" href="/services/tax-planning/" class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300 block scroll-mt-24 reveal">
           <div class="text-blue-600 mb-4"><i class="fas fa-chart-pie text-4xl"></i></div>
           <h3 class="text-xl font-bold text-blue-900 mb-3">Tax Planning &amp; Estimated Taxes</h3>
           <p class="text-gray-600 mb-4">Quarterly estimates, withholding reviews, RSU planning, self-employment, and year-end projections.</p>
           <span class="text-blue-600 font-medium">Learn more →</span>
         </a>
   
-        <a id="bookkeeping" href="/services/bookkeeping/" class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300 block scroll-mt-24">
+        <a id="bookkeeping" href="/services/bookkeeping/" class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300 block scroll-mt-24 reveal">
           <div class="text-blue-600 mb-4"><i class="fas fa-calculator text-4xl"></i></div>
           <h3 class="text-xl font-bold text-blue-900 mb-3">Bookkeeping Services</h3>
           <p class="text-gray-600 mb-4">Monthly bookkeeping, catch-up, clean-up, reconciliations, and financial reports.</p>
           <span class="text-blue-600 font-medium">Learn more →</span>
         </a>
   
-        <a id="payroll" href="/services/payroll/" class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300 block scroll-mt-24">
+        <a id="payroll" href="/services/payroll/" class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300 block scroll-mt-24 reveal">
           <div class="text-blue-600 mb-4"><i class="fas fa-money-check-alt text-4xl"></i></div>
           <h3 class="text-xl font-bold text-blue-900 mb-3">Payroll Services</h3>
           <p class="text-gray-600 mb-4">Payroll setup, recurring payroll support, contractor payments, payroll-tax filing support, and year-end reporting.</p>
           <span class="text-blue-600 font-medium">Learn more →</span>
         </a>
   
-        <a id="irs-ftb-notice-support" href="/services/irs-ftb-notice-support/" class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300 block scroll-mt-24">
+        <a id="irs-ftb-notice-support" href="/services/irs-ftb-notice-support/" class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300 block scroll-mt-24 reveal">
           <div class="text-blue-600 mb-4"><i class="fas fa-envelope-open-text text-4xl"></i></div>
           <h3 class="text-xl font-bold text-blue-900 mb-3">IRS &amp; FTB Notice Support</h3>
           <p class="text-gray-600 mb-4">IRS and FTB notices, refund issues, balance-due letters, transcript review, payment options, and amended-return review.</p>
           <span class="text-blue-600 font-medium">Learn more →</span>
         </a>
   
-        <a id="business-consulting" href="/services/business-consulting/" class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300 block scroll-mt-24 lg:col-start-2">
+        <a id="business-consulting" href="/services/business-consulting/" class="service-card bg-white rounded-lg shadow-md p-8 transition duration-300 block scroll-mt-24 reveal lg:col-start-2">
           <div class="text-blue-600 mb-4"><i class="fas fa-chart-line text-4xl"></i></div>
           <h3 class="text-xl font-bold text-blue-900 mb-3">Business Consulting</h3>
           <p class="text-gray-600 mb-4">Entity discussion, S-corp election, startup planning, systems setup, cash flow, profitability, and growth.</p>
@@ -458,6 +470,19 @@
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => { if (window.pageYOffset > 300) backToTop.classList.remove('hidden'); else backToTop.classList.add('hidden'); });
     backToTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
-  </script>
+      // Scroll-reveal: fade sections/cards in as they enter the viewport.
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('js-reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    }
+</script>
 </body>
 </html>
