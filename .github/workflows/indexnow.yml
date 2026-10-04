@@ -65,7 +65,9 @@ jobs:
               except subprocess.CalledProcessError as exc:
                   print(f"git diff failed: {exc.stderr}")
                   sys.exit(0)
-              urls = [path_to_url(p) for p in diff if p.endswith(".html")]
+              # Partials aren't served and the 404 page isn't indexable.
+              urls = [path_to_url(p) for p in diff
+                      if p.endswith(".html") and not p.startswith("_") and p != "404.html"]
               print(f"Mode: push — {len(urls)} changed HTML files since {base}")
 
           if not urls:

@@ -4,11 +4,11 @@
     <div data-mobile-services>
       <div class="flex items-center justify-between">
         <a href="/services/" class="{{SERVICES_CLS}}">Services</a>
-        <button type="button" data-mobile-services-toggle aria-expanded="false" aria-label="Toggle services menu" class="p-2 text-gray-500 hover:text-blue-600">
-          <i class="fas fa-chevron-down text-sm transition-transform" aria-hidden="true"></i>
+        <button type="button" data-mobile-services-toggle aria-expanded="false" aria-controls="mobileServicesPanel" aria-label="Toggle services menu" class="-mr-1 inline-flex items-center justify-center w-10 h-10 rounded-md text-gray-500 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+          <svg class="w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 8.5l8 8 8-8"/></svg>
         </button>
       </div>
-      <div data-mobile-services-panel class="hidden flex-col space-y-2 pl-4 mt-2">
+      <div id="mobileServicesPanel" data-mobile-services-panel class="hidden flex-col space-y-2 pl-4 mt-2">
         <a href="/services/individual-tax-preparation/" class="text-gray-600 hover:text-blue-600 transition py-1 block">Individual Tax Preparation</a>
         <a href="/services/business-tax-preparation/" class="text-gray-600 hover:text-blue-600 transition py-1 block">Business Tax Preparation</a>
         <a href="/services/tax-planning/" class="text-gray-600 hover:text-blue-600 transition py-1 block">Tax Planning</a>
@@ -26,3 +26,4 @@
     <a href="{{CONSULTATION_HREF}}" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition text-center">Free Consultation</a>
   </div>
 </div>
+<div id="mobileMenuBackdrop" class="fixed inset-0 z-30 bg-gray-900/30 opacity-0 pointer-events-none transition-opacity duration-300 cursor-pointer md:hidden" aria-hidden="true"></div>

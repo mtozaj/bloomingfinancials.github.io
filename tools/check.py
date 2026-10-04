@@ -6,6 +6,10 @@
 2. <div> open/close tags must balance inside each page's <nav> blocks and
    #mobileMenu panel. Two stray </div>s once dumped half the nav links out
    of the flex row on fifteen pages.
+3. The shared scripts in assets/ must parse too.
+4. Analytics and ad pixels may load only through assets/consent.js, which
+   honors visitors' privacy choices. Per-page snippets once ignored the
+   opt-out on 17 of 19 pages.
 """
 import re
 import subprocess
@@ -43,6 +47,38 @@ def check_inline_js():
     print(f'inline JS: {checked} scripts checked')
 
 
+def check_asset_js():
+    checked = 0
+    for f in sorted((ROOT / 'assets').glob('*.js')):
+        checked += 1
+        r = subprocess.run(['node', '--check', str(f)], capture_output=True, text=True)
+        if r.returncode != 0:
+            err = r.stderr.strip().splitlines()[-1] if r.stderr else 'unknown'
+            failures.append(f'{f.relative_to(ROOT)}: {err}')
+    print(f'asset JS: {checked} files checked')
+
+
+TRACKING_SNIPPETS = ('googletagmanager.com/gtag/js', "gtag('config'", 'oaiq.min.js', 'oaiq("init"')
+
+
+def check_tracking():
+    checked = 0
+    for f in html_files():
+        rel = f.relative_to(ROOT)
+        if rel.parts[0] == '_partials':
+            continue
+        checked += 1
+        text = f.read_text()
+        for snippet in TRACKING_SNIPPETS:
+            if snippet in text:
+                failures.append(f'{rel}: loads tracking directly ({snippet}); use assets/consent.js')
+        if '<script src="/assets/consent.js"' not in text:
+            failures.append(f'{rel}: missing <script src="/assets/consent.js" defer>')
+        if 'id="mobileMenu"' in text and '<script src="/assets/site.js"' not in text:
+            failures.append(f'{rel}: has the mobile menu but not <script src="/assets/site.js" defer>')
+    print(f'tracking + shared scripts: {checked} pages checked')
+
+
 def div_balance(snippet: str) -> int:
     depth = 0
     for m in re.finditer(r'<(/?)div\b[^>]*>', snippet):
@@ -78,6 +114,8 @@ def check_nav_nesting():
 
 def main() -> int:
     check_inline_js()
+    check_asset_js()
+    check_tracking()
     check_nav_nesting()
     if failures:
         print('\nFAILURES:')
