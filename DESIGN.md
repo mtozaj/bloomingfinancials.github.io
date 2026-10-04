@@ -191,6 +191,7 @@ Mobile navigation:
 - Mobile menu should close after link tap
 - Background scroll should be locked when mobile menu is open
 - Services accordion should reset when the mobile menu closes
+- The hamburger is an inline SVG button with aria-label, aria-controls, and aria-expanded, so it still works if the icon CDN fails to load; Escape closes the menu
 
 ## SEO and structured data requirements
 
@@ -281,5 +282,9 @@ Keep designs readable and practical.
 The current site is static HTML. A design should be implementable without React, Next, or a large frontend framework. Prefer HTML, Tailwind utility classes, small inline or external JavaScript, and reusable patterns that match the current files.
 
 Tailwind is compiled to a committed static stylesheet (`assets/tailwind.css`); rebuild it after class changes (see README). The nav, mobile menu, and footer on full-nav pages are stamped from `_partials/` by `tools/build.py` — edit the partial, not the page copies.
+
+Shared behavior lives in `assets/site.js` (mobile menu, Services dropdown and accordion, back-to-top button) and all tracking lives in `assets/consent.js`, which loads Google Analytics and the OpenAI Ads pixel according to each visitor's privacy choices. Do not add per-page nav scripts or tracking snippets. Every footer links to Cookie Preferences and Do Not Sell or Share My Personal Information; keep those links when redesigning the footer.
+
+`404.html` uses the full nav and footer. GitHub Pages serves it for any missing URL, so keep its links and asset paths absolute.
 
 If the site later migrates to Jekyll or another static-site generator, preserve the same visual identity, URLs, metadata, schema patterns, and service hierarchy.

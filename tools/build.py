@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Stamp shared partials (_partials/*.html) into the site's HTML pages.
 
-The nav, mobile menu, and footer are identical across the 17 full-nav pages
+The nav, mobile menu, and footer are identical across the 18 full-nav pages
 except for per-page link targets and which nav item is active. Each page
 marks where a partial belongs with sentinel comments:
 
@@ -60,6 +60,7 @@ PAGES = [
     'blogs/w4-de4-withholding-guide-california.html',
     'blogs/rsus-stock-sales-explained.html',
     'blogs/2025-tax-law-changes.html',
+    '404.html',
 ]
 
 

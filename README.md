@@ -11,9 +11,12 @@ This is a static GitHub Pages website built with plain HTML, Tailwind CSS (compi
 There is no React, Next.js, or Jekyll. Pages are edited directly as HTML files, with two small build/maintenance steps:
 
 - **Tailwind CSS**: pages link `/assets/tailwind.css`, a committed static build. After adding or changing Tailwind classes, rebuild it with `npx tailwindcss -c tailwind.config.js -i tailwind.input.css -o assets/tailwind.css --minify` (run `npm install` once first).
-- **Shared partials**: the nav, mobile menu, and footer on the 17 full-nav pages are stamped from `_partials/*.html` between `<!-- bf:* -->` sentinel comments. Edit the partial, then run `python3 tools/build.py` to restamp every page. Do not hand-edit inside the sentinels. Privacy and Terms keep their own lightweight header/footer and are not stamped.
+- **Shared partials**: the nav, mobile menu, footer, and back-to-top button on the 18 full-nav pages (including `404.html`) are stamped from `_partials/*.html` between `<!-- bf:* -->` sentinel comments. Edit the partial, then run `python3 tools/build.py` to restamp every page. Do not hand-edit inside the sentinels. Privacy and Terms keep their own lightweight header/footer and are not stamped.
+- **Shared scripts**: every page loads two deferred scripts in `<head>`:
+  - `assets/site.js` runs the mobile menu, Services dropdown and accordion, back-to-top button, and phone/email click tracking.
+  - `assets/consent.js` owns all tracking. It loads Google Analytics and the OpenAI (ChatGPT) Ads pixel unless the visitor opts out in the Privacy & Cookie Preferences dialog (opened from the footer's "Cookie Preferences" and "Do Not Sell or Share" links), and it honors Global Privacy Control for advertising. Report conversions with `BF.trackLead('<source>')`; never paste GA or pixel snippets into a page.
 
-CI (`.github/workflows/checks.yml`) fails a PR if the partials are out of sync, the Tailwind build is stale, any inline script has a syntax error, or a nav block has unbalanced divs.
+CI (`.github/workflows/checks.yml`) fails a PR if the partials are out of sync, the Tailwind build is stale, any inline or `assets/` script has a syntax error, a page loads tracking outside `assets/consent.js`, or a nav block has unbalanced divs.
 
 ## Important Files and Folders
 
@@ -22,6 +25,8 @@ CI (`.github/workflows/checks.yml`) fails a PR if the partials are out of sync, 
 - `blogs/` - blog index, blog article pages, and blog image assets.
 - `privacy/` - privacy policy page.
 - `terms/` - terms of service page.
+- `404.html` - branded "page not found" page that GitHub Pages serves for any missing URL (noindex; all paths absolute).
+- `assets/` - compiled Tailwind stylesheet plus the shared `site.js` and `consent.js` scripts.
 - `sitemap.xml` - search engine sitemap for the homepage, service pages, blog pages, and legal pages.
 - `DESIGN.md` - design and content guidance for future edits.
 - `CNAME` - GitHub Pages custom domain configuration.
@@ -96,11 +101,11 @@ The site uses external services for forms, analytics, icons, fonts, and the clie
 
 Common external integrations include:
 
-- Google Analytics
-- Formspree forms
-- Tailwind CSS CDN
+- Google Analytics and the OpenAI (ChatGPT) Ads pixel, loaded only through `assets/consent.js`
+- Formspree forms (each has a hidden `_gotcha` spam-trap field)
 - Google Fonts
-- Font Awesome CDN
+- Font Awesome CDN (decorative icons only; navigation controls use inline SVG so they work if the CDN fails)
+- Google Maps embed on the homepage contact section
 - Client portal link
 - Instagram, Yelp, and Google Maps profile links
 

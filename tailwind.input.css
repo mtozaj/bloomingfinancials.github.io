@@ -1,3 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Set by assets/site.js while the mobile menu is open, on every page. */
+body.mobile-menu-open { overflow: hidden; }

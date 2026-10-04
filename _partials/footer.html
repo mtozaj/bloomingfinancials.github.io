@@ -36,18 +36,23 @@
       <div>
         <h3 class="font-bold text-lg mb-4">Contact</h3>
         <ul class="space-y-2 text-blue-200">
-          <li class="flex items-start"><i class="fas fa-phone-alt mt-1 mr-2 text-sm"></i><span>(408) 365-4671</span></li>
-          <li class="flex items-start"><i class="fas fa-envelope mt-1 mr-2 text-sm"></i><span>info@bloomingfinancials.com</span></li>
-          <li class="flex items-start"><i class="fas fa-clock mt-1 mr-2 text-sm"></i><span>Mon–Fri: 8am–7pm<br>Sat: 8am–4pm<br>Sun: Closed</span></li>
+          <li class="flex items-start"><i class="fas fa-phone-alt mt-1 mr-2 text-sm" aria-hidden="true"></i><a href="tel:+14083654671" class="hover:text-white transition">(408) 365-4671</a></li>
+          <li class="flex items-start"><i class="fas fa-envelope mt-1 mr-2 text-sm" aria-hidden="true"></i><a href="mailto:info@bloomingfinancials.com" class="hover:text-white transition">info@bloomingfinancials.com</a></li>
+          <li class="flex items-start"><i class="fas fa-clock mt-1 mr-2 text-sm" aria-hidden="true"></i><span>Mon–Fri: 8am–7pm<br>Sat: 8am–4pm<br>Sun: Closed</span></li>
         </ul>
       </div>
     </div>
-    <div class="border-t border-blue-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-      <p class="text-blue-300 text-sm mb-4 md:mb-0">© 2026 Blooming Financial. All rights reserved.</p>
-      <div class="flex space-x-6 text-sm">
+    <div class="border-t border-blue-800 mt-12 pt-8 flex flex-col xl:flex-row justify-between items-center gap-4">
+      <p class="text-blue-300 text-sm">© 2026 Blooming Financial. All rights reserved.</p>
+      <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
         <a href="/privacy/" class="text-blue-300 hover:text-white">Privacy Policy</a>
         <a href="/terms/" class="text-blue-300 hover:text-white">Terms of Service</a>
+        <a href="/privacy/#cookies" data-privacy-choices class="text-blue-300 hover:text-white">Cookie Preferences</a>
+        <a href="/privacy/#do-not-sell" data-privacy-choices="dns" class="text-blue-300 hover:text-white">Do Not Sell or Share My Personal Information</a>
       </div>
     </div>
   </div>
 </footer>
+<button id="backToTop" type="button" aria-label="Back to top" class="hidden fixed bottom-6 left-6 z-50 w-12 h-12 flex items-center justify-center rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2">
+  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>

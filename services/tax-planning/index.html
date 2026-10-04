@@ -4,13 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#1e3a8a" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RVPQPZB973"></script>
-  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-RVPQPZB973');</script>
-  <!-- OpenAI Ads (ChatGPT) pixel -->
-  <script>
-  !function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");
-  oaiq("init",{pixelId:"2Hz8qV4vcyHVdviX5VJhAH",debug:false});
-  </script>
+  <script src="/assets/consent.js" defer></script>
+  <script src="/assets/site.js" defer></script>
 
   <title>Tax Planning &amp; Estimated Taxes in California | Blooming Financial</title>
   <meta name="description" content="Quarterly estimated tax payments, W-4 and California DE 4 withholding reviews, RSU and stock planning, self-employment tax planning, and year-end projections." />
@@ -75,7 +70,7 @@
           <div class="relative" data-services-menu>
             <a href="/services/" class="nav-link text-blue-600 font-semibold inline-flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
               Services
-              <i class="fas fa-chevron-down text-xs" aria-hidden="true"></i>
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 8.5l8 8 8-8"/></svg>
             </a>
             <div data-services-panel class="absolute left-0 top-full pt-2 w-80 hidden z-50">
                 <div class="bg-white rounded-xl border border-gray-100 shadow-xl shadow-blue-900/10 ring-1 ring-black/5 p-2">
@@ -97,7 +92,10 @@
           <a href="/#consultation" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Free Consultation</a>
         </div>
         <div class="md:hidden">
-          <button id="mobileToggle" class="text-gray-700 focus:outline-none"><i class="fas fa-bars text-2xl"></i></button>
+          <button id="mobileToggle" type="button" class="-my-1.5 -mr-2 flex items-center justify-center w-11 h-11 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+            <svg data-menu-icon="open" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg data-menu-icon="close" class="w-7 h-7 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
         </div>
       </div>
     </div>
@@ -110,11 +108,11 @@
       <div data-mobile-services>
         <div class="flex items-center justify-between">
           <a href="/services/" class="nav-link text-blue-600 font-semibold">Services</a>
-          <button type="button" data-mobile-services-toggle aria-expanded="false" aria-label="Toggle services menu" class="p-2 text-gray-500 hover:text-blue-600">
-            <i class="fas fa-chevron-down text-sm transition-transform" aria-hidden="true"></i>
+          <button type="button" data-mobile-services-toggle aria-expanded="false" aria-controls="mobileServicesPanel" aria-label="Toggle services menu" class="-mr-1 inline-flex items-center justify-center w-10 h-10 rounded-md text-gray-500 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+            <svg class="w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 8.5l8 8 8-8"/></svg>
           </button>
         </div>
-        <div data-mobile-services-panel class="hidden flex-col space-y-2 pl-4 mt-2">
+        <div id="mobileServicesPanel" data-mobile-services-panel class="hidden flex-col space-y-2 pl-4 mt-2">
           <a href="/services/individual-tax-preparation/" class="text-gray-600 hover:text-blue-600 transition py-1 block">Individual Tax Preparation</a>
           <a href="/services/business-tax-preparation/" class="text-gray-600 hover:text-blue-600 transition py-1 block">Business Tax Preparation</a>
           <a href="/services/tax-planning/" class="text-gray-600 hover:text-blue-600 transition py-1 block">Tax Planning</a>
@@ -288,95 +286,27 @@
         <div>
           <h3 class="font-bold text-lg mb-4">Contact</h3>
           <ul class="space-y-2 text-blue-200">
-            <li class="flex items-start"><i class="fas fa-phone-alt mt-1 mr-2 text-sm"></i><span>(408) 365-4671</span></li>
-            <li class="flex items-start"><i class="fas fa-envelope mt-1 mr-2 text-sm"></i><span>info@bloomingfinancials.com</span></li>
-            <li class="flex items-start"><i class="fas fa-clock mt-1 mr-2 text-sm"></i><span>Mon–Fri: 8am–7pm<br>Sat: 8am–4pm<br>Sun: Closed</span></li>
+            <li class="flex items-start"><i class="fas fa-phone-alt mt-1 mr-2 text-sm" aria-hidden="true"></i><a href="tel:+14083654671" class="hover:text-white transition">(408) 365-4671</a></li>
+            <li class="flex items-start"><i class="fas fa-envelope mt-1 mr-2 text-sm" aria-hidden="true"></i><a href="mailto:info@bloomingfinancials.com" class="hover:text-white transition">info@bloomingfinancials.com</a></li>
+            <li class="flex items-start"><i class="fas fa-clock mt-1 mr-2 text-sm" aria-hidden="true"></i><span>Mon–Fri: 8am–7pm<br>Sat: 8am–4pm<br>Sun: Closed</span></li>
           </ul>
         </div>
       </div>
-      <div class="border-t border-blue-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-        <p class="text-blue-300 text-sm mb-4 md:mb-0">© 2026 Blooming Financial. All rights reserved.</p>
-        <div class="flex space-x-6 text-sm">
+      <div class="border-t border-blue-800 mt-12 pt-8 flex flex-col xl:flex-row justify-between items-center gap-4">
+        <p class="text-blue-300 text-sm">© 2026 Blooming Financial. All rights reserved.</p>
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
           <a href="/privacy/" class="text-blue-300 hover:text-white">Privacy Policy</a>
           <a href="/terms/" class="text-blue-300 hover:text-white">Terms of Service</a>
+          <a href="/privacy/#cookies" data-privacy-choices class="text-blue-300 hover:text-white">Cookie Preferences</a>
+          <a href="/privacy/#do-not-sell" data-privacy-choices="dns" class="text-blue-300 hover:text-white">Do Not Sell or Share My Personal Information</a>
         </div>
       </div>
     </div>
   </footer>
+  <button id="backToTop" type="button" aria-label="Back to top" class="hidden fixed bottom-6 left-6 z-50 w-12 h-12 flex items-center justify-center rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2">
+    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
   <!-- /bf:footer -->
 
-  <button id="backToTop" class="hidden fixed bottom-6 left-6 bg-blue-600 text-white w-12 h-12 rounded-full shadow-lg hover:bg-blue-700 transition z-50"><i class="fas fa-arrow-up"></i></button>
-  <script>
-    const mobileToggle = document.getElementById('mobileToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    mobileToggle.addEventListener('click', () => {
-            const isHidden = mobileMenu.classList.contains('-translate-y-full');
-            if (isHidden) {
-                openMobileMenu();
-            } else {
-                closeMobileMenu();
-            }
-        });
-    document.querySelectorAll('#mobileMenu a').forEach(link => {
-      link.addEventListener('click', () => {
-        closeMobileMenu();
-      });
-    });
-
-
-    const resetMobileServicesMenus = () => {
-            document.querySelectorAll('[data-mobile-services]').forEach(group => {
-                const toggle = group.querySelector('[data-mobile-services-toggle]');
-                const panel = group.querySelector('[data-mobile-services-panel]');
-                const icon = toggle?.querySelector('i');
-                panel?.classList.add('hidden');
-                panel?.classList.remove('flex');
-                toggle?.setAttribute('aria-expanded', 'false');
-                icon?.classList.remove('rotate-180');
-            });
-        };
-
-        const openMobileMenu = () => {
-            mobileMenu.classList.remove('-translate-y-full', 'opacity-0', 'invisible', 'pointer-events-none');
-            mobileMenu.classList.add('translate-y-0', 'opacity-100', 'visible', 'pointer-events-auto', 'shadow-lg');
-            mobileMenu.setAttribute('aria-hidden', 'false');
-            document.body.classList.add('mobile-menu-open');
-        };
-
-        const closeMobileMenu = () => {
-            mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'visible', 'pointer-events-auto', 'shadow-lg');
-            mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'invisible', 'pointer-events-none');
-            mobileMenu.setAttribute('aria-hidden', 'true');
-            document.body.classList.remove('mobile-menu-open');
-            resetMobileServicesMenus();
-        };
-
-// Desktop services dropdown
-    document.querySelectorAll('[data-services-menu]').forEach(menu => {
-      const link  = menu.querySelector('a[aria-haspopup]');
-      const panel = menu.querySelector('[data-services-panel]');
-      const open  = () => { panel.classList.remove('hidden'); link.setAttribute('aria-expanded', 'true'); };
-      const close = () => { panel.classList.add('hidden');    link.setAttribute('aria-expanded', 'false'); };
-      menu.addEventListener('mouseenter', open);
-      menu.addEventListener('mouseleave', close);
-      link.addEventListener('focus', open);
-      menu.addEventListener('focusout', e => { if (!menu.contains(e.relatedTarget)) close(); });
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-    });
-    // Mobile services accordion
-    document.querySelectorAll('[data-mobile-services]').forEach(group => {
-      const toggle = group.querySelector('[data-mobile-services-toggle]');
-      const panel  = group.querySelector('[data-mobile-services-panel]');
-      toggle.addEventListener('click', () => {
-        const willOpen = panel.classList.contains('hidden');
-        panel.classList.toggle('hidden');
-        toggle.setAttribute('aria-expanded', String(willOpen));
-        toggle.querySelector('i').classList.toggle('rotate-180');
-      });
-    });
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => { if (window.pageYOffset > 300) backToTop.classList.remove('hidden'); else backToTop.classList.add('hidden'); });
-    backToTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
-  </script>
 </body>
 </html>
