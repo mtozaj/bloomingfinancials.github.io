@@ -45,14 +45,16 @@
   }
 
   function save(choice) {
-    chosenThisPage = choice;
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
         analytics: choice.analytics,
         advertising: choice.advertising,
         ts: new Date().toISOString()
       }));
-    } catch (e) { /* storage blocked: the choice still applies to this page */ }
+      chosenThisPage = null;
+    } catch (e) {
+      chosenThisPage = choice; // storage blocked: the choice still applies to this page
+    }
   }
 
   function loadScript(src) {
@@ -86,9 +88,17 @@
     window.oaiq('init', { pixelId: OPENAI_PIXEL_ID, debug: false });
   }
 
-  var initial = prefs();
-  setAnalytics(initial.analytics);
-  setAdvertising(initial.advertising);
+  function applyPrefs() {
+    var p = prefs();
+    setAnalytics(p.analytics);
+    setAdvertising(p.advertising);
+  }
+  applyPrefs();
+
+  // A choice saved (or reset) in another tab applies to this open page too.
+  window.addEventListener('storage', function (e) {
+    if (e.key === STORAGE_KEY || e.key === null) applyPrefs();
+  });
 
   window.BF = window.BF || {};
 
