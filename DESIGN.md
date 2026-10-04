@@ -189,6 +189,7 @@ Mobile navigation:
 - Hamburger menu opens a dropdown panel below the navbar
 - Services expands as an accordion
 - Mobile menu should close after link tap
+- Tapping anywhere outside the open menu (the dimmed page or the top bar) closes it, without activating whatever is underneath
 - Background scroll should be locked when mobile menu is open
 - Services accordion should reset when the mobile menu closes
 - The hamburger is an inline SVG button with aria-label, aria-controls, and aria-expanded, so it still works if the icon CDN fails to load; Escape closes the menu

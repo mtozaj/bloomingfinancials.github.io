@@ -12,6 +12,8 @@
 
   var toggle = document.getElementById('mobileToggle');
   var menu = document.getElementById('mobileMenu');
+  var backdrop = document.getElementById('mobileMenuBackdrop');
+  var backToTop = document.getElementById('backToTop');
 
   function setAccordion(group, open) {
     var button = group.querySelector('[data-mobile-services-toggle]');
@@ -33,6 +35,11 @@
       icon.classList.toggle('hidden', icon.getAttribute('data-menu-icon') !== (open ? 'close' : 'open'));
     });
     document.body.classList.toggle('mobile-menu-open', open);
+    if (backdrop) {
+      backdrop.classList.toggle('opacity-0', !open);
+      backdrop.classList.toggle('pointer-events-none', !open);
+    }
+    if (backToTop) backToTop.classList.toggle('invisible', open);
     if (!open) {
       document.querySelectorAll('[data-mobile-services]').forEach(function (group) { setAccordion(group, false); });
     }
@@ -44,6 +51,17 @@
     menu.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () { setMenu(false); });
     });
+    // Tapping anywhere outside the open menu closes it: the dimmed backdrop
+    // over the page (which also keeps the tap from reaching links under it)
+    // and the top bar. Listeners sit on those elements rather than on
+    // document because iOS Safari doesn't fire click for taps on plain areas.
+    if (backdrop) backdrop.addEventListener('click', function () { setMenu(false); });
+    var navBar = toggle.closest('nav');
+    if (navBar) {
+      navBar.addEventListener('click', function (e) {
+        if (isOpen() && !toggle.contains(e.target)) setMenu(false);
+      });
+    }
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && isOpen()) {
         setMenu(false);
@@ -82,8 +100,7 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
   });
 
-  // Back to top
-  var backToTop = document.getElementById('backToTop');
+  // Back to top (hidden while the mobile menu is open, see setMenu)
   if (backToTop) {
     var onScroll = function () { backToTop.classList.toggle('hidden', window.pageYOffset <= 300); };
     window.addEventListener('scroll', onScroll, { passive: true });
