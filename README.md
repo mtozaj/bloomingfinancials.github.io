@@ -123,7 +123,7 @@ Most answers are tap-to-select chips: a real radio button or checkbox inside `<l
 **Editing questions.** All wording lives in `index.html`, so most edits need no JavaScript:
 
 - Each question is a `<fieldset data-field="..." data-label="...">`. `data-label` is the label the firm sees in the Formspree email and the column name in Formspree's CSV export, so keep it short and stable.
-- `data-required` makes a question required before moving on.
+- `data-required` makes a question required before moving on. For a single-choice question that always shows (client type, timeline), also put `required` on its radio buttons so the no-JavaScript version enforces it too. Plain HTML can't require "at least one" checkbox or a question that only sometimes applies, so those stay optional without JavaScript.
 - `data-show-if` shows a question or section only after a matching earlier answer, for example `services:bookkeeping` or `client_type:business,both|services:tax_business`. Commas list accepted values and `|` means "or". Hidden questions are neither validated nor sent.
 - To add a choice, copy an existing chip `<label>` and change its `value` and text.
 - Tax-year chips carry `data-year-offset`. The script relabels them from today's date: the current year from October, otherwise last year, plus the two years before it.
