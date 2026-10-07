@@ -14,7 +14,8 @@ There is no React, Next.js, or Jekyll. Pages are edited directly as HTML files, 
 - **Shared partials**: the nav, mobile menu, footer, and back-to-top button on the 18 full-nav pages (including `404.html`) are stamped from `_partials/*.html` between `<!-- bf:* -->` sentinel comments. Edit the partial, then run `python3 tools/build.py` to restamp every page. Do not hand-edit inside the sentinels. Privacy and Terms keep their own lightweight header/footer and are not stamped.
 - **Shared scripts**: every page loads two deferred scripts in `<head>`:
   - `assets/site.js` runs the mobile menu, Services dropdown and accordion, back-to-top button, and phone/email click tracking.
-  - `assets/consent.js` owns all tracking. It loads Google Analytics and the OpenAI (ChatGPT) Ads pixel unless the visitor opts out in the Privacy & Cookie Preferences dialog (opened from the footer's "Cookie Preferences" and "Do Not Sell or Share" links), and it honors Global Privacy Control for advertising. Report conversions with `BF.trackLead('<source>')`; never paste GA or pixel snippets into a page.
+  - `assets/consent.js` owns all tracking. It loads Google Analytics and the OpenAI (ChatGPT) Ads pixel unless the visitor opts out in the Privacy & Cookie Preferences dialog (opened from the footer's "Cookie Preferences" and "Do Not Sell or Share" links), and it honors Global Privacy Control for advertising. Report conversions with `BF.trackLead('<source>')` (an optional second argument adds non-personal GA parameters); never paste GA or pixel snippets into a page.
+  - The homepage also loads `assets/intake.js`, which runs the consultation form (see "Consultation intake form" below).
 
 CI (`.github/workflows/checks.yml`) fails a PR if the partials are out of sync, the Tailwind build is stale, any inline or `assets/` script has a syntax error, a page loads tracking outside `assets/consent.js`, or a nav block has unbalanced divs.
 
@@ -26,7 +27,7 @@ CI (`.github/workflows/checks.yml`) fails a PR if the partials are out of sync, 
 - `privacy/` - privacy policy page.
 - `terms/` - terms of service page.
 - `404.html` - branded "page not found" page that GitHub Pages serves for any missing URL (noindex; all paths absolute).
-- `assets/` - compiled Tailwind stylesheet plus the shared `site.js` and `consent.js` scripts.
+- `assets/` - compiled Tailwind stylesheet, the shared `site.js` and `consent.js` scripts, and the homepage's `intake.js`.
 - `sitemap.xml` - search engine sitemap for the homepage, service pages, blog pages, and legal pages.
 - `DESIGN.md` - design and content guidance for future edits.
 - `CNAME` - GitHub Pages custom domain configuration.
@@ -108,6 +109,32 @@ Common external integrations include:
 - Google Maps embed on the homepage contact section
 - Client portal link
 - Instagram, Yelp, and Google Maps profile links
+
+## Consultation intake form
+
+The homepage consultation form (`#consultationForm` in `index.html`) is a three-step questionnaire run by `assets/intake.js`:
+
+1. **What can we help with?** Who the visitor is and which services they need (both required).
+2. **A few quick details.** Follow-up questions that match the step 1 answers, plus the required timeline.
+3. **How can we reach you?** Name, email, and phone (required), then optional best time, notes, and how they heard about us.
+
+Most answers are tap-to-select chips: a real radio button or checkbox inside `<label class="intake-option">`, styled by the `.intake-chip` component in `tailwind.input.css`.
+
+**Editing questions.** All wording lives in `index.html`, so most edits need no JavaScript:
+
+- Each question is a `<fieldset data-field="..." data-label="...">`. `data-label` is the label the firm sees in the Formspree email and the column name in Formspree's CSV export, so keep it short and stable.
+- `data-required` makes a question required before moving on.
+- `data-show-if` shows a question or section only after a matching earlier answer, for example `services:bookkeeping` or `client_type:business,both|services:tax_business`. Commas list accepted values and `|` means "or". Hidden questions are neither validated nor sent.
+- To add a choice, copy an existing chip `<label>` and change its `value` and text.
+- Tax-year chips carry `data-year-offset`. The script relabels them from today's date: the current year from October, otherwise last year, plus the two years before it.
+- If you add or rename a service, also update the name lists at the top of `assets/intake.js`. They build the email summary and subject line.
+- Rebuild Tailwind after using new classes.
+
+**What the firm receives.** Each inquiry has a subject line for triage, such as `New consultation: Bookkeeping + Payroll (business), ASAP`. It starts with `URGENT notice:` when an IRS or FTB letter is due within 2 weeks or already past due. The email opens with a one-line `Summary`, followed by name, email, and phone, then each answered question under its `data-label`.
+
+**Analytics.** Through `assets/consent.js` (so privacy choices apply), the form sends the GA4 event `consultation_step` (step 2 or 3, once per inquiry) and `generate_lead` with `lead_source`, `client_type`, `services`, and `timeline`. None of these contain personal data. To see the extra parameters in GA reports, register them as event-scoped custom dimensions in GA Admin.
+
+**Without JavaScript**, every question shows on one page and the form posts straight to Formspree.
 
 ## Recommended Workflow
 

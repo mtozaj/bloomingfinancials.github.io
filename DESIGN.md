@@ -100,7 +100,7 @@ The homepage carries real reviews from Yelp and Google with verbatim quotes, nam
 
 ## Consultation content
 
-The consultation section pairs a short "ready to get started" headline with one explanatory line about the free 30-minute consultation, a small set of value points (no obligation, personalized recommendations, clear pricing), and the consultation form. Use the homepage HTML as the source of truth for exact copy. Use the existing consultation form fields and client-type logic if showing forms. Do not invent extra form fields unless explicitly requested.
+The consultation section pairs a short "ready to get started" headline with one explanatory line about the free 30-minute consultation, a small set of value points (no obligation, personalized recommendations, clear pricing), and the consultation form. Use the homepage HTML as the source of truth for exact copy. The form is a three-step intake: what the visitor needs, a few tap-to-answer details that adapt to those answers, then contact details, with a "Step N of 3" progress bar. The README's "Consultation intake form" section explains how it works. Keep it quick: mostly single-tap choice chips, with only the client type, services, timeline, contact details, and (for tax returns) the tax year required. Never ask for sensitive data such as Social Security numbers, income amounts, or account numbers. Use the existing questions and wording if showing the form, and do not add questions unless explicitly requested.
 
 ## Blog/resource themes
 
@@ -284,7 +284,7 @@ The current site is static HTML. A design should be implementable without React,
 
 Tailwind is compiled to a committed static stylesheet (`assets/tailwind.css`); rebuild it after class changes (see README). The nav, mobile menu, and footer on full-nav pages are stamped from `_partials/` by `tools/build.py` — edit the partial, not the page copies.
 
-Shared behavior lives in `assets/site.js` (mobile menu, Services dropdown and accordion, back-to-top button) and all tracking lives in `assets/consent.js`, which loads Google Analytics and the OpenAI Ads pixel according to each visitor's privacy choices. Do not add per-page nav scripts or tracking snippets. Every footer links to Cookie Preferences and Do Not Sell or Share My Personal Information; keep those links when redesigning the footer.
+Shared behavior lives in `assets/site.js` (mobile menu, Services dropdown and accordion, back-to-top button), the homepage consultation form's steps live in `assets/intake.js`, and all tracking lives in `assets/consent.js`, which loads Google Analytics and the OpenAI Ads pixel according to each visitor's privacy choices. Do not add per-page nav scripts or tracking snippets. Every footer links to Cookie Preferences and Do Not Sell or Share My Personal Information; keep those links when redesigning the footer.
 
 `404.html` uses the full nav and footer. GitHub Pages serves it for any missing URL, so keep its links and asset paths absolute.
 

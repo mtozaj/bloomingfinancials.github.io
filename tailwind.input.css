@@ -2,5 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  /* Tap-to-select answers in the consultation form: a visually hidden
+     radio/checkbox (.peer) followed by its chip. */
+  .intake-option {
+    @apply relative inline-flex;
+  }
+  .intake-chip {
+    @apply inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors cursor-pointer select-none;
+    @apply hover:border-blue-400 hover:bg-blue-50;
+    @apply peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white;
+    @apply peer-focus-visible:ring-2 peer-focus-visible:ring-blue-500 peer-focus-visible:ring-offset-2;
+    @apply peer-disabled:cursor-not-allowed peer-disabled:opacity-50;
+  }
+}
+
+/* Selected chips show a check mark, so the choice isn't signalled by color alone. */
+.intake-check { display: none; width: 1rem; height: 1rem; flex-shrink: 0; }
+.peer:checked ~ .intake-chip .intake-check { display: block; }
+
 /* Set by assets/site.js while the mobile menu is open, on every page. */
 body.mobile-menu-open { overflow: hidden; }
