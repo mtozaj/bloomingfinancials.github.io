@@ -6,6 +6,7 @@
     <meta name="theme-color" content="#1e3a8a">
     <script src="/assets/consent.js" defer></script>
     <script src="/assets/site.js" defer></script>
+    <script src="/assets/intake.js" defer></script>
     <title>Blooming Financial | Bookkeeping, Tax & Payroll Services in California – Bay Area, Los Angeles, San Diego & Beyond</title>
     <meta name="description" content="Professional bookkeeping, tax preparation, payroll, and consulting services for individuals and small businesses across California. Serving Cupertino, San Jose, San Francisco, Los Angeles, San Diego, Sacramento, and statewide with personalized financial care." />
     <link rel="canonical" href="https://www.bloomingfinancials.com/" />
@@ -582,9 +583,9 @@
     <!-- Consultation CTA -->
     <section id="consultation" class="py-20 bg-blue-50">
         <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="max-w-5xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
                 <div class="md:flex">
-                    <div class="md:w-1/2 bg-blue-600 text-white p-10">
+                    <div class="md:w-2/5 bg-blue-600 text-white p-10">
                         <h2 class="text-3xl font-bold mb-6">Ready to Get Started?</h2>
                         <p class="mb-6">Schedule your free 30-minute consultation to discuss your financial needs and how we can help.</p>
                         <div class="space-y-4">
@@ -602,68 +603,279 @@
                             </div>
                         </div>
                     </div>
-                    <div class="md:w-1/2 p-10">
-                        <!-- Form Container -->
+                    <div class="md:w-3/5 p-6 sm:p-10">
+                        <!-- Consultation intake: 3 steps, follow-up questions depend on earlier answers (assets/intake.js) -->
                         <div id="formContainer">
-                            <h3 id="consultHeading" class="text-2xl font-bold text-blue-900 mb-6">Book Your Consultation</h3>
+                            <h3 id="consultHeading" class="text-2xl font-bold text-blue-900 mb-2">Book Your Consultation</h3>
+                            <p class="text-gray-600 mb-6">A few quick taps help us prepare for your call. It takes about a minute.</p>
+                            <div class="hidden mb-6" data-intake-progress>
+                                <p class="text-sm font-medium text-blue-900 mb-2" data-intake-step-label>Step 1 of 3</p>
+                                <div class="h-1.5 rounded-full bg-blue-100 overflow-hidden" aria-hidden="true"><div class="h-full w-1/3 rounded-full bg-blue-600 transition-all duration-300" data-intake-bar></div></div>
+                            </div>
+                            <p class="sr-only" aria-live="polite" data-intake-status></p>
                             <form id="consultationForm"
                                   action="https://formspree.io/f/xjkwzerg"
                                   method="POST"
-                                  class="space-y-4">
-                                <div>
-                                    <label for="name" class="block text-gray-700 mb-2">Your Name</label>
-                                    <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                  class="space-y-8">
+                                <div class="space-y-6" data-intake-step="1">
+                                  <h4 class="text-lg font-semibold text-blue-900 focus:outline-none" tabindex="-1" data-intake-title>What can we help with?</h4>
+                                  <fieldset data-field="client_type" data-label="Reaching out for" data-required>
+                                    <legend class="font-medium text-gray-800">I&#x27;m reaching out for</legend>
+                                    <div class="mt-2 flex flex-wrap gap-2">
+                                      <label class="intake-option"><input type="radio" name="client_type" value="individual" class="peer sr-only" required><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Myself or my family</span></span></label>
+                                      <label class="intake-option"><input type="radio" name="client_type" value="business" class="peer sr-only" required><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>My business</span></span></label>
+                                      <label class="intake-option"><input type="radio" name="client_type" value="both" class="peer sr-only" required><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Both</span></span></label>
+                                    </div>
+                                    <p class="hidden mt-2 text-sm font-medium text-red-700" data-error>Choose one so we know who we are helping.</p>
+                                  </fieldset>
+                                  <fieldset data-field="services" data-label="Services" data-required>
+                                    <legend class="font-medium text-gray-800">What do you need help with? <span class="font-normal text-gray-500">Pick any that apply.</span></legend>
+                                    <div class="mt-2 flex flex-wrap gap-2">
+                                      <label class="intake-option"><input type="checkbox" name="services" value="tax_individual" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Individual tax return</span></span></label>
+                                      <label class="intake-option"><input type="checkbox" name="services" value="tax_business" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Business tax return</span></span></label>
+                                      <label class="intake-option"><input type="checkbox" name="services" value="planning" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Tax planning &amp; estimated taxes</span></span></label>
+                                      <label class="intake-option"><input type="checkbox" name="services" value="bookkeeping" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Bookkeeping</span></span></label>
+                                      <label class="intake-option"><input type="checkbox" name="services" value="payroll" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Payroll</span></span></label>
+                                      <label class="intake-option"><input type="checkbox" name="services" value="notice" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>IRS or FTB letter</span></span></label>
+                                      <label class="intake-option"><input type="checkbox" name="services" value="consulting" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Business advice or entity setup</span></span></label>
+                                      <label class="intake-option"><input type="checkbox" name="services" value="unsure" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Not sure yet</span></span></label>
+                                    </div>
+                                    <p class="hidden mt-2 text-sm font-medium text-red-700" data-error>Pick at least one so we know where to start.</p>
+                                  </fieldset>
+                                  <div class="hidden flex items-center gap-3 pt-2" data-intake-nav>
+                                    <button type="button" data-intake-next class="flex-1 bg-blue-600 text-white py-3 rounded-md font-medium hover:bg-blue-700 transition">Next &rarr;</button>
+                                  </div>
                                 </div>
-                                <div>
-                                    <label for="email" class="block text-gray-700 mb-2">Email Address</label>
-                                    <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                                </div>
-                                <div>
-                                    <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
-                                    <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                                </div>
-                                <div>
-                                    <label for="clientType" class="block text-gray-700 mb-2">Client Type</label>
-                                    <select id="clientType" name="client_type" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                                        <option value="" disabled selected>Select client type</option>
-                                        <option value="individual">Individual / Personal</option>
-                                        <option value="business">Business</option>
-                                    </select>
-                                </div>
-                                <div id="businessTypeGroup" class="hidden">
-                                    <label for="business" class="block text-gray-700 mb-2">Business Type</label>
-                                    <select id="business" name="business_type" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                        <option value="" disabled selected>Select your business type</option>
+
+                                <div class="space-y-5" data-intake-step="2">
+                                  <div>
+                                    <h4 class="text-lg font-semibold text-blue-900 focus:outline-none" tabindex="-1" data-intake-title>A few quick details</h4>
+                                    <p class="text-sm text-gray-600 mt-1">Tap what applies and skip anything you're unsure of.</p>
+                                  </div>
+                                  <div class="space-y-5 rounded-lg border border-gray-200 bg-gray-50 p-4" data-show-if="services:tax_individual,tax_business">
+                                    <p class="text-xs font-semibold uppercase tracking-wide text-blue-700">Your tax return</p>
+                                    <fieldset data-field="tax_years" data-label="Tax years" data-required>
+                                      <legend class="font-medium text-gray-800">Which tax year(s)? <span class="font-normal text-gray-500">The year the income was earned.</span></legend>
+                                      <div class="mt-2 flex flex-wrap gap-2">
+                                        <label class="intake-option"><input type="checkbox" name="tax_years" value="2026" class="peer sr-only" data-year-offset="0"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>2026</span></span></label>
+                                        <label class="intake-option"><input type="checkbox" name="tax_years" value="2025" class="peer sr-only" data-year-offset="1"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>2025</span></span></label>
+                                        <label class="intake-option"><input type="checkbox" name="tax_years" value="2024" class="peer sr-only" data-year-offset="2"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>2024</span></span></label>
+                                        <label class="intake-option"><input type="checkbox" name="tax_years" value="earlier" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Earlier years</span></span></label>
+                                        <label class="intake-option"><input type="checkbox" name="tax_years" value="unsure" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Not sure</span></span></label>
+                                      </div>
+                                      <p class="hidden mt-2 text-sm font-medium text-red-700" data-error>Pick a year, or &quot;Not sure&quot;.</p>
+                                    </fieldset>
+                                    <fieldset data-field="filing_status" data-label="Filing status">
+                                      <legend class="font-medium text-gray-800">Where are you with it?</legend>
+                                      <div class="mt-2 flex flex-wrap gap-2">
+                                        <label class="intake-option"><input type="radio" name="filing_status" value="not_filed" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Not filed yet</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="filing_status" value="needs_fix" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Filed, needs a fix</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="filing_status" value="extension" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>On extension</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="filing_status" value="behind" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Several years behind</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="filing_status" value="unsure" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Not sure</span></span></label>
+                                      </div>
+                                    </fieldset>
+                                    <fieldset data-field="return_details" data-label="Return details" data-show-if="services:tax_individual">
+                                      <legend class="font-medium text-gray-800">Anything that applies? <span class="font-normal text-gray-500">Pick any.</span></legend>
+                                      <div class="mt-2 flex flex-wrap gap-2">
+                                        <label class="intake-option"><input type="checkbox" name="return_details" value="w2" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>W-2 job</span></span></label>
+                                        <label class="intake-option"><input type="checkbox" name="return_details" value="self_employed" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Self-employed or 1099</span></span></label>
+                                        <label class="intake-option"><input type="checkbox" name="return_details" value="stock" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>RSUs or stock sales</span></span></label>
+                                        <label class="intake-option"><input type="checkbox" name="return_details" value="rental" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Rental property</span></span></label>
+                                        <label class="intake-option"><input type="checkbox" name="return_details" value="moved" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Moved states</span></span></label>
+                                        <label class="intake-option"><input type="checkbox" name="return_details" value="crypto" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Crypto</span></span></label>
+                                        <label class="intake-option"><input type="checkbox" name="return_details" value="covered_ca" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Covered California (1095-A)</span></span></label>
+                                      </div>
+                                    </fieldset>
+                                  </div>
+                                  <div class="space-y-5 rounded-lg border border-gray-200 bg-gray-50 p-4" data-show-if="client_type:business,both|services:tax_business">
+                                    <p class="text-xs font-semibold uppercase tracking-wide text-blue-700">Your business</p>
+                                    <fieldset data-field="entity_type" data-label="Business structure">
+                                      <legend class="font-medium text-gray-800">How is the business set up?</legend>
+                                      <div class="mt-2 flex flex-wrap gap-2">
+                                        <label class="intake-option"><input type="radio" name="entity_type" value="sole_prop" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Sole prop</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="entity_type" value="single_llc" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Single-member LLC</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="entity_type" value="partnership" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Partnership or multi-member LLC</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="entity_type" value="s_corp" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>S corp</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="entity_type" value="c_corp" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>C corp</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="entity_type" value="not_formed" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Not formed yet</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="entity_type" value="unsure" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Not sure</span></span></label>
+                                      </div>
+                                    </fieldset>
+                                    <div data-field="business_type" data-label="Industry">
+                                      <label for="business" class="block font-medium text-gray-800">What kind of business is it?</label>
+                                      <select id="business" name="business_type" class="mt-2 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+                                        <option value="">Select your industry (optional)</option>
                                         <option value="retail">Retail</option>
                                         <option value="restaurant">Restaurant/Food Service</option>
                                         <option value="professional">Professional Services</option>
                                         <option value="tech">Technology</option>
                                         <option value="ecommerce">E-commerce</option>
                                         <option value="real_estate">Real Estate</option>
-                                        <option value="health_wellness">Health & Wellness</option>
+                                        <option value="health_wellness">Health &amp; Wellness</option>
                                         <option value="construction">Construction/Contracting</option>
                                         <option value="education">Education/Tutoring</option>
                                         <option value="freelance">Freelancer/Independent Contractor</option>
                                         <option value="nonprofit">Nonprofit Organization</option>
                                         <option value="automotive">Automotive Services</option>
                                         <option value="other">Other</option>
-                                    </select>
-
-                                    <!-- hidden by default -->
-                                    <input type="text" id="otherBusiness" name="other_business"
-                                         placeholder="Please describe your business"
-                                         class="w-full px-4 py-2 border rounded-md mt-3 hidden focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                      </select>
+                                      <input type="text" id="otherBusiness" name="other_business" placeholder="Please describe your business" aria-label="Describe your business" class="mt-3 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                  </div>
+                                  <div class="space-y-5 rounded-lg border border-gray-200 bg-gray-50 p-4" data-show-if="services:bookkeeping">
+                                    <p class="text-xs font-semibold uppercase tracking-wide text-blue-700">Bookkeeping</p>
+                                    <fieldset data-field="books_status" data-label="Books">
+                                      <legend class="font-medium text-gray-800">Where are your books?</legend>
+                                      <div class="mt-2 flex flex-wrap gap-2">
+                                        <label class="intake-option"><input type="radio" name="books_status" value="current" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Up to date</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="books_status" value="few_months" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>A few months behind</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="books_status" value="year_plus" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>A year or more behind</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="books_status" value="scratch" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Starting from scratch</span></span></label>
+                                      </div>
+                                    </fieldset>
+                                    <fieldset data-field="transactions" data-label="Monthly transactions">
+                                      <legend class="font-medium text-gray-800">About how many transactions a month?</legend>
+                                      <div class="mt-2 flex flex-wrap gap-2">
+                                        <label class="intake-option"><input type="radio" name="transactions" value="under_50" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Under 50</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="transactions" value="50_200" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>50-200</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="transactions" value="200_500" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>200-500</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="transactions" value="500_plus" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>500+</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="transactions" value="unsure" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Not sure</span></span></label>
+                                      </div>
+                                    </fieldset>
+                                  </div>
+                                  <div class="space-y-5 rounded-lg border border-gray-200 bg-gray-50 p-4" data-show-if="services:payroll">
+                                    <p class="text-xs font-semibold uppercase tracking-wide text-blue-700">Payroll</p>
+                                    <fieldset data-field="headcount" data-label="People on payroll">
+                                      <legend class="font-medium text-gray-800">How many people do you pay?</legend>
+                                      <div class="mt-2 flex flex-wrap gap-2">
+                                        <label class="intake-option"><input type="radio" name="headcount" value="1_5" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>1-5</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="headcount" value="6_20" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>6-20</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="headcount" value="21_50" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>21-50</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="headcount" value="50_plus" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>50+</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="headcount" value="contractors" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Contractors only</span></span></label>
+                                      </div>
+                                    </fieldset>
+                                    <fieldset data-field="payroll_status" data-label="Payroll status">
+                                      <legend class="font-medium text-gray-800">Where are you with payroll?</legend>
+                                      <div class="mt-2 flex flex-wrap gap-2">
+                                        <label class="intake-option"><input type="radio" name="payroll_status" value="setup" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Setting it up</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="payroll_status" value="switching" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Switching providers</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="payroll_status" value="fixing" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Fixing a problem</span></span></label>
+                                      </div>
+                                    </fieldset>
+                                  </div>
+                                  <div class="space-y-5 rounded-lg border border-gray-200 bg-gray-50 p-4" data-show-if="services:notice">
+                                    <p class="text-xs font-semibold uppercase tracking-wide text-blue-700">IRS or FTB letter</p>
+                                    <fieldset data-field="notice_agency" data-label="Letter from">
+                                      <legend class="font-medium text-gray-800">Who sent the letter?</legend>
+                                      <div class="mt-2 flex flex-wrap gap-2">
+                                        <label class="intake-option"><input type="radio" name="notice_agency" value="irs" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>IRS</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="notice_agency" value="ftb" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>California FTB</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="notice_agency" value="edd" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>EDD</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="notice_agency" value="unsure" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Not sure</span></span></label>
+                                      </div>
+                                    </fieldset>
+                                    <fieldset data-field="notice_deadline" data-label="Response due">
+                                      <legend class="font-medium text-gray-800">When is the response due?</legend>
+                                      <div class="mt-2 flex flex-wrap gap-2">
+                                        <label class="intake-option"><input type="radio" name="notice_deadline" value="2_weeks" class="peer sr-only" data-urgent><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Within 2 weeks</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="notice_deadline" value="30_days" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Within 30 days</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="notice_deadline" value="later" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Later</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="notice_deadline" value="passed" class="peer sr-only" data-urgent><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Already passed</span></span></label>
+                                        <label class="intake-option"><input type="radio" name="notice_deadline" value="unsure" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Not sure</span></span></label>
+                                      </div>
+                                    </fieldset>
+                                  </div>
+                                  <div class="space-y-5 rounded-lg border border-gray-200 bg-gray-50 p-4" data-show-if="services:planning">
+                                    <p class="text-xs font-semibold uppercase tracking-wide text-blue-700">Tax planning</p>
+                                    <fieldset data-field="planning_topics" data-label="Planning topics">
+                                      <legend class="font-medium text-gray-800">What&#x27;s on your mind? <span class="font-normal text-gray-500">Pick any.</span></legend>
+                                      <div class="mt-2 flex flex-wrap gap-2">
+                                        <label class="intake-option"><input type="checkbox" name="planning_topics" value="estimates" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Estimated payments</span></span></label>
+                                        <label class="intake-option"><input type="checkbox" name="planning_topics" value="stock" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>RSUs or stock</span></span></label>
+                                        <label class="intake-option"><input type="checkbox" name="planning_topics" value="side_income" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Side income</span></span></label>
+                                        <label class="intake-option"><input type="checkbox" name="planning_topics" value="withholding" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Withholding check</span></span></label>
+                                        <label class="intake-option"><input type="checkbox" name="planning_topics" value="year_end" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Year-end planning</span></span></label>
+                                      </div>
+                                    </fieldset>
+                                  </div>
+                                  <div class="space-y-5 rounded-lg border border-gray-200 bg-gray-50 p-4" data-show-if="services:consulting">
+                                    <p class="text-xs font-semibold uppercase tracking-wide text-blue-700">Business advice</p>
+                                    <fieldset data-field="consulting_topics" data-label="Advice topics">
+                                      <legend class="font-medium text-gray-800">What would you like help with? <span class="font-normal text-gray-500">Pick any.</span></legend>
+                                      <div class="mt-2 flex flex-wrap gap-2">
+                                        <label class="intake-option"><input type="checkbox" name="consulting_topics" value="entity" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Choosing an entity or S corp</span></span></label>
+                                        <label class="intake-option"><input type="checkbox" name="consulting_topics" value="starting" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Starting a business</span></span></label>
+                                        <label class="intake-option"><input type="checkbox" name="consulting_topics" value="cash_flow" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Cash flow</span></span></label>
+                                        <label class="intake-option"><input type="checkbox" name="consulting_topics" value="systems" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Systems setup</span></span></label>
+                                        <label class="intake-option"><input type="checkbox" name="consulting_topics" value="growth" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Growth plans</span></span></label>
+                                      </div>
+                                    </fieldset>
+                                  </div>
+                                  <fieldset data-field="timeline" data-label="Timeline" data-required>
+                                    <legend class="font-medium text-gray-800">When do you need help?</legend>
+                                    <div class="mt-2 flex flex-wrap gap-2">
+                                      <label class="intake-option"><input type="radio" name="timeline" value="asap" class="peer sr-only" required><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>As soon as possible</span></span></label>
+                                      <label class="intake-option"><input type="radio" name="timeline" value="month" class="peer sr-only" required><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Within a month</span></span></label>
+                                      <label class="intake-option"><input type="radio" name="timeline" value="planning" class="peer sr-only" required><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Just planning ahead</span></span></label>
+                                    </div>
+                                    <p class="hidden mt-2 text-sm font-medium text-red-700" data-error>Let us know your timing so we can prioritize.</p>
+                                  </fieldset>
+                                  <div class="hidden flex items-center gap-3 pt-2" data-intake-nav>
+                                    <button type="button" data-intake-back class="px-4 py-3 rounded-md font-medium text-blue-700 hover:bg-blue-50 transition">&larr; Back</button>
+                                    <button type="button" data-intake-next class="flex-1 bg-blue-600 text-white py-3 rounded-md font-medium hover:bg-blue-700 transition">Next &rarr;</button>
+                                  </div>
                                 </div>
-                                
-                                <input type="hidden" name="_subject"
-                                       value="New consultation request from website">
-                                <!-- Spam trap: hidden from people, ignored by Formspree when filled -->
-                                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden">
 
-                                <button type="submit" id="submitBtn" class="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition font-medium">
-                                    Schedule Consultation
-                                </button>
-                                <p class="text-sm text-gray-500 leading-relaxed">Please don't include Social Security numbers or other sensitive tax details here. We'll collect documents through our secure client portal. See our <a href="/privacy/" class="text-blue-600 underline hover:text-blue-800">Privacy Policy</a>.</p>
+                                <div class="space-y-4" data-intake-step="3">
+                                  <h4 class="text-lg font-semibold text-blue-900 focus:outline-none" tabindex="-1" data-intake-title>How can we reach you?</h4>
+                                  <div>
+                                    <label for="name" class="block text-gray-700 mb-2">Your Name</label>
+                                    <input type="text" id="name" name="name" autocomplete="name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                  </div>
+                                  <div>
+                                    <label for="email" class="block text-gray-700 mb-2">Email Address</label>
+                                    <input type="email" id="email" name="email" autocomplete="email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                  </div>
+                                  <div>
+                                    <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" autocomplete="tel" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                  </div>
+                                  <fieldset data-field="best_time" data-label="Best time to reach">
+                                    <legend class="font-medium text-gray-800">Best time to reach you <span class="font-normal text-gray-500">Optional.</span></legend>
+                                    <div class="mt-2 flex flex-wrap gap-2">
+                                      <label class="intake-option"><input type="radio" name="best_time" value="morning" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Morning</span></span></label>
+                                      <label class="intake-option"><input type="radio" name="best_time" value="afternoon" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Afternoon</span></span></label>
+                                      <label class="intake-option"><input type="radio" name="best_time" value="evening" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Evening</span></span></label>
+                                      <label class="intake-option"><input type="radio" name="best_time" value="anytime" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Anytime</span></span></label>
+                                    </div>
+                                  </fieldset>
+                                  <div data-field="notes" data-label="Notes">
+                                    <label for="intakeNotes" class="block text-gray-700 mb-2">Anything else we should know? <span class="text-gray-500">Optional.</span></label>
+                                    <textarea id="intakeNotes" name="notes" rows="3" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                  </div>
+                                  <fieldset data-field="heard_from" data-label="Heard about us">
+                                    <legend class="font-medium text-gray-800">How did you hear about us? <span class="font-normal text-gray-500">Optional.</span></legend>
+                                    <div class="mt-2 flex flex-wrap gap-2">
+                                      <label class="intake-option"><input type="radio" name="heard_from" value="google" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Google</span></span></label>
+                                      <label class="intake-option"><input type="radio" name="heard_from" value="yelp" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Yelp</span></span></label>
+                                      <label class="intake-option"><input type="radio" name="heard_from" value="instagram" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Instagram</span></span></label>
+                                      <label class="intake-option"><input type="radio" name="heard_from" value="chatgpt" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>ChatGPT</span></span></label>
+                                      <label class="intake-option"><input type="radio" name="heard_from" value="referral" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Friend or referral</span></span></label>
+                                      <label class="intake-option"><input type="radio" name="heard_from" value="other" class="peer sr-only"><span class="intake-chip"><svg class="intake-check" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0z" clip-rule="evenodd"/></svg><span>Other</span></span></label>
+                                    </div>
+                                  </fieldset>
+                                  <input type="hidden" name="_subject" value="New consultation request from website">
+                                  <!-- Spam trap: hidden from people, ignored by Formspree when filled -->
+                                  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden">
+                                  <div class="flex items-center gap-3 pt-2">
+                                    <button type="button" data-intake-back class="hidden px-4 py-3 rounded-md font-medium text-blue-700 hover:bg-blue-50 transition">&larr; Back</button>
+                                    <button type="submit" id="submitBtn" class="flex-1 bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition font-medium">Request Free Consultation</button>
+                                  </div>
+                                  <p class="text-sm text-gray-500 leading-relaxed">Please don't include Social Security numbers or other sensitive tax details here. We'll collect documents through our secure client portal. See our <a href="/privacy/" class="text-blue-600 underline hover:text-blue-800">Privacy Policy</a>.</p>
+                                </div>
                             </form>
                         </div>
                         
@@ -673,11 +885,11 @@
                                 <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                                     <i class="fas fa-check text-green-600 text-2xl"></i>
                                 </div>
-                                <h3 class="text-2xl font-bold text-blue-900 mb-4">Thank You!</h3>
+                                <h3 id="thankYouHeading" class="text-2xl font-bold text-blue-900 mb-4">Thank You!</h3>
                                 <p class="text-gray-700 mb-4">We've received your consultation request and will contact you within 24 hours to schedule your free consultation.</p>
                                 <p class="text-sm text-gray-600">Keep an eye on your email and phone for our response!</p>
                             </div>
-                            <button onclick="resetForm()" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
+                            <button type="button" id="intakeReset" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
                                 Submit Another Request
                             </button>
                         </div>
@@ -870,10 +1082,13 @@
                                     <div>
                                         <label for="contactSubject" class="block text-gray-700 mb-2">Subject</label>
                                         <select id="contactSubject" name="subject" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                            <option value="general">General Inquiry</option>
-                                            <option value="bookkeeping">Bookkeeping Services</option>
-                                            <option value="tax">Tax Preparation</option>
-                                            <option value="payroll">Payroll Services</option>
+                                            <option value="general">General question</option>
+                                            <option value="tax_individual">Individual Tax Preparation</option>
+                                            <option value="tax_business">Business Tax Preparation</option>
+                                            <option value="planning">Tax Planning</option>
+                                            <option value="bookkeeping">Bookkeeping</option>
+                                            <option value="payroll">Payroll</option>
+                                            <option value="notice">IRS &amp; FTB Notice Support</option>
                                             <option value="consulting">Business Consulting</option>
                                             <option value="other">Other</option>
                                         </select>
@@ -1084,7 +1299,11 @@
             // Show loading state
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
             submitButton.disabled = true;
-            
+
+            // Put the topic in the email subject, e.g. "New message: Payroll"
+            const topic = document.getElementById('contactSubject');
+            contactForm.querySelector('input[name="_subject"]').value = 'New message: ' + topic.options[topic.selectedIndex].text;
+
             // Prepare form data
             const formData = new FormData(contactForm);
             
@@ -1138,104 +1357,7 @@
         }
     </script>
     <script>
-        const form = document.getElementById('consultationForm');
-        const submitBtn = document.getElementById('submitBtn');
-        
-        form.addEventListener('submit', async function(event) {
-            event.preventDefault();  // Prevent normal form redirect
-            
-            // Show loading state
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Submitting...';
-            submitBtn.disabled = true;
-            
-            // Prepare form data
-            const formData = new FormData(form);
-            
-            try {
-                // Send the form data to Formspree via AJAX
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
-                
-                if (response.ok) {
-                    // Hide the form container and show thank you message
-                    document.getElementById('formContainer').classList.add('hidden');
-                    document.getElementById('thank-you').classList.remove('hidden');
-
-                    // Lead conversion (GA4 generate_lead + ChatGPT Ads), per the visitor's privacy choices
-                    if (window.BF) BF.trackLead('consultation_form');
-                } else {
-                    // Handle error
-                    console.error('Formspree error response', response);
-                    alert('There was an error submitting your request. Please try again or contact us directly.');
-                    
-                    // Reset button
-                    submitBtn.innerHTML = 'Schedule Consultation';
-                    submitBtn.disabled = false;
-                }
-            } catch (err) {
-                console.error('Form submission failed', err);
-                alert('There was a network error. Please check your connection and try again.');
-                
-                // Reset button
-                submitBtn.innerHTML = 'Schedule Consultation';
-                submitBtn.disabled = false;
-            }
-        });
-        
-        // Function to reset form (for "Submit Another Request" button)
-        function resetForm() {
-            // Reset form fields
-            form.reset();
-
-            // Hide business-related fields
-            businessTypeGroup.classList.add('hidden');
-            businessSelect.required = false;
-            otherInput.classList.add('hidden');
-            otherInput.required = false;
-
-            // Reset button state
-            submitBtn.innerHTML = 'Schedule Consultation';
-            submitBtn.disabled = false;
-
-            // Show form container and hide thank you message
-            document.getElementById('formContainer').classList.remove('hidden');
-            document.getElementById('thank-you').classList.add('hidden');
-        }
-
-        // Dropdown functionality for client and business types
-        const clientTypeSelect = document.getElementById('clientType');
-        const businessTypeGroup = document.getElementById('businessTypeGroup');
-        const businessSelect = document.getElementById('business');
-        const otherInput = document.getElementById('otherBusiness');
-
-        clientTypeSelect.addEventListener('change', function () {
-            if (this.value === 'business') {
-                businessTypeGroup.classList.remove('hidden');
-                businessSelect.required = true;
-            } else {
-                businessTypeGroup.classList.add('hidden');
-                businessSelect.value = '';
-                businessSelect.required = false;
-                otherInput.classList.add('hidden');
-                otherInput.value = '';
-                otherInput.required = false;
-            }
-        });
-
-        businessSelect.addEventListener('change', function () {
-            if (this.value === 'other') {
-                otherInput.classList.remove('hidden');
-                otherInput.required = true;
-            } else {
-                otherInput.classList.add('hidden');
-                otherInput.value = '';
-                otherInput.required = false;
-            }
-        });
-            // Scroll-reveal: fade sections/cards in as they enter the viewport.
+        // Scroll-reveal: fade sections/cards in as they enter the viewport.
         if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             document.documentElement.classList.add('js-reveal');
             const revealObserver = new IntersectionObserver((entries) => {

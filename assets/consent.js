@@ -103,9 +103,16 @@
   window.BF = window.BF || {};
 
   // A completed lead form: GA4 key event plus the ChatGPT Ads conversion.
-  window.BF.trackLead = function (source) {
+  // Optional params (e.g. services picked, no personal data) go to GA only.
+  window.BF.trackLead = function (source, params) {
     var p = prefs();
-    if (p.analytics && window.gtag) window.gtag('event', 'generate_lead', { lead_source: source });
+    if (p.analytics && window.gtag) {
+      var event = { lead_source: source };
+      for (var key in params || {}) {
+        if (Object.prototype.hasOwnProperty.call(params, key)) event[key] = params[key];
+      }
+      window.gtag('event', 'generate_lead', event);
+    }
     if (p.advertising && window.oaiq) window.oaiq('measure', 'lead_created', { type: 'customer_action' });
   };
 
