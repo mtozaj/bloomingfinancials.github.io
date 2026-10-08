@@ -39,3 +39,6 @@ jobs:
             exit 1
           fi
           echo "tailwind build current"
+
+      - name: Consultation branching and submission checks
+        run: npm test

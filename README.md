@@ -112,29 +112,31 @@ Common external integrations include:
 
 ## Consultation intake form
 
-The homepage consultation form (`#consultationForm` in `index.html`) is a three-step questionnaire run by `assets/intake.js`:
+The homepage uses a guided inquiry in `assets/intake.js`, with one question visible at a time. The visitor chooses individual, business, both, or not sure. That answer determines the service list. Each service has at most two follow-up questions before contact details. Completed answers remain available through **Change** controls.
 
-1. **What can we help with?** Who the visitor is and which services they need (both required).
-2. **A few quick details.** Follow-up questions that match the step 1 answers, plus the required timeline.
-3. **How can we reach you?** Name, email, and phone (required), then optional best time, notes, and how they heard about us.
+- Individual tax preparation or amendments: tax year(s).
+- Business/combined tax preparation: tax year(s) and business structure.
+- Bookkeeping: ongoing, cleanup, both, setup, or not sure.
+- Payroll: setup, switching providers, an issue, or not sure.
+- Tax planning: one topic, tailored to the client type.
+- Notices: agency and response deadline. EDD is shown on business paths.
+- Consulting: one business topic. Not-sure paths can proceed directly to contact.
 
-Most answers are tap-to-select chips: a real radio button or checkbox inside `<label class="intake-option">`, styled by the `.intake-chip` component in `tailwind.input.css`.
+**Contact details:** name and email are required; phone is optional. An expandable notes field accepts other services, deadlines, or questions. Industry, transaction counts, referral source, and preferred calling times are left for follow-up. No documents, identification numbers, or financial amounts are requested.
 
-**Editing questions.** All wording lives in `index.html`, so most edits need no JavaScript:
+**Editing questions:** `questions()` in `assets/intake.js` owns the branching, professional wording, choices, and stable email labels. `taxYears()` rolls the choices forward each year and offers the upcoming season from October. A `multiple` question has a Continue button; single-choice buttons reveal the next question immediately. Tax years and Not sure are mutually exclusive. Styles live in `tailwind.input.css`; rebuild the committed stylesheet after changes.
 
-- Each question is a `<fieldset data-field="..." data-label="...">`. `data-label` is the label the firm sees in the Formspree email and the column name in Formspree's CSV export, so keep it short and stable.
-- `data-required` makes a question required before moving on. For a single-choice question that always shows (client type, timeline), also put `required` on its radio buttons so the no-JavaScript version enforces it too. Plain HTML can't require "at least one" checkbox or a question that only sometimes applies, so those stay optional without JavaScript.
-- `data-show-if` shows a question or section only after a matching earlier answer, for example `services:bookkeeping` or `client_type:business,both|services:tax_business`. Commas list accepted values and `|` means "or". Hidden questions are neither validated nor sent.
-- To add a choice, copy an existing chip `<label>` and change its `value` and text.
-- Tax-year chips carry `data-year-offset`. The script relabels them from today's date: the current year from October, otherwise last year, plus the two years before it.
-- If you add or rename a service, also update the name lists at the top of `assets/intake.js`. They build the email summary and subject line.
-- Rebuild Tailwind after using new classes.
+**Changing answers:** changing client type clears service and follow-up answers; changing service clears its follow-ups. Contact details and notes stay in the same DOM fields. Only valid answers from the current question path are sent to Formspree. There is no browser storage of inquiry data.
 
-**What the firm receives.** Each inquiry has a subject line for triage, such as `New consultation: Bookkeeping + Payroll (business), ASAP`. It starts with `URGENT notice:` when an IRS or FTB letter is due within 2 weeks or already past due. The email opens with a one-line `Summary`, followed by name, email, and phone, then each answered question under its `data-label`.
+**Submission:** the existing Formspree endpoint and honeypot remain. The email includes a readable `Summary`, name/email/phone, each relevant answer, optional `Notes`, and a useful subject. Notice deadlines within two weeks or already passed prefix the subject with `URGENT notice:`. Only a successful response shows confirmation. Pending requests prevent duplicate submissions and editing; failures preserve the inquiry and show an inline error. A 20-second timeout does not automatically retry.
 
-**Analytics.** Through `assets/consent.js` (so privacy choices apply), the form sends the GA4 event `consultation_step` (step 2 or 3, once per inquiry) and `generate_lead` with `lead_source`, `client_type`, `services`, and `timeline`. None of these contain personal data. To see the extra parameters in GA reports, register them as event-scoped custom dimensions in GA Admin.
+**Accessibility:** question headings receive focus after explicit selections; progress is announced and completed answers are editable. Choices have large targets and visible keyboard focus. Motion honors reduced-motion preferences. Native form controls remain in use, and name/email validation precedes submission.
 
-**Without JavaScript**, every question shows on one page and the form posts straight to Formspree.
+**Analytics:** `BF.trackEvent('consultation_step', { step })` records stages 2 and 3 once per inquiry. `BF.trackLead('consultation_form', { client_type, services })` runs only after success and honors the shared consent layer. No name, email, phone, notes, or free-text deadline reaches analytics. The old required timeline question and its analytics parameter have been removed.
+
+**Without JavaScript:** a short native form asks client type, service, and contact details and posts directly to Formspree. The enhanced view replaces this fallback only after initializing.
+
+**Regression checks:** run `npm test` after installing development dependencies with `npm ci`. Tests exercise the actual homepage form and script in a DOM, with mocked network requests only. They cover every branch, changes of path, tax-year selection, validation, privacy-safe analytics, payloads, success/failure, pending submissions, and the native fallback.
 
 ## Recommended Workflow
 

@@ -100,7 +100,11 @@ The homepage carries real reviews from Yelp and Google with verbatim quotes, nam
 
 ## Consultation content
 
-The consultation section pairs a short "ready to get started" headline with one explanatory line about the free 30-minute consultation, a small set of value points (no obligation, personalized recommendations, clear pricing), and the consultation form. Use the homepage HTML as the source of truth for exact copy. The form is a three-step intake: what the visitor needs, a few tap-to-answer details that adapt to those answers, then contact details, with a "Step N of 3" progress bar. The README's "Consultation intake form" section explains how it works. Keep it quick: mostly single-tap choice chips, with only the client type, services, timeline, contact details, and (for tax returns) the tax year required. Never ask for sensitive data such as Social Security numbers, income amounts, or account numbers. Use the existing questions and wording if showing the form, and do not add questions unless explicitly requested.
+The consultation section uses one centered white card with a clear request heading, a short explanation of the free 30-minute consultation, and three progress stages: Your request, A few details, Contact. This is an inquiry, not a reserved appointment. Use "Request Free Consultation" for the CTA and explain that the firm will contact the visitor to arrange the consultation.
+
+Show one relevant question at a time. The first answer filters individual and business services. Single-choice rectangular rows advance directly; tax-year checkboxes use Continue. Completed answers collapse into compact editable rows, and new questions enter with a restrained transition that respects reduced motion. Avoid pill-shaped choice clouds and irrelevant questions.
+
+Only ask one or two service-specific follow-ups. Require name and email; phone and expandable notes are optional. Keep contact details when earlier answers change and discard irrelevant branch answers. Include a not-sure route. Never request sensitive identification numbers, income amounts, account numbers, or uploads in this public form. See the README for branching and submission details.
 
 ## Blog/resource themes
 
@@ -257,7 +261,7 @@ Do not use placeholder copy like lorem ipsum. If real copy is missing, leave the
 Use clear, professional, plain-language copy. The tone should feel calm, practical, and trustworthy. Avoid hype, aggressive sales language, and generic startup/SaaS phrasing.
 
 Preferred language patterns:
-- “Book Free Consultation”
+- “Request Free Consultation”
 - “View all services”
 - “Learn more”
 - “Professional bookkeeping, tax preparation, payroll, and consulting services”
