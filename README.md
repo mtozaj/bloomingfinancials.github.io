@@ -96,6 +96,10 @@ Before publishing SEO-sensitive edits, check:
 
 Keep existing URLs stable unless a redirect plan is created. URL changes can affect indexing, search appearance, backlinks, and Google sitelinks.
 
+## Tax Content Maintenance
+
+The [October 2026 tax-content review](docs/tax-content-review.md) records material corrections and their official sources. Keep tax years explicit, distinguish federal and California treatment, and use IRS, FTB, EDD, and DIR guidance when updating tax claims. After a substantive article review, update its visible review date and `BlogPosting.dateModified`, retain its publication date, and check the matching service-page FAQs and JSON-LD answers. Source links can roll forward to new tax years, so recheck the year before applying a figure.
+
 ## Forms and External Links
 
 The site uses external services for forms, analytics, icons, fonts, and the client portal. Review existing HTML before changing these integrations.

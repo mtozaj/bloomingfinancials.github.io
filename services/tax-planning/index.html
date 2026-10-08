@@ -45,12 +45,44 @@
   { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.bloomingfinancials.com/" }, { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.bloomingfinancials.com/services/" }, { "@type": "ListItem", "position": 3, "name": "Tax Planning", "item": "https://www.bloomingfinancials.com/services/tax-planning/" } ] }
   </script>
   <script type="application/ld+json">
-  { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
-    { "@type": "Question", "name": "How do I know if I need to make estimated tax payments?", "acceptedAnswer": { "@type": "Answer", "text": "If your withholding won't cover at least 90% of this year's tax (or 100% of last year's tax, 110% for higher earners), the IRS expects quarterly estimated payments. Self-employment income, RSU vesting, stock sales, rental income, and partner K-1s are common reasons." } },
-    { "@type": "Question", "name": "My RSU withholding feels low. Can you check it?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The default 22% federal supplemental rate often under-withholds for higher-income employees. We model your full year and recommend additional withholding or quarterly payments so you aren't surprised at filing." } },
-    { "@type": "Question", "name": "I owed a big balance last year. How do I avoid that again?", "acceptedAnswer": { "@type": "Answer", "text": "We review last year's return, adjust your W-4 and California DE 4 if you're a W-2 employee, and set up quarterly payments for any non-wage income so the balance owed at filing is small." } },
-    { "@type": "Question", "name": "Do you handle California estimated payments too?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. California has its own estimated payment schedule with front-loaded percentages (30% Q1, 40% Q2, 0% Q3, 30% Q4). We calculate both federal and California payments together." } }
-  ] }
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I know if I need to make estimated tax payments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Federal estimates are generally needed if you expect to owe at least $1,000 after withholding and refundable credits and will not meet a prepayment safe harbor. The usual target is the smaller of 90% of current-year tax or 100% of prior-year tax, rising to 110% when prior-year AGI exceeds $150,000 ($75,000 if married filing separately). Prior-year and special-exception rules also apply. We review installment timing and California separately."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "My RSU withholding feels low. Can you check it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Employers may use an optional 22% federal flat withholding method for eligible supplemental wages, which can be below your marginal tax rate. Other methods and the over-$1-million rule may apply. We project the full year and recommend withholding adjustments or estimated payments when needed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I owed a big balance last year. How do I avoid that again?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We use current-year income projections, withholding, and credits alongside last year’s return to recommend W-4/DE 4 changes or estimated payments. A safe harbor can avoid an underpayment penalty while still leaving a balance due at filing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you handle California estimated payments too?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. California generally uses 30%, 40%, 0%, and 30% installments. Current-year California AGI of at least $1 million ($500,000 if married/RDP filing separately) removes the prior-year safe harbor. We also review the state’s lower balance-due threshold and any annualized-income or other exception."
+      }
+    }
+  ]
+}
   </script>
 </head>
 
@@ -209,10 +241,10 @@
     <div class="container mx-auto px-6 max-w-3xl">
       <h2 class="text-3xl font-bold text-blue-900 mb-10 text-center">Frequently Asked Questions</h2>
       <div class="space-y-4">
-        <details class="border border-gray-200 rounded-lg p-5"><summary class="cursor-pointer font-semibold text-blue-900">How do I know if I need to make estimated tax payments?</summary><p class="mt-3 text-gray-700">If your withholding won't cover at least 90% of this year's tax (or 100% of last year's tax, 110% for higher earners), the IRS expects quarterly estimated payments. Self-employment income, RSU vesting, stock sales, rental income, and partner K-1s are common reasons.</p></details>
-        <details class="border border-gray-200 rounded-lg p-5"><summary class="cursor-pointer font-semibold text-blue-900">My RSU withholding feels low. Can you check it?</summary><p class="mt-3 text-gray-700">Yes. The default 22% federal supplemental rate often under-withholds for higher-income employees. We model your full year and recommend additional withholding or quarterly payments so you aren't surprised at filing.</p></details>
-        <details class="border border-gray-200 rounded-lg p-5"><summary class="cursor-pointer font-semibold text-blue-900">I owed a big balance last year. How do I avoid that again?</summary><p class="mt-3 text-gray-700">We review last year's return, adjust your W-4 and California DE 4 if you're a W-2 employee, and set up quarterly payments for any non-wage income so the balance owed at filing is small.</p></details>
-        <details class="border border-gray-200 rounded-lg p-5"><summary class="cursor-pointer font-semibold text-blue-900">Do you handle California estimated payments too?</summary><p class="mt-3 text-gray-700">Yes. California has its own estimated payment schedule with front-loaded percentages (30% Q1, 40% Q2, 0% Q3, 30% Q4). We calculate both federal and California payments together.</p></details>
+        <details class="border border-gray-200 rounded-lg p-5"><summary class="cursor-pointer font-semibold text-blue-900">How do I know if I need to make estimated tax payments?</summary><p class="mt-3 text-gray-700">Federal estimates are generally needed if you expect to owe at least $1,000 after withholding and refundable credits and will not meet a prepayment safe harbor. The usual target is the smaller of 90% of current-year tax or 100% of prior-year tax, rising to 110% when prior-year AGI exceeds $150,000 ($75,000 if married filing separately). Prior-year and special-exception rules also apply. We review installment timing and California separately.</p></details>
+        <details class="border border-gray-200 rounded-lg p-5"><summary class="cursor-pointer font-semibold text-blue-900">My RSU withholding feels low. Can you check it?</summary><p class="mt-3 text-gray-700">Yes. Employers may use an optional 22% federal flat withholding method for eligible supplemental wages, which can be below your marginal tax rate. Other methods and the over-$1-million rule may apply. We project the full year and recommend withholding adjustments or estimated payments when needed.</p></details>
+        <details class="border border-gray-200 rounded-lg p-5"><summary class="cursor-pointer font-semibold text-blue-900">I owed a big balance last year. How do I avoid that again?</summary><p class="mt-3 text-gray-700">We use current-year income projections, withholding, and credits alongside last year’s return to recommend W-4/DE 4 changes or estimated payments. A safe harbor can avoid an underpayment penalty while still leaving a balance due at filing.</p></details>
+        <details class="border border-gray-200 rounded-lg p-5"><summary class="cursor-pointer font-semibold text-blue-900">Do you handle California estimated payments too?</summary><p class="mt-3 text-gray-700">Yes. California generally uses 30%, 40%, 0%, and 30% installments. Current-year California AGI of at least $1 million ($500,000 if married/RDP filing separately) removes the prior-year safe harbor. We also review the state’s lower balance-due threshold and any annualized-income or other exception.</p></details>
       </div>
     </div>
   </section>
