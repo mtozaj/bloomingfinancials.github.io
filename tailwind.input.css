@@ -3,23 +3,57 @@
 @tailwind utilities;
 
 @layer components {
-  /* Tap-to-select answers in the consultation form: a visually hidden
-     radio/checkbox (.peer) followed by its chip. */
-  .intake-option {
-    @apply relative inline-flex;
+  .intake-progress {
+    @apply grid grid-cols-3 gap-3 mt-6 text-xs text-gray-500;
   }
-  .intake-chip {
-    @apply inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors cursor-pointer select-none;
-    @apply hover:border-blue-400 hover:bg-blue-50;
-    @apply peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-checked:text-white;
-    @apply peer-focus-visible:ring-2 peer-focus-visible:ring-blue-500 peer-focus-visible:ring-offset-2;
-    @apply peer-disabled:cursor-not-allowed peer-disabled:opacity-50;
+  .intake-progress li::before {
+    content: '';
+    @apply block h-1 mb-2 rounded-sm bg-gray-200 transition-colors;
+  }
+  .intake-progress .is-reached { @apply text-blue-700; }
+  .intake-progress .is-reached::before { @apply bg-blue-600; }
+  .intake-question { @apply pt-6 min-w-0; }
+  fieldset.intake-question { @apply pt-0 mt-6; }
+  .intake-question-title { @apply text-lg font-semibold text-blue-900 w-full; }
+  .intake-helper { @apply text-sm text-gray-600 mt-2; }
+  .intake-choices { @apply grid gap-2.5 mt-4; }
+  .intake-choice {
+    @apply w-full min-h-[52px] flex items-center justify-between gap-4 text-left px-4 py-3 border border-gray-300 rounded-md bg-white text-gray-800 transition-colors;
+    @apply hover:bg-blue-50 hover:border-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600;
+  }
+  .intake-choice[aria-pressed="true"] { @apply bg-blue-50 border-blue-600; }
+  .intake-choice-detail { @apply block text-xs text-gray-600 mt-1; }
+  .intake-choice-arrow { @apply text-blue-700 text-xl flex-shrink-0; }
+  .intake-checkbox-row { @apply flex items-center gap-3 min-h-[50px] px-4 py-3 border border-gray-300 rounded-md cursor-pointer; }
+  .intake-checkbox-row.is-selected { @apply bg-blue-50 border-blue-600; }
+  .intake-checkbox-row input { @apply h-4 w-4 flex-shrink-0 accent-blue-600; }
+  .intake-checkbox-row:focus-within { @apply outline outline-2 outline-offset-2 outline-blue-600; }
+  .intake-summary { @apply flex items-center justify-between gap-4 py-3 border-b border-gray-200; }
+  .intake-summary > div { @apply min-w-0; overflow-wrap: anywhere; }
+  .intake-summary-label { @apply block text-xs text-gray-500 mb-1; }
+  .intake-summary-value { @apply block text-sm font-medium text-gray-800; }
+  .intake-change { @apply text-sm text-blue-700 underline underline-offset-2 min-h-[44px] pl-2 flex-shrink-0; }
+  .intake-label { @apply block text-sm font-medium text-gray-700 mb-2; }
+  .intake-input { @apply block w-full min-h-[46px] px-3 py-2 border border-gray-300 rounded-md text-base bg-white text-gray-900 focus:ring-2 focus:ring-blue-500; }
+  .intake-primary { @apply block w-full mt-5 min-h-[48px] px-4 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed; }
+  .intake-text-button { @apply block text-sm text-blue-700 underline underline-offset-2 min-h-[44px] py-3 text-left; }
+  .intake-details { @apply mt-4; }
+  .intake-details summary { @apply text-sm font-medium text-blue-700 cursor-pointer min-h-[44px] py-3; }
+  .intake-error { @apply mt-4 p-4 rounded-md border border-red-200 bg-red-50 text-sm text-red-800; }
+  .intake-error p { @apply mb-2; }
+  .intake-shell [tabindex="-1"] { scroll-margin-top: 6rem; }
+  .intake-shell [tabindex="-1"]:focus { outline: none; }
+  .intake-shell button:focus-visible { @apply outline outline-2 outline-offset-2 outline-blue-600; }
+  .intake-shell button:disabled { @apply cursor-not-allowed; }
+  .intake-shell [hidden] { display: none !important; }
+  @media (prefers-reduced-motion: no-preference) {
+    .intake-enter { animation: intake-enter 200ms ease-out; }
+  }
+  @keyframes intake-enter {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }
-
-/* Selected chips show a check mark, so the choice isn't signalled by color alone. */
-.intake-check { display: none; width: 1rem; height: 1rem; flex-shrink: 0; }
-.peer:checked ~ .intake-chip .intake-check { display: block; }
 
 /* Set by assets/site.js while the mobile menu is open, on every page. */
 body.mobile-menu-open { overflow: hidden; }

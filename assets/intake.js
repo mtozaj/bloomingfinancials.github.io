@@ -1,336 +1,364 @@
-/*
- * Consultation intake on the homepage (#consultation): three short steps
- * whose follow-up questions depend on earlier answers.
- *
- * The questions live in index.html. Each step is a [data-intake-step]
- * container and each question a [data-field] group with:
- *   data-label     the label used in the Formspree email
- *   data-required  must be answered before moving on
- *   data-show-if   shown (and submitted) only when an earlier answer matches,
- *                  e.g. "services:bookkeeping" or
- *                  "client_type:business,both|services:tax_business" (| = or)
- * Hidden questions are disabled, so they are neither validated nor sent.
- *
- * Without JavaScript every question shows on one page and the form posts to
- * Formspree as a normal form.
- */
+/* Guided consultation request. Only the current branch reaches Formspree.
+ * The short HTML form remains usable when JavaScript is unavailable. */
 (function () {
   'use strict';
+  const form = document.getElementById('consultationForm');
+  if (!form) return;
+  const container = document.getElementById('formContainer');
+  const thanks = document.getElementById('thank-you');
+  const history = form.querySelector('[data-intake-history]');
+  const active = form.querySelector('[data-intake-question]');
+  const contact = form.querySelector('[data-intake-contact]');
+  const fallback = form.querySelector('[data-intake-fallback]');
+  const progress = container.querySelector('[data-intake-progress]');
+  const status = container.querySelector('[data-intake-status]');
+  const error = document.getElementById('intakeError');
+  const errorText = error.querySelector('[data-intake-error-text]');
+  const submitButton = document.getElementById('submitBtn');
+  const contactHeading = document.getElementById('intakeContactHeading');
+  const thanksHeading = document.getElementById('thankYouHeading');
+  const answers = {};
+  const visitedPhases = new Set();
+  let editing = null;
+  let submitting = false;
 
-  var form = document.getElementById('consultationForm');
-  var container = document.getElementById('formContainer');
-  var thanks = document.getElementById('thank-you');
-  if (!form || !container || !thanks) return;
-
-  var steps = toArray(form.querySelectorAll('[data-intake-step]'));
-  var stepLabel = container.querySelector('[data-intake-step-label]');
-  var bar = container.querySelector('[data-intake-bar]');
-  var status = container.querySelector('[data-intake-status]');
-  var submitBtn = document.getElementById('submitBtn');
-  var industry = document.getElementById('business');
-  var industryOther = document.getElementById('otherBusiness');
-  var current = 1;
-  var furthest = 1; // furthest step reached, so going Back and Next again isn't counted twice
-
-  var SERVICE_NAMES = {
-    tax_individual: 'Individual tax return', tax_business: 'Business tax return', planning: 'Tax planning',
-    bookkeeping: 'Bookkeeping', payroll: 'Payroll', notice: 'IRS or FTB letter', consulting: 'Business advice',
-    unsure: 'Not sure yet'
-  };
-  var SERVICE_SHORT = {
-    tax_individual: 'Individual tax', tax_business: 'Business tax', planning: 'Tax planning',
-    bookkeeping: 'Bookkeeping', payroll: 'Payroll', notice: 'IRS/FTB letter', consulting: 'Business advice',
-    unsure: 'Not sure yet'
-  };
-  var CLIENT_NAMES = { individual: 'Individual', business: 'Business', both: 'Individual + business' };
-  var TIMELINE_SHORT = { asap: 'ASAP', month: 'within a month', planning: 'planning ahead' };
-  var DEADLINE_TEXT = {
-    '2_weeks': 'due within 2 weeks', '30_days': 'due within 30 days', later: 'due later',
-    passed: 'deadline passed', unsure: 'due date unknown'
-  };
-
-  function toArray(list) { return Array.prototype.slice.call(list); }
-
-  /* ---------- Reading answers ---------- */
-
-  function checked(name) {
-    return toArray(form.querySelectorAll('input[name="' + name + '"]')).filter(function (el) {
-      return el.checked && !el.disabled;
-    });
+  function element(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+  function choice(value, label, detail) { return { value, label, detail }; }
+  function question(key, title, label, options, extra) {
+    return Object.assign({ key, title, label, options, phase: 2 }, extra || {});
+  }
+  function taxYears() {
+    const now = new Date();
+    const lastYear = now.getFullYear() - 1;
+    const years = [choice(String(lastYear), String(lastYear))];
+    // Offer next season from October, keeping the prior year first.
+    if (now.getMonth() >= 9) years.push(choice(String(lastYear + 1), (lastYear + 1) + ' (upcoming filing season)'));
+    years.push(choice(String(lastYear - 1), String(lastYear - 1)));
+    years.push(choice('earlier', (lastYear - 2) + ' or earlier'), choice('unsure', 'Not sure'));
+    return years;
   }
 
-  function values(name) { return checked(name).map(function (el) { return el.value; }); }
-
-  function chipText(input) {
-    var chip = input.parentNode.querySelector('.intake-chip');
-    return (chip ? chip.textContent : input.value).trim();
-  }
-
-  function isHidden(el) { return !!el.closest('[data-show-if].hidden'); }
-
-  // The answer to one question, in the wording the visitor saw.
-  function answerText(group) {
-    var parts = [];
-    toArray(group.querySelectorAll('input, select, textarea')).forEach(function (el) {
-      if (el.disabled) return;
-      if (el.type === 'checkbox' || el.type === 'radio') {
-        if (el.checked) parts.push(chipText(el));
-      } else if (el === industry) {
-        if (el.value === 'other') {
-          var other = industryOther.value.trim();
-          parts.push(other ? 'Other: ' + other : 'Other');
-        } else if (el.value) {
-          parts.push(el.options[el.selectedIndex].text);
-        }
-      } else if (el !== industryOther && el.value.trim()) {
-        parts.push(el.value.trim());
+  // This also serves as the submission allowlist, excluding old branch answers.
+  function questions() {
+    const result = [question('client_type', 'Who needs assistance?', 'Client type', [
+      choice('individual', 'Individual or household', 'Personal taxes, including self-employed income'),
+      choice('business', 'Business', 'Business returns, bookkeeping and payroll'),
+      choice('both', 'Individual and business')
+    ], { phase: 1, fallback: choice('unsure', "I'm not sure which applies") })];
+    if (!answers.client_type || answers.client_type === 'unsure') return result;
+    const business = answers.client_type !== 'individual';
+    const services = [choice('tax', 'Tax preparation')];
+    if (!business) services.push(choice('amend', 'Amend a filed return'));
+    if (business) services.push(choice('bookkeeping', 'Bookkeeping'), choice('payroll', 'Payroll'));
+    services.push(choice('planning', 'Tax planning'), choice('notice', 'IRS or state tax notice'));
+    if (business) services.push(choice('consulting', 'Business consulting'));
+    result.push(question('service', 'Which service would you like to discuss?', 'Service', services, {
+      phase: 1, fallback: choice('unsure', "Something else / I'm not sure")
+    }));
+    switch (answers.service) {
+      case 'tax':
+      case 'amend':
+        result.push(question('tax_years', 'Which tax year(s) do you need help with?', 'Tax years', taxYears(), {
+          multiple: true, helper: 'Select all that apply, then continue.'
+        }));
+        if (business) result.push(question('entity_type', 'How is your business set up?', 'Business structure', [
+          choice('sole_prop', 'Sole proprietor'), choice('llc', 'LLC'), choice('s_corp', 'S corporation'),
+          choice('c_corp', 'C corporation'), choice('partnership', 'Partnership'), choice('unsure', 'Not sure')
+        ], { helper: 'Choose the closest match. We can confirm this together.' }));
+        break;
+      case 'bookkeeping':
+        result.push(question('books_status', 'What kind of bookkeeping help do you need?', 'Bookkeeping needs', [
+          choice('ongoing', 'Ongoing bookkeeping'), choice('catchup', 'Catch-up or cleanup'), choice('both', 'Both'),
+          choice('setup', 'Set up my bookkeeping'), choice('unsure', 'Not sure')
+        ]));
+        break;
+      case 'payroll':
+        result.push(question('payroll_status', 'What do you need help with?', 'Payroll needs', [
+          choice('setup', 'Set up payroll'), choice('switching', 'Switch payroll providers'),
+          choice('fixing', 'Resolve a payroll issue'), choice('unsure', 'Not sure')
+        ]));
+        break;
+      case 'planning':
+        result.push(question('planning_topic', 'What would you like to plan for?', 'Planning topic', business ? [
+          choice('estimates', 'Estimated taxes'), choice('entity', 'Business structure or S corporation election'),
+          choice('year_end', 'Year-end tax planning'), choice('general', 'General tax planning')
+        ] : [
+          choice('estimates', 'Estimated taxes or withholding'), choice('stock', 'Stock compensation or investments'),
+          choice('moved', 'Moving between states'), choice('general', 'General tax planning')
+        ]));
+        break;
+      case 'notice': {
+        const agencies = [choice('irs', 'IRS'), choice('ftb', 'California Franchise Tax Board')];
+        if (business) agencies.push(choice('edd', 'California EDD'));
+        agencies.push(choice('other', 'Another state agency'), choice('unsure', 'Not sure'));
+        result.push(question('notice_agency', 'Who sent the notice?', 'Notice agency', agencies));
+        result.push(question('notice_deadline', 'When is the response due?', 'Notice deadline', [
+          choice('2_weeks', 'Within two weeks'), choice('later', 'More than two weeks away'),
+          choice('passed', 'The deadline has passed'), choice('unsure', 'Not sure')
+        ]));
+        break;
       }
-    });
-    return parts.join(', ');
-  }
-
-  /* ---------- Which questions apply ---------- */
-
-  function matches(rule) {
-    return rule.split('|').some(function (clause) {
-      var parts = clause.split(':');
-      var wanted = parts[1].split(',');
-      return values(parts[0]).some(function (v) { return wanted.indexOf(v) !== -1; });
-    });
-  }
-
-  function updateVisibility() {
-    toArray(form.querySelectorAll('[data-show-if]')).forEach(function (el) {
-      el.classList.toggle('hidden', !matches(el.getAttribute('data-show-if')));
-    });
-    industryOther.classList.toggle('hidden', industry.value !== 'other');
-    toArray(form.querySelectorAll('input, select, textarea')).forEach(function (el) {
-      if (el.type === 'hidden' || el.name === '_gotcha') return;
-      el.disabled = isHidden(el) || (el === industryOther && industry.value !== 'other');
-    });
-  }
-
-  // Tax years offered: this year from October (extensions and next season's
-  // return), otherwise last year, plus the two before it.
-  function setTaxYears() {
-    var now = new Date();
-    var newest = now.getMonth() >= 9 ? now.getFullYear() : now.getFullYear() - 1;
-    toArray(form.querySelectorAll('[data-year-offset]')).forEach(function (input) {
-      var year = String(newest - Number(input.getAttribute('data-year-offset')));
-      input.value = year;
-      var text = input.parentNode.querySelector('.intake-chip > span');
-      if (text) text.textContent = year;
-    });
-  }
-
-  /* ---------- Steps and validation ---------- */
-
-  function announce(message) {
-    status.textContent = '';
-    setTimeout(function () { status.textContent = message; }, 50);
-  }
-
-  function setError(group, on) {
-    var message = group.querySelector('[data-error]');
-    if (message) message.classList.toggle('hidden', !on);
-  }
-
-  function validate(step) {
-    var box = steps[step - 1];
-    var missing = toArray(box.querySelectorAll('[data-required]')).filter(function (group) {
-      if (isHidden(group)) return false;
-      var answered = toArray(group.querySelectorAll('input')).some(function (el) { return el.checked; });
-      setError(group, !answered);
-      return !answered;
-    });
-    if (missing.length) {
-      var legend = missing[0].querySelector('legend');
-      announce('Please answer: ' + (legend ? legend.firstChild.textContent.trim() : 'the highlighted question'));
-      missing[0].querySelector('input').focus();
-      return false;
+      case 'consulting':
+        result.push(question('consulting_topic', 'What would you like to discuss?', 'Consulting topic', [
+          choice('starting', 'Starting a business'), choice('cash_flow', 'Cash flow and profitability'),
+          choice('systems', 'Business systems and processes'), choice('general', 'General business guidance')
+        ]));
+        break;
     }
-    var fields = toArray(box.querySelectorAll('input[required], textarea[required]'));
-    for (var i = 0; i < fields.length; i++) {
-      if (!fields[i].disabled && !fields[i].checkValidity()) {
-        fields[i].reportValidity();
-        return false;
+    return result;
+  }
+
+  function optionsFor(q) { return q.options.concat(q.fallback ? [q.fallback] : []); }
+  function valuesFor(q) {
+    const value = answers[q.key];
+    return Array.isArray(value) ? value : (value ? [value] : []);
+  }
+  function complete(q) {
+    const values = valuesFor(q);
+    const allowed = optionsFor(q).map(option => option.value);
+    return values.length > 0 && values.every(value => allowed.includes(value)) &&
+      (q.multiple || values.length === 1) && !(values.includes('unsure') && values.length > 1);
+  }
+  function answerText(q) {
+    return optionsFor(q).filter(option => valuesFor(q).includes(option.value)).map(option => option.label).join(', ');
+  }
+  function track(method, name, params) {
+    // Tracking failure must not interrupt a request or its success state.
+    try { if (window.BF && typeof window.BF[method] === 'function') window.BF[method](name, params); } catch (e) { /* No form impact. */ }
+  }
+  function setPhase(number) {
+    progress.querySelectorAll('[data-intake-phase]').forEach(node => {
+      const phase = Number(node.getAttribute('data-intake-phase'));
+      node.classList.toggle('is-reached', phase <= number);
+      if (phase === number) node.setAttribute('aria-current', 'step');
+      else node.removeAttribute('aria-current');
+    });
+    if (number > 1 && !visitedPhases.has(number)) {
+      visitedPhases.add(number);
+      track('trackEvent', 'consultation_step', { step: number });
+    }
+  }
+  function focusAndReveal(node) {
+    node.focus({ preventScroll: true });
+    const rect = node.getBoundingClientRect();
+    if (rect.top < 80 || rect.bottom > window.innerHeight - 32) {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      node.scrollIntoView({ block: 'start', behavior: reduced ? 'auto' : 'smooth' });
+    }
+  }
+  function hideError() { error.hidden = true; errorText.textContent = ''; }
+  function showError(message) {
+    errorText.textContent = message;
+    error.hidden = false;
+    focusAndReveal(error);
+  }
+  function commit(q, value) {
+    if (submitting) return;
+    const changed = JSON.stringify(answers[q.key]) !== JSON.stringify(value);
+    answers[q.key] = value;
+    if (changed && (q.key === 'client_type' || q.key === 'service')) {
+      Object.keys(answers).forEach(key => {
+        if (key !== 'client_type' && (q.key === 'client_type' || key !== 'service')) delete answers[key];
+      });
+    }
+    editing = null;
+    hideError();
+    render(true);
+  }
+
+  function renderQuestion(q, animate) {
+    const box = element('fieldset', 'intake-question' + (animate ? ' intake-enter' : ''));
+    const title = element('legend', 'intake-question-title', q.title);
+    title.id = 'intakeQuestionTitle';
+    title.tabIndex = -1;
+    box.appendChild(title);
+    if (q.helper) box.appendChild(element('p', 'intake-helper', q.helper));
+    const list = element('div', 'intake-choices');
+    if (q.multiple) {
+      const selected = new Set(valuesFor(q));
+      const next = element('button', 'intake-primary', 'Continue');
+      next.type = 'button';
+      next.disabled = selected.size === 0;
+      q.options.forEach(option => {
+        const label = element('label', 'intake-checkbox-row');
+        const input = element('input');
+        input.type = 'checkbox';
+        input.name = q.key;
+        input.value = option.value;
+        input.checked = selected.has(option.value);
+        label.classList.toggle('is-selected', input.checked);
+        input.addEventListener('change', () => {
+          if (input.checked) {
+            if (option.value === 'unsure') selected.clear();
+            else selected.delete('unsure');
+            selected.add(option.value);
+          } else selected.delete(option.value);
+          list.querySelectorAll('input').forEach(control => {
+            control.checked = selected.has(control.value);
+            control.parentElement.classList.toggle('is-selected', control.checked);
+          });
+          next.disabled = selected.size === 0;
+        });
+        label.append(input, element('span', '', option.label));
+        list.appendChild(label);
+      });
+      next.addEventListener('click', () => { if (selected.size) commit(q, Array.from(selected)); });
+      box.append(list, next);
+    } else {
+      q.options.forEach(option => {
+        const button = element('button', 'intake-choice');
+        button.type = 'button';
+        button.setAttribute('aria-pressed', String(answers[q.key] === option.value));
+        button.dataset.intakeValue = option.value;
+        const text = element('span', '', option.label);
+        if (option.detail) text.appendChild(element('small', 'intake-choice-detail', option.detail));
+        const arrow = element('span', 'intake-choice-arrow', '\u203a');
+        arrow.setAttribute('aria-hidden', 'true');
+        button.append(text, arrow);
+        button.addEventListener('click', () => commit(q, option.value));
+        list.appendChild(button);
+      });
+      box.appendChild(list);
+      if (q.fallback) {
+        const skip = element('button', 'intake-text-button', q.fallback.label);
+        skip.type = 'button';
+        skip.dataset.intakeValue = q.fallback.value;
+        skip.addEventListener('click', () => commit(q, q.fallback.value));
+        box.appendChild(skip);
       }
     }
-    return true;
+    active.appendChild(box);
+    if (animate) focusAndReveal(title);
   }
 
-  function showStep(n, moveFocus) {
-    current = n;
-    steps.forEach(function (box) {
-      box.classList.toggle('hidden', Number(box.getAttribute('data-intake-step')) !== n);
+  function render(moveFocus) {
+    const flow = questions();
+    const current = (editing && flow.find(q => q.key === editing)) || flow.find(q => !complete(q));
+    const end = current ? flow.indexOf(current) : flow.length;
+    history.replaceChildren();
+    flow.slice(0, end).filter(complete).forEach(q => {
+      const row = element('div', 'intake-summary');
+      const text = element('div');
+      text.append(element('span', 'intake-summary-label', q.label), element('span', 'intake-summary-value', answerText(q)));
+      const change = element('button', 'intake-change', 'Change');
+      change.type = 'button';
+      change.setAttribute('aria-label', 'Change ' + q.label.toLowerCase());
+      change.dataset.intakeEdit = q.key;
+      change.addEventListener('click', () => {
+        if (submitting) return;
+        editing = q.key;
+        hideError();
+        render(true);
+      });
+      row.append(text, change);
+      history.appendChild(row);
     });
-    stepLabel.textContent = 'Step ' + n + ' of ' + steps.length;
-    bar.style.width = Math.round((n / steps.length) * 100) + '%';
-    if (!moveFocus) return;
-    // Keep the top of the form in view below the sticky nav.
-    var top = container.getBoundingClientRect().top;
-    if (top < 64) {
-      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      window.scrollTo({ top: window.pageYOffset + top - 80, behavior: reduceMotion ? 'auto' : 'smooth' });
-    }
-    var title = steps[n - 1].querySelector('[data-intake-title]');
-    if (title) title.focus({ preventScroll: true });
-  }
-
-  function track(name, params) {
-    if (window.BF && window.BF.trackEvent) window.BF.trackEvent(name, params);
-  }
-
-  function goNext() {
-    if (!validate(current)) return;
-    showStep(current + 1, true);
-    if (current > furthest) {
-      furthest = current;
-      track('consultation_step', { step: current });
+    active.replaceChildren();
+    contact.hidden = Boolean(current);
+    contact.querySelectorAll('input, textarea, button').forEach(node => { node.disabled = Boolean(current); });
+    if (current) {
+      setPhase(current.phase);
+      status.textContent = 'Stage ' + current.phase + ' of 3.';
+      renderQuestion(current, moveFocus);
+    } else {
+      setPhase(3);
+      status.textContent = 'Contact details. Final stage.';
+      contact.classList.toggle('intake-enter', Boolean(moveFocus));
+      if (moveFocus) focusAndReveal(contactHeading);
     }
   }
 
-  /* ---------- What the firm receives ---------- */
-
+  function serviceCodes() {
+    if (answers.service === 'tax' || answers.service === 'amend') {
+      if (answers.client_type === 'both') return 'tax_individual,tax_business';
+      return answers.client_type === 'business' ? 'tax_business' : 'tax_individual';
+    }
+    return answers.service || 'unsure';
+  }
   function buildPayload() {
-    var client = values('client_type')[0] || '';
-    var services = values('services');
-    var timeline = values('timeline')[0] || '';
-    var answers = [];
-    var byLabel = {};
-    toArray(form.querySelectorAll('[data-label]')).forEach(function (group) {
-      if (isHidden(group)) return;
-      var text = answerText(group);
-      if (!text) return;
-      answers.push([group.getAttribute('data-label'), text]);
-      byLabel[group.getAttribute('data-label')] = text;
-    });
-    var deadline = values('notice_deadline')[0];
-    var urgent = checked('notice_deadline').some(function (el) { return el.hasAttribute('data-urgent'); });
-
-    // One-line summary, e.g. "Business (S corp) · Payroll: 6-20 people · Timeline: As soon as possible"
-    var segments = [];
-    var who = CLIENT_NAMES[client] || '';
-    var business = [byLabel['Business structure'], byLabel.Industry].filter(Boolean);
-    if (who) segments.push(business.length && client !== 'individual' ? who + ' (' + business.join(', ') + ')' : who);
-    services.forEach(function (service) {
-      var details = [];
-      if (service === 'tax_individual' || service === 'tax_business') {
-        details = [byLabel['Tax years'], byLabel['Filing status']];
-        if (service === 'tax_individual') details.push(byLabel['Return details']);
-      } else if (service === 'planning') {
-        details = [byLabel['Planning topics']];
-      } else if (service === 'bookkeeping') {
-        details = [byLabel.Books, byLabel['Monthly transactions'] && byLabel['Monthly transactions'] + ' transactions/mo'];
-      } else if (service === 'payroll') {
-        var people = byLabel['People on payroll'];
-        details = [people && /\d/.test(people) ? people + ' people' : people, byLabel['Payroll status']];
-      } else if (service === 'notice') {
-        details = [byLabel['Letter from'], deadline && DEADLINE_TEXT[deadline]];
-      } else if (service === 'consulting') {
-        details = [byLabel['Advice topics']];
-      }
-      details = details.filter(Boolean);
-      segments.push(SERVICE_NAMES[service] + (details.length ? ': ' + details.join('; ') : ''));
-    });
-    if (byLabel.Timeline) segments.push('Timeline: ' + byLabel.Timeline);
-    if (byLabel['Best time to reach']) segments.push('Best time: ' + byLabel['Best time to reach']);
-    if (byLabel['Heard about us']) segments.push('Heard via: ' + byLabel['Heard about us']);
-
-    var subject = 'New consultation: ' + services.map(function (s) { return SERVICE_SHORT[s]; }).join(' + ') +
-      (client ? ' (' + CLIENT_NAMES[client].toLowerCase() + ')' : '') +
-      (TIMELINE_SHORT[timeline] ? ', ' + TIMELINE_SHORT[timeline] : '');
-    if (urgent) subject = 'URGENT notice: ' + subject;
-
-    var data = new FormData();
-    data.append('Summary', segments.join(' · '));
-    ['name', 'email', 'phone'].forEach(function (key) {
-      data.append(key, form.elements.namedItem(key).value.trim());
-    });
-    answers.forEach(function (pair) { data.append(pair[0], pair[1]); });
+    const flow = questions();
+    const data = new FormData();
+    data.append('Summary', flow.map(q => q.label + ': ' + answerText(q)).join(' | '));
+    ['name', 'email', 'phone'].forEach(key => data.append(key, form.elements.namedItem(key).value.trim()));
+    flow.forEach(q => data.append(q.label, answerText(q)));
+    const notes = form.elements.namedItem('notes').value.trim();
+    if (notes) data.append('Notes', notes);
+    const service = flow.find(q => q.key === 'service');
+    let subject = 'New consultation: ' + (service ? answerText(service) : 'General inquiry') + ' (' + answerText(flow[0]) + ')';
+    if (answers.service === 'notice' && ['2_weeks', 'passed'].includes(answers.notice_deadline)) subject = 'URGENT notice: ' + subject;
     data.append('_subject', subject);
     data.append('_gotcha', form.elements.namedItem('_gotcha').value);
-
-    return {
-      data: data,
-      firstName: form.elements.namedItem('name').value.trim().split(/\s+/)[0],
-      analytics: { client_type: client, services: services.join(','), timeline: timeline }
-    };
+    return data;
   }
-
-  /* ---------- Submit, thank-you, reset ---------- */
-
-  function setSubmitting(on) {
-    submitBtn.disabled = on;
-    submitBtn.textContent = on ? 'Submitting...' : 'Request Free Consultation';
-  }
-
-  function showThanks(firstName) {
-    var heading = document.getElementById('thankYouHeading');
-    heading.textContent = firstName ? 'Thank you, ' + firstName + '!' : 'Thank You!';
-    container.classList.add('hidden');
-    thanks.classList.remove('hidden');
-    heading.setAttribute('tabindex', '-1');
-    heading.focus();
-  }
-
-  function send() {
-    var payload = buildPayload();
-    setSubmitting(true);
-    fetch(form.action, { method: 'POST', body: payload.data, headers: { Accept: 'application/json' } })
-      .then(function (response) {
-        setSubmitting(false);
-        if (!response.ok) {
-          console.error('Formspree error response', response);
-          alert('There was an error submitting your request. Please try again or contact us directly.');
-          return;
-        }
-        showThanks(payload.firstName);
-        // Lead conversion (GA4 generate_lead + ChatGPT Ads), per the visitor's privacy choices
-        if (window.BF && window.BF.trackLead) window.BF.trackLead('consultation_form', payload.analytics);
-      })
-      .catch(function (err) {
-        setSubmitting(false);
-        console.error('Form submission failed', err);
-        alert('There was a network error. Please check your connection and try again.');
+  async function send() {
+    if (submitting) return;
+    if (editing || questions().some(q => !complete(q))) {
+      editing = null;
+      render(true);
+      return;
+    }
+    ['name', 'email'].forEach(key => { form.elements.namedItem(key).value = form.elements.namedItem(key).value.trim(); });
+    if (!form.reportValidity()) return;
+    hideError();
+    const data = buildPayload();
+    const controls = Array.from(form.querySelectorAll('button, input, select, textarea')).map(node => [node, node.disabled]);
+    submitting = true;
+    controls.forEach(([node]) => { node.disabled = true; });
+    form.setAttribute('aria-busy', 'true');
+    submitButton.textContent = 'Sending your request...';
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 20000);
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST', body: data, headers: { Accept: 'application/json' }, signal: controller.signal
       });
+      if (!response.ok) {
+        showError(response.status === 429
+          ? 'We cannot accept another request right now. Please try again shortly, or contact us directly.'
+          : 'Your request could not be sent. Your answers are still here. Please try again, or contact us directly.');
+        return;
+      }
+      const firstName = form.elements.namedItem('name').value.trim().split(/\s+/)[0];
+      thanksHeading.textContent = firstName ? 'Thank you, ' + firstName + '.' : 'Thank you for your inquiry.';
+      container.hidden = true;
+      thanks.hidden = false;
+      focusAndReveal(thanksHeading);
+      track('trackLead', 'consultation_form', { client_type: answers.client_type, services: serviceCodes() });
+    } catch (e) {
+      showError(e.name === 'AbortError'
+        ? 'We could not confirm delivery. Your answers are still here. Please try again, or contact us directly.'
+        : 'The connection was interrupted. Your answers are still here. Please try again, or contact us directly.');
+    } finally {
+      window.clearTimeout(timeout);
+      controls.forEach(([node, disabled]) => { node.disabled = disabled; });
+      submitting = false;
+      form.removeAttribute('aria-busy');
+      submitButton.textContent = 'Request Free Consultation';
+    }
   }
 
-  form.addEventListener('click', function (e) {
-    if (e.target.closest('[data-intake-next]')) goNext();
-    else if (e.target.closest('[data-intake-back]')) showStep(current - 1, true);
-  });
-
-  form.addEventListener('change', function (e) {
-    updateVisibility();
-    var group = e.target.closest('[data-field]');
-    if (group) setError(group, false);
-  });
-
-  // Enter in a text box on steps 1-2 moves on instead of submitting early.
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (current < steps.length) goNext();
-    else if (validate(current)) send();
-  });
-
-  document.getElementById('intakeReset').addEventListener('click', function () {
+  form.addEventListener('submit', event => { event.preventDefault(); send(); });
+  document.getElementById('intakeReset').addEventListener('click', () => {
+    if (submitting) return;
     form.reset();
-    toArray(form.querySelectorAll('[data-error]')).forEach(function (el) { el.classList.add('hidden'); });
-    updateVisibility();
-    thanks.classList.add('hidden');
-    container.classList.remove('hidden');
-    furthest = 1;
-    showStep(1, true);
+    Object.keys(answers).forEach(key => delete answers[key]);
+    visitedPhases.clear();
+    editing = null;
+    contact.querySelector('details').open = false;
+    hideError();
+    thanks.hidden = true;
+    container.hidden = false;
+    render(true);
   });
-
-  // Switch from the no-JavaScript single page to steps.
+  // Hide the fallback only after the enhanced interface has rendered.
   form.noValidate = true;
-  container.querySelector('[data-intake-progress]').classList.remove('hidden');
-  toArray(form.querySelectorAll('[data-intake-nav], [data-intake-back]')).forEach(function (el) {
-    el.classList.remove('hidden');
-  });
-  setTaxYears();
-  updateVisibility();
-  showStep(1, false);
+  render(false);
+  fallback.hidden = true;
+  fallback.querySelectorAll('select').forEach(node => { node.disabled = true; });
+  progress.hidden = false;
 })();
