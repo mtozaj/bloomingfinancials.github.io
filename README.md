@@ -122,7 +122,7 @@ The homepage uses a guided inquiry in `assets/intake.js`, with one question visi
 - Notices: agency and response deadline. EDD is shown on business paths.
 - Consulting: one business topic. Not-sure paths can proceed directly to contact.
 
-**Contact details:** name and email are required; phone is optional. An expandable notes field accepts other services, deadlines, or questions. Industry, transaction counts, referral source, and preferred calling times are left for follow-up. No documents, identification numbers, or financial amounts are requested.
+**Contact details:** name, email, and phone are required. An expandable notes field accepts other services, deadlines, or questions. Industry, transaction counts, referral source, and preferred calling times are left for follow-up. No documents, identification numbers, or financial amounts are requested.
 
 **Editing questions:** `questions()` in `assets/intake.js` owns the branching, professional wording, choices, and stable email labels. `taxYears()` rolls the choices forward each year and offers the upcoming season from October. A `multiple` question has a Continue button; single-choice buttons reveal the next question immediately. Tax years and Not sure are mutually exclusive. Styles live in `tailwind.input.css`; rebuild the committed stylesheet after changes.
 
@@ -130,7 +130,7 @@ The homepage uses a guided inquiry in `assets/intake.js`, with one question visi
 
 **Submission:** the existing Formspree endpoint and honeypot remain. The email includes a readable `Summary`, name/email/phone, each relevant answer, optional `Notes`, and a useful subject. Notice deadlines within two weeks or already passed prefix the subject with `URGENT notice:`. Only a successful response shows confirmation. Pending requests prevent duplicate submissions and editing; failures preserve the inquiry and show an inline error. A 20-second timeout does not automatically retry.
 
-**Accessibility:** question headings receive focus after explicit selections; progress is announced and completed answers are editable. Choices have large targets and visible keyboard focus. Motion honors reduced-motion preferences. Native form controls remain in use, and name/email validation precedes submission.
+**Accessibility:** question headings receive focus after explicit selections; progress is announced and completed answers are editable. Choices have large targets and visible keyboard focus. Motion honors reduced-motion preferences. Missing contact details or an invalid email show inline messages and red field outlines after a submit attempt, with focus on the first invalid field. Messages are linked to their fields and clear as corrected. Native required-field validation remains available without JavaScript.
 
 **Analytics:** `BF.trackEvent('consultation_step', { step })` records stages 2 and 3 once per inquiry. `BF.trackLead('consultation_form', { client_type, services })` runs only after success and honors the shared consent layer. No name, email, phone, notes, or free-text deadline reaches analytics. The old required timeline question and its analytics parameter have been removed.
 
