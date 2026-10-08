@@ -628,19 +628,22 @@
                         <div data-intake-question></div>
                         <div data-intake-contact class="intake-question">
                             <h3 id="intakeContactHeading" class="intake-question-title" tabindex="-1">How can we reach you?</h3>
-                            <p class="intake-helper">We will contact you to discuss your needs and arrange your consultation.</p>
+                            <p class="intake-helper">We will contact you to discuss your needs and arrange your consultation. Name, email and phone are required.</p>
                             <div class="space-y-4 mt-5">
                                 <div>
                                     <label for="name" class="intake-label">Full name</label>
-                                    <input type="text" id="name" name="name" autocomplete="name" maxlength="150" class="intake-input" required>
+                                    <input type="text" id="name" name="name" autocomplete="name" maxlength="150" class="intake-input" aria-describedby="nameError" required>
+                                    <p id="nameError" class="intake-field-error" aria-live="polite" hidden><span class="intake-error-icon" aria-hidden="true">!</span><span data-field-error-text></span></p>
                                 </div>
                                 <div>
                                     <label for="email" class="intake-label">Email address</label>
-                                    <input type="email" id="email" name="email" autocomplete="email" maxlength="254" class="intake-input" required>
+                                    <input type="email" id="email" name="email" autocomplete="email" maxlength="254" class="intake-input" aria-describedby="emailError" required>
+                                    <p id="emailError" class="intake-field-error" aria-live="polite" hidden><span class="intake-error-icon" aria-hidden="true">!</span><span data-field-error-text></span></p>
                                 </div>
                                 <div>
-                                    <label for="phone" class="intake-label">Phone number <span class="font-normal text-gray-500">(optional)</span></label>
-                                    <input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="40" class="intake-input">
+                                    <label for="phone" class="intake-label">Phone number</label>
+                                    <input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="40" class="intake-input" aria-describedby="phoneError" required>
+                                    <p id="phoneError" class="intake-field-error" aria-live="polite" hidden><span class="intake-error-icon" aria-hidden="true">!</span><span data-field-error-text></span></p>
                                 </div>
                             </div>
                             <details class="intake-details">

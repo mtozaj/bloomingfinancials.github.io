@@ -17,6 +17,7 @@
   const submitButton = document.getElementById('submitBtn');
   const contactHeading = document.getElementById('intakeContactHeading');
   const thanksHeading = document.getElementById('thankYouHeading');
+  const contactFields = ['name', 'email', 'phone'].map(key => form.elements.namedItem(key));
   const answers = {};
   const visitedPhases = new Set();
   let editing = null;
@@ -156,6 +157,26 @@
     errorText.textContent = message;
     error.hidden = false;
     focusAndReveal(error);
+  }
+  function setFieldError(field, message) {
+    const hint = document.getElementById(field.id + 'Error');
+    hint.querySelector('[data-field-error-text]').textContent = message;
+    hint.hidden = !message;
+    if (message) field.setAttribute('aria-invalid', 'true');
+    else field.removeAttribute('aria-invalid');
+  }
+  function validateField(field) {
+    const requiredMessages = {
+      name: 'Please enter your full name.',
+      email: 'Please enter your email address.',
+      phone: 'Please enter your phone number.'
+    };
+    const message = !field.value.trim() ? requiredMessages[field.name]
+      : (!field.validity.valid ? (field.name === 'email'
+        ? 'Please enter a valid email address, such as name@example.com.'
+        : 'Please check this field.') : '');
+    setFieldError(field, message);
+    return !message;
   }
   function commit(q, value) {
     if (submitting) return;
@@ -302,8 +323,13 @@
       render(true);
       return;
     }
-    ['name', 'email'].forEach(key => { form.elements.namedItem(key).value = form.elements.namedItem(key).value.trim(); });
-    if (!form.reportValidity()) return;
+    contactFields.forEach(field => { field.value = field.value.trim(); });
+    const invalidFields = contactFields.filter(field => !validateField(field));
+    if (invalidFields.length) {
+      hideError();
+      focusAndReveal(invalidFields[0]);
+      return;
+    }
     hideError();
     const data = buildPayload();
     const controls = Array.from(form.querySelectorAll('button, input, select, textarea')).map(node => [node, node.disabled]);
@@ -342,10 +368,17 @@
     }
   }
 
+  contactFields.forEach(field => {
+    // Show errors after a submit attempt, then update only the fields being corrected.
+    field.addEventListener('input', () => {
+      if (field.hasAttribute('aria-invalid')) validateField(field);
+    });
+  });
   form.addEventListener('submit', event => { event.preventDefault(); send(); });
   document.getElementById('intakeReset').addEventListener('click', () => {
     if (submitting) return;
     form.reset();
+    contactFields.forEach(field => setFieldError(field, ''));
     Object.keys(answers).forEach(key => delete answers[key]);
     visitedPhases.clear();
     editing = null;

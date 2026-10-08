@@ -54,7 +54,7 @@ function setup(t, options = {}) {
     button.click();
   };
   const fill = (key, value) => { form.elements.namedItem(key).value = value; };
-  const validContact = () => { fill('name', 'Example Visitor'); fill('email', 'example@example.com'); };
+  const validContact = () => { fill('name', 'Example Visitor'); fill('email', 'example@example.com'); fill('phone', '(408) 555-0100'); };
   const submit = () => form.dispatchEvent(new w.Event('submit', { bubbles: true, cancelable: true }));
   if (options.enhance !== false) w.eval(script);
   return { w, d, form, active, choose, check, years, change, fill, validContact, submit, requests, events, scrolls };
@@ -170,17 +170,34 @@ test('year choices roll forward without mislabeling the current filing season', 
   assert.match(f.active().textContent, /2024 or earlier/);
 });
 
-test('required contact validation blocks incomplete requests; phone is optional', async t => {
+test('required contact validation uses inline errors and requires a phone number', async t => {
   const f = setup(t);
+  f.form.reportValidity = () => { throw new Error('Browser validation pop-ups must not be used'); };
   f.choose('unsure'); f.submit();
   assert.equal(f.requests.length, 0);
+  assert.equal(f.d.activeElement.id, 'name');
+  for (const key of ['name', 'email', 'phone']) {
+    assert.equal(f.form.elements.namedItem(key).getAttribute('aria-invalid'), 'true');
+    assert.equal(f.d.getElementById(key + 'Error').hidden, false);
+  }
   f.fill('name', '   '); f.fill('email', 'valid@example.com'); f.submit();
   assert.equal(f.requests.length, 0);
   f.fill('name', 'Example Visitor'); f.fill('email', 'invalid'); f.submit();
   assert.equal(f.requests.length, 0);
-  f.fill('email', ' example@example.com '); f.submit(); await settle();
+  assert.match(f.d.getElementById('emailError').textContent, /valid email address/);
+  f.fill('email', ' example@example.com ');
+  f.form.elements.email.dispatchEvent(new f.w.Event('input'));
+  assert.equal(f.d.getElementById('emailError').hidden, true);
+  f.fill('phone', '   '); f.submit();
+  assert.equal(f.requests.length, 0);
+  assert.equal(f.d.activeElement.id, 'phone');
+  f.fill('phone', ' (408) 555-0100 ');
+  f.form.elements.phone.dispatchEvent(new f.w.Event('input'));
+  assert.equal(f.d.getElementById('phoneError').hidden, true);
+  assert.equal(f.form.elements.phone.hasAttribute('aria-invalid'), false);
+  f.submit(); await settle();
   assert.equal(f.requests[0].fields.email, 'example@example.com');
-  assert.equal(f.requests[0].fields.phone, '');
+  assert.equal(f.requests[0].fields.phone, '(408) 555-0100');
 });
 
 test('early Enter cannot bypass unanswered questions or submit a partial inquiry', t => {
@@ -266,6 +283,6 @@ test('native fallback remains a usable short POST form without JavaScript', t =>
   assert.equal(f.form.noValidate, false);
   assert.equal(f.form.elements.name.required, true);
   assert.equal(f.form.elements.email.required, true);
-  assert.equal(f.form.elements.phone.required, false);
+  assert.equal(f.form.elements.phone.required, true);
   assert.equal(f.form.querySelectorAll('select').length, 2);
 });

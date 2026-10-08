@@ -104,7 +104,7 @@ The consultation section uses one centered white card with a clear request headi
 
 Show one relevant question at a time. The first answer filters individual and business services. Single-choice rectangular rows advance directly; tax-year checkboxes use Continue. Completed answers collapse into compact editable rows, and new questions enter with a restrained transition that respects reduced motion. Avoid pill-shaped choice clouds and irrelevant questions.
 
-Only ask one or two service-specific follow-ups. Require name and email; phone and expandable notes are optional. Keep contact details when earlier answers change and discard irrelevant branch answers. Include a not-sure route. Never request sensitive identification numbers, income amounts, account numbers, or uploads in this public form. See the README for branching and submission details.
+Only ask one or two service-specific follow-ups. Require name, email, and phone; expandable notes are optional. Show concise inline validation messages below invalid fields with a red outline, rather than browser pop-up warnings. Keep contact details when earlier answers change and discard irrelevant branch answers. Include a not-sure route. Never request sensitive identification numbers, income amounts, account numbers, or uploads in this public form. See the README for branching and submission details.
 
 ## Blog/resource themes
 
