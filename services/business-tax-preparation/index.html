@@ -69,13 +69,52 @@
   ] }
   </script>
   <script type="application/ld+json">
-  { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
-    { "@type": "Question", "name": "What kinds of business returns do you prepare?", "acceptedAnswer": { "@type": "Answer", "text": "Schedule C for sole proprietors and single-member LLCs, Form 1065 partnership returns, Form 1120-S S-corporation returns, and the matching California filings including Form 568 for LLCs and Form 100S for S corporations." } },
-    { "@type": "Question", "name": "I'm an S-corp owner. Do you review reasonable compensation?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. As part of preparing an S-corp return, we review owner W-2 compensation versus distributions, look at the work being performed, and flag if the salary appears unreasonably low for the role." } },
-    { "@type": "Question", "name": "My bookkeeping isn't finished. Can you still help?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We can complete catch-up or clean-up bookkeeping first, then prepare the business return from a clean set of books. Many of our business clients combine both services." } },
-    { "@type": "Question", "name": "Do you coordinate the business return with my personal return?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. K-1s from pass-through entities flow directly to your personal return, and we prepare both together so the numbers line up and estimated taxes are planned correctly." } },
-    { "@type": "Question", "name": "Do you help with the $800 California minimum tax and LLC fees?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We explain the $800 annual franchise tax, the California LLC gross-receipts fee thresholds, and the 1.5% S-corp tax so you understand what is owed and when." } }
-  ] }
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What kinds of business returns do you prepare?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We prepare Schedule C business activity, Form 1065 partnership returns, Form 1120-S S-corporation returns, and applicable California filings. An LLC’s forms depend on its tax classification and activity: not every LLC files Form 1065 or Schedule C. California Form 568 generally applies to LLCs taxed as partnerships or disregarded entities; S corporations use Form 100S."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I'm an S-corp owner. Do you review reasonable compensation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. As part of preparing an S-corp return, we review owner W-2 compensation versus distributions, look at the work being performed, and flag if the salary appears unreasonably low for the role."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "My bookkeeping isn't finished. Can you still help?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We can complete catch-up or clean-up bookkeeping first, then prepare the business return from a clean set of books. Many of our business clients combine both services."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you coordinate the business return with my personal return?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. K-1s from pass-through entities flow directly to your personal return, and we prepare both together so the numbers line up and estimated taxes are planned correctly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you help with the $800 California minimum tax and LLC fees?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We review the applicable $800 annual LLC tax or corporate minimum tax, first-year exceptions, and the separate LLC fee beginning at $250,000 of California-attributable total income. For S corporations, the general 1.5% California tax is subject to an $800 minimum where applicable; the minimum is not added on top of the percentage tax."
+      }
+    }
+  ]
+}
   </script>
 </head>
 
@@ -189,8 +228,8 @@
     <div class="container mx-auto px-6 max-w-4xl">
       <h2 class="text-3xl font-bold text-blue-900 mb-6">What's Included</h2>
       <ul class="grid sm:grid-cols-2 gap-y-3 gap-x-8 text-gray-700">
-        <li><i class="fas fa-check text-blue-500 mr-2"></i>Schedule C for sole proprietors and single-member LLCs</li>
-        <li><i class="fas fa-check text-blue-500 mr-2"></i>LLC tax filings (Form 1065 and California Form 568)</li>
+        <li><i class="fas fa-check text-blue-500 mr-2"></i>Schedule C for eligible sole-proprietor and disregarded LLC business activity</li>
+        <li><i class="fas fa-check text-blue-500 mr-2"></i>LLC filings based on tax classification, including Form 1065 or California Form 568 when applicable</li>
         <li><i class="fas fa-check text-blue-500 mr-2"></i>S-corporation returns (Form 1120-S and California Form 100S)</li>
         <li><i class="fas fa-check text-blue-500 mr-2"></i>Partnership returns</li>
         <li><i class="fas fa-check text-blue-500 mr-2"></i>Business deductions review</li>
@@ -232,11 +271,11 @@
     <div class="container mx-auto px-6 max-w-3xl">
       <h2 class="text-3xl font-bold text-blue-900 mb-10 text-center">Frequently Asked Questions</h2>
       <div class="space-y-4">
-        <details class="border border-gray-200 rounded-lg p-5"><summary class="cursor-pointer font-semibold text-blue-900">What kinds of business returns do you prepare?</summary><p class="mt-3 text-gray-700">Schedule C for sole proprietors and single-member LLCs, Form 1065 partnership returns, Form 1120-S S-corporation returns, and the matching California filings including Form 568 for LLCs and Form 100S for S corporations.</p></details>
+        <details class="border border-gray-200 rounded-lg p-5"><summary class="cursor-pointer font-semibold text-blue-900">What kinds of business returns do you prepare?</summary><p class="mt-3 text-gray-700">We prepare Schedule C business activity, Form 1065 partnership returns, Form 1120-S S-corporation returns, and applicable California filings. An LLC’s forms depend on its tax classification and activity: not every LLC files Form 1065 or Schedule C. California Form 568 generally applies to LLCs taxed as partnerships or disregarded entities; S corporations use Form 100S.</p></details>
         <details class="border border-gray-200 rounded-lg p-5"><summary class="cursor-pointer font-semibold text-blue-900">I'm an S-corp owner. Do you review reasonable compensation?</summary><p class="mt-3 text-gray-700">Yes. As part of preparing an S-corp return, we review owner W-2 compensation versus distributions, look at the work being performed, and flag if the salary appears unreasonably low for the role.</p></details>
         <details class="border border-gray-200 rounded-lg p-5"><summary class="cursor-pointer font-semibold text-blue-900">My bookkeeping isn't finished. Can you still help?</summary><p class="mt-3 text-gray-700">Yes. We can complete catch-up or clean-up bookkeeping first, then prepare the business return from a clean set of books. Many of our business clients combine both services.</p></details>
         <details class="border border-gray-200 rounded-lg p-5"><summary class="cursor-pointer font-semibold text-blue-900">Do you coordinate the business return with my personal return?</summary><p class="mt-3 text-gray-700">Yes. K-1s from pass-through entities flow directly to your personal return, and we prepare both together so the numbers line up and estimated taxes are planned correctly.</p></details>
-        <details class="border border-gray-200 rounded-lg p-5"><summary class="cursor-pointer font-semibold text-blue-900">Do you help with the $800 California minimum tax and LLC fees?</summary><p class="mt-3 text-gray-700">Yes. We explain the $800 annual franchise tax, the California LLC gross-receipts fee thresholds, and the 1.5% S-corp tax so you understand what is owed and when.</p></details>
+        <details class="border border-gray-200 rounded-lg p-5"><summary class="cursor-pointer font-semibold text-blue-900">Do you help with the $800 California minimum tax and LLC fees?</summary><p class="mt-3 text-gray-700">Yes. We review the applicable $800 annual LLC tax or corporate minimum tax, first-year exceptions, and the separate LLC fee beginning at $250,000 of California-attributable total income. For S corporations, the general 1.5% California tax is subject to an $800 minimum where applicable; the minimum is not added on top of the percentage tax.</p></details>
       </div>
     </div>
   </section>
